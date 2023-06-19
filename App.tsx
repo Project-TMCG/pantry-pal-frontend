@@ -17,6 +17,8 @@ export type RootStackParams = {
   Details: undefined
 }
 
+//This is a test to see if my activity on github is recorded.
+
 //App Component
 export default function App() {
 
