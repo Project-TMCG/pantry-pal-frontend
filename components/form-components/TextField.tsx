@@ -11,20 +11,17 @@ const TextField: React.FC<Props> = ({ placeholderText }) => {
   const [text, setText] = useState('');
 
   return (
-    <View>
-      <TextInput
-        style={styles.input}
-        placeholder={placeholderText}
-        onChangeText={newText => setText(newText)}
-        value={text}
-      />
-    </View>
+    <TextInput
+      style={styles.input}
+      placeholder={placeholderText}
+      onChangeText={newText => setText(newText)}
+      value={text}
+    />
   );
 };
 
 const styles = StyleSheet.create({
   input: {
-    flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
