@@ -1,13 +1,20 @@
 //Import Dependencies
 import * as React from 'react';
+
+//Import React Navigation
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-//Import Screens
-import Landing from './screens/Landing';
-import Search from './screens/Search';
-import Results from './screens/Results';
-import Details from './screens/Details';
+//Import Redux
+import { Provider } from 'react-redux';
+import store from './src/redux/store'
+
+//Import Containers
+import Landing from './src/containers/Landing';
+import Search from './src/containers/Search';
+import Results from './src/containers/Results';
+import Details from './src/containers/Details';
+import { configureStore } from '@reduxjs/toolkit';
 
 //TypeScripts React Navigation Types
 export type RootStackParams = {
@@ -20,16 +27,19 @@ export type RootStackParams = {
 //App Component
 export default function App() {
 
+
   const RootStack = createNativeStackNavigator<RootStackParams>();
 
   return (
-    <NavigationContainer>
-      <RootStack.Navigator initialRouteName="Landing">
-        <RootStack.Screen name="Landing" component={Landing} />
-        <RootStack.Screen name="Search" component={Search} />
-        <RootStack.Screen name="Results" component={Results} />
-        <RootStack.Screen name="Details" component={Details} />
-      </RootStack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <RootStack.Navigator initialRouteName="Landing">
+          <RootStack.Screen name="Landing" component={Landing} />
+          <RootStack.Screen name="Search" component={Search} />
+          <RootStack.Screen name="Results" component={Results} />
+          <RootStack.Screen name="Details" component={Details} />
+        </RootStack.Navigator>
+      </NavigationContainer>
+    </Provider>
   )
 }

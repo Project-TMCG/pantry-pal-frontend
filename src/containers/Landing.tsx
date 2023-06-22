@@ -5,7 +5,10 @@ import { StyleSheet, Button, Text, View } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 //Types for React Navigation
-import { RootStackParams } from '../App';
+import { RootStackParams } from './../../App';
+
+//Import Components
+import Counter from './../components/redux-test-components/counter'
 
 const Landing: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
@@ -14,6 +17,7 @@ const Landing: React.FC = () => {
     <View style={styles.container}>
       <Text>Landing Page</Text>
       <Button title="Get Started" onPress={() => navigation.navigate("Search")}/>
+      <Counter></Counter>
     </View>
   )
 }
