@@ -11,6 +11,7 @@ interface Props {
 
 }
 
+//
 const Counter: React.FC<Props> = ({  }) => {
 
     const count = useSelector((state) => state.counter.value)
