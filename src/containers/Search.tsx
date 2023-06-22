@@ -9,7 +9,7 @@ import { ButtonGroup } from "react-native-elements"
 import TextField from '../components/form-components/TextField'
 
 //Types for React Navigation
-import { RootStackParams } from '../App';
+import { RootStackParams } from './../../App';
 
 const Search: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
