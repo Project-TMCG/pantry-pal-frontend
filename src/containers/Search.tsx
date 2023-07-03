@@ -7,6 +7,7 @@ import { ButtonGroup } from "react-native-elements"
 
 //Import Dependencies
 import TextField from '../components/form-components/TextField'
+import IngredientCard from '../components/form-components/IngredientCard';
 
 //Types for React Navigation
 import { RootStackParams } from './../../App';
@@ -20,8 +21,10 @@ const Search: React.FC = () => {
   return (
     <>
     <View style={styles.container}>
+      {/* Search Bar */}
       <Text>Search Page</Text>
       <TextField placeholderText='Ingredients'/>
+      {/* Button Cards */}
       <ButtonGroup 
         buttonStyle={{ width: 100 }}
         buttons={[
@@ -36,6 +39,7 @@ const Search: React.FC = () => {
         selectedIndex={selectedIndex}
         selectedIndexes={selectedIndexes}
       />
+      <IngredientCard/>
     </View>
   </>
   )
