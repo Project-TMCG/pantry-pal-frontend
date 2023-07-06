@@ -17,6 +17,9 @@ const Search: React.FC = () => {
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [selectedIndexes, setSelectedIndexes] = React.useState([])
+
+  //Dummy Test Ingredient Data
+  const ingredients = ['Lettuce', 'Spinach', 'Carrots']
   
   return (
     <>
@@ -39,7 +42,7 @@ const Search: React.FC = () => {
         selectedIndex={selectedIndex}
         selectedIndexes={selectedIndexes}
       />
-      <IngredientCard/>
+      <IngredientCard ingredients= {ingredients}/>
     </View>
   </>
   )
