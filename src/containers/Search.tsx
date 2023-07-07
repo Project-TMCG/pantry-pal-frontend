@@ -23,6 +23,7 @@ const Search: React.FC = () => {
 
   return (
     <>
+
       <View style={styles.container}>
         <Text>Search Page</Text>
         <TextField placeholderText='Ingredients' />
@@ -43,6 +44,7 @@ const Search: React.FC = () => {
         <IngredientCard ingredients={ingredients} />
       </View>
     </>
+
   )
 }
 
