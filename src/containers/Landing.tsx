@@ -16,12 +16,16 @@ const Landing: React.FC = () => {
   return (
     <View style={styles.container}>
       <Text>Landing Page</Text>
-      <Button title="Get Started" onPress={() => navigation.navigate("Search")}/>
+      <Button
+        title="Get Started"
+        testID="myButton"
+        onPress={() => navigation.navigate("Search")} 
+        />
       <Counter></Counter>
     </View>
   )
 }
-  
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

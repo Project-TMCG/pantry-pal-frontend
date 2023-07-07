@@ -16,6 +16,7 @@ const TextField: React.FC<Props> = ({ placeholderText }) => {
       placeholder={placeholderText}
       onChangeText={newText => setText(newText)}
       value={text}
+      clearButtonMode="always"
     />
   );
 };
