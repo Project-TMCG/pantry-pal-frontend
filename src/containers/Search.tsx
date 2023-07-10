@@ -3,7 +3,7 @@ import * as React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, View } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { ButtonGroup } from "react-native-elements";
+import { Button, ButtonGroup } from "react-native-elements";
 
 //Import Dependencies
 import TextField from "../components/form-components/TextField";
@@ -18,14 +18,25 @@ const Search: React.FC = () => {
 
   const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [selectedIndexes, setSelectedIndexes] = React.useState([]);
-
+  const [currentTopic, setCurrentTopic] = React.useState(0);
   //Dummy Test Ingredient Data
   const ingredients = ["Lettuce", "Spinach", "Carrots"];
+  const categories: string[] = ["Produce", "Meat & Seafood", "Dairy"];
+  const handleNext = () => {
+    setCurrentTopic(currentTopic + 1);
+    console.log(currentTopic);
+  };
 
   return (
     <>
       <View style={styles.container}>
-        <Text>Search Page</Text>
+        <Text>{categories[currentTopic]}</Text>
+        <Button
+          title={"->"}
+          onPress={() => {
+            handleNext();
+          }}
+        />
         <ButtonGroup
           buttonStyle={{ width: 100 }}
           buttons={["No Restriction", "Pescatarian", "Vegetarian", "Vegan"]}

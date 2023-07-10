@@ -4,6 +4,7 @@ import { Text, Card, Button, Icon } from "@rneui/themed";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { addProduce } from "../../redux/features/selector/selectorSlice";
+
 type CardsComponentsProps = {
   ingredients: string[];
 };
@@ -11,46 +12,45 @@ type CardsComponentsProps = {
 const IngredientCard: React.FunctionComponent<CardsComponentsProps> = ({
   ingredients,
 }) => {
-  const [selectedCard, setSelectedCard] = useState<string | null>(null);
+  const [selectedCards, setSelectedCards] = useState<string[]>([]);
 
   const select = (ingredient: string) => {
-    if (ingredient === selectedCard) {
-      setSelectedCard(null);
-    } else setSelectedCard(ingredient);
+    setSelectedCards((prevSelectedCards) => {
+      if (prevSelectedCards.includes(ingredient)) {
+        return prevSelectedCards.filter((item) => item !== ingredient);
+      } else {
+        return [...prevSelectedCards, ingredient];
+      }
+    });
   };
-
-  //stuff from other component
-  const showData = useSelector((state: any) => state.selector.produce);
-  const dispatch = useDispatch();
 
   const handlePress = (ingredient: string) => {
     select(ingredient);
     addIngredient(ingredient);
   };
-  //object that temporarily stores selected ingredients
+
+  // stuff from other component
+  const showData = useSelector((state: any) => state.selector.produce);
+  const dispatch = useDispatch();
+
+  // object that temporarily stores selected ingredients
   const [ingredientsAdded, setIngredientsAdded] = useState<{
     [key: string]: number;
   }>({});
 
   const addIngredient = (ingredient: string): void => {
-    //deletes ingredient if found in object
     if (ingredientsAdded.hasOwnProperty(ingredient)) {
       delete ingredientsAdded[ingredient];
     } else {
-      //adds ingredient to the object in the form of a key if not selected yet
       ingredientsAdded[ingredient] = 1;
     }
     console.log(ingredientsAdded);
   };
 
   const submitIngredients = (): void => {
-    //converts object into an array of keys and sends it into redux(global state)
     const arrToObjects = Object.keys(ingredientsAdded);
-
     dispatch(addProduce(arrToObjects));
-    // console.log(arrToObjects);
   };
-  //
 
   return (
     <ScrollView>
@@ -61,12 +61,9 @@ const IngredientCard: React.FunctionComponent<CardsComponentsProps> = ({
             <Pressable
               style={[
                 styles.card,
-                selectedCard === ingredient && styles.selectedCard,
+                selectedCards.includes(ingredient) && styles.selectedCard,
               ]}
-              onPress={() => {
-                select(ingredient);
-                addIngredient(ingredient);
-              }}
+              onPress={() => handlePress(ingredient)}
             >
               <Card.Title>
                 {ingredient}''{showData}

@@ -20,10 +20,10 @@ const Landing: React.FC = () => {
       <Text>Landing Page</Text>
       <Button
         title="Get Started"
-        onPress={() => navigation.navigate("Search")} 
-        />
-      <Counter></Counter>
-      <AddIngredient />
+        onPress={() => navigation.navigate("Search")}
+      />
+      <Button title="details" onPress={() => navigation.navigate("Details")} />
+      <Counter />
     </View>
   );
 };
