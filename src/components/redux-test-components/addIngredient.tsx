@@ -26,6 +26,7 @@ const AddIngredient: React.FC<Props> = ({}) => {
       //adds ingredient to the object in the form of a key if not selected yet
       ingredientsAdded[ingredient] = 1;
     }
+    console.log(ingredientsAdded);
   };
 
   const submitIngredients = (): void => {
