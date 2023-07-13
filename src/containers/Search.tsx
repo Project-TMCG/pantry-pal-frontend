@@ -37,6 +37,12 @@ const Search: React.FC = () => {
             handleNext();
           }}
         />
+        {/* Mock Next Screen button to test loading screen, Delete Later */}
+        <Button
+          title={"Next Screen"}
+          onPress={() => navigation.navigate("Loading")}
+        />
+        {/* End of Mock Button */}
         <ButtonGroup
           buttonStyle={{ width: 100 }}
           buttons={["No Restriction", "Pescatarian", "Vegetarian", "Vegan"]}
