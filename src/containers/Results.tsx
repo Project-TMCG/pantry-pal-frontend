@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
 //Types for React Navigation
-import { RootStackParams } from '../App';
+import { RootStackParams } from '../../App';
 
 const Results: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
