@@ -1,19 +1,51 @@
-import React, { useState } from "react";
-import { View, ScrollView, StyleSheet, Image, Pressable } from "react-native";
-import { Text, Card, Button, Icon } from "@rneui/themed";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { addProduce } from "../../redux/features/selector/selectorSlice";
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  ScrollView,
+  StyleSheet,
+  Image,
+  Pressable,
+  Dimensions,
+} from "react-native";
+import { Text } from "@rneui/themed";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addProduce,
+  addMeat,
+  addDairy,
+  deleteDairy,
+  deleteProduce,
+  deleteMeat,
+} from "../../redux/features/selector/selectorSlice";
+import { ingredients } from "../../services/ingredients/ingredients";
+
+const { width } = Dimensions.get("window");
+const { height } = Dimensions.get("window");
+const CARD_MARGIN = 10;
+const CARD_WIDTH = (width - CARD_MARGIN * 4) / 3;
+const CARD_HEIGHT = (height - CARD_MARGIN * 9) / 8;
 
 type CardsComponentsProps = {
+  Produce: string[];
   ingredients: string[];
 };
 
-const IngredientCard: React.FunctionComponent<CardsComponentsProps> = ({
-  ingredients,
-}) => {
-  const [selectedCards, setSelectedCards] = useState<string[]>([]);
+const IngredientCard: React.FC = () => {
+  //redux data
+  const dispatch = useDispatch();
+  const currentTopic = useSelector((state: any) => state.counter.value);
+  const produceData = useSelector((state: any) => state.selector.produce);
+  const meatData = useSelector((state: any) => state.selector.meat);
+  const dairyData = useSelector((state: any) => state.selector.dairy);
 
+  //variables
+  let scrollableIngredients = ingredients[currentTopic];
+  const dataArr: any = [produceData, meatData, dairyData];
+  const addArr: any = [addProduce, addMeat, addDairy];
+  const deleteArr: any = [deleteProduce, deleteMeat, deleteDairy];
+  let current = dataArr[currentTopic];
+  //functionality for highlighting selected cards
+  const [selectedCards, setSelectedCards] = useState<string[]>([]);
   const select = (ingredient: string) => {
     setSelectedCards((prevSelectedCards) => {
       if (prevSelectedCards.includes(ingredient)) {
@@ -25,95 +57,106 @@ const IngredientCard: React.FunctionComponent<CardsComponentsProps> = ({
   };
 
   const handlePress = (ingredient: string) => {
+    //adds ingredients to redux
     select(ingredient);
-    addIngredient(ingredient);
-  };
-
-  // stuff from other component
-  const showData = useSelector((state: any) => state.selector.produce);
-  const dispatch = useDispatch();
-
-  // object that temporarily stores selected ingredients
-  const [ingredientsAdded, setIngredientsAdded] = useState<{
-    [key: string]: number;
-  }>({});
-
-  const addIngredient = (ingredient: string): void => {
-    if (ingredientsAdded.hasOwnProperty(ingredient)) {
-      delete ingredientsAdded[ingredient];
-    } else {
-      ingredientsAdded[ingredient] = 1;
+    let add = addArr[currentTopic];
+    let remove = deleteArr[currentTopic];
+    if (!current.hasOwnProperty(ingredient)) {
+      dispatch(add(ingredient));
+    } else if (current.hasOwnProperty(ingredient)) {
+      dispatch(remove(ingredient));
     }
-    console.log(ingredientsAdded);
   };
 
-  const submitIngredients = (): void => {
-    const arrToObjects = Object.keys(ingredientsAdded);
-    dispatch(addProduce(arrToObjects));
-  };
+  useEffect(() => {
+    //checks for and highlights previously slected ingredients
+    let currentData = Object.keys(current);
+
+    if (currentData.length) {
+      currentData.forEach((item: string) => {
+        if (scrollableIngredients.includes(item)) {
+          select(item);
+        }
+      });
+    }
+  }, []);
 
   return (
-    <ScrollView>
-      <Button title="submit" onPress={() => submitIngredients()} />
-      <View style={styles.container}>
-        {ingredients.map((ingredient: string, index: number) => (
-          <Card key={index}>
-            <Pressable
-              style={[
-                styles.card,
-                selectedCards.includes(ingredient) && styles.selectedCard,
-              ]}
-              onPress={() => handlePress(ingredient)}
-            >
-              <Card.Title>
-                {ingredient}''{showData}
-              </Card.Title>
-              <Card.Divider />
-              <Card.Image
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        {scrollableIngredients.map((ingredient: string, index: number) => (
+          <View
+            key={index}
+            style={[
+              styles.card,
+              selectedCards.includes(ingredient) && styles.selectedCard,
+            ]}
+          >
+            <Pressable onPress={() => handlePress(ingredient)}>
+              <Image
+                alt="sheesh"
                 style={{
-                  padding: 0,
+                  height: 80,
+                  width: 80,
+                  resizeMode: "contain",
                 }}
                 source={{
-                  uri: "https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg",
+                  uri: "https://bonnieplants.com/cdn/shop/products/060721_T110854_201997_202120_Bonnie_RomaineLettuce_ALT_01.jpg?v=1653420386",
                 }}
               />
-              <Text style={{ marginBottom: 10 }}>
-                The idea with React Native Elements is more about component
-                structure than actual design.
-              </Text>
             </Pressable>
-          </Card>
+            <Text>{ingredient}</Text>
+          </View>
         ))}
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  card: {
+    padding: CARD_MARGIN,
+    // marginTop: 50,
     backgroundColor: "white",
   },
-  selectedCard: {
-    backgroundColor: "red",
-  },
-  fonts: {
-    marginBottom: 8,
-  },
-  user: {
+  scrollContainer: {
     flexDirection: "row",
-    marginBottom: 6,
+    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
-  image: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
+  button: {
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 100,
+    elevation: 3,
+    width: CARD_WIDTH / 1,
+    height: CARD_HEIGHT / 2,
+    marginBottom: CARD_MARGIN,
   },
-  name: {
+  card: {
+    width: CARD_WIDTH,
+    height: CARD_HEIGHT,
+    marginTop: CARD_MARGIN,
+    marginBottom: CARD_MARGIN,
+    backgroundColor: "white",
+    // padding: 40,
+
+    borderRadius: 8,
+    elevation: 3,
+    textAlign: "center",
+    justifyContent: "center",
+  },
+  selectedCard: {
+    backgroundColor: "#7474741a",
+    opacity: 80,
+  },
+  text: {
     fontSize: 16,
-    marginTop: 5,
+    lineHeight: 21,
+    fontWeight: "bold",
+    letterSpacing: 0.25,
+    color: "white",
   },
 });
 
