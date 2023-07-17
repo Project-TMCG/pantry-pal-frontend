@@ -17,7 +17,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { addExtras } from "../redux/features/selector/selectorSlice";
 import { useState } from "react";
 import { ScrollView } from "react-native-gesture-handler";
-import { Badge, Icon, withBadge } from "react-native-elements";
+import {
+  Badge,
+  Button,
+  ButtonGroup,
+  Icon,
+  withBadge,
+} from "react-native-elements";
 //Types for React Navigation
 
 export type SearchStackParams = {
