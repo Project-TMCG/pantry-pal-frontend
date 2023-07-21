@@ -14,6 +14,7 @@ import store from "./src/redux/store";
 import Landing from "./src/containers/Landing";
 import Search from "./src/containers/Search";
 import Results from "./src/containers/Results";
+import ModalScreen from "./src/components/form-components/Modal";
 import Details from "./src/containers/Details";
 import { configureStore } from "@reduxjs/toolkit";
 import Loading from "./src/containers/Loading";
@@ -26,6 +27,7 @@ export type RootStackParams = {
   Results: undefined;
   Details: undefined;
   Loading: undefined;
+  Modal: undefined;
 };
 
 //App Component
@@ -48,6 +50,16 @@ export default function App() {
           <RootStack.Screen name="Loading" component={Loading} />
           <RootStack.Screen name="Results" component={Results} />
           <RootStack.Screen name="Details" component={Details} />
+          <RootStack.Group screenOptions={{ presentation: "modal" }}>
+            <RootStack.Screen
+              name="Modal"
+              component={ModalScreen}
+              options={{
+                headerShown: false,
+                gestureDirection: "vertical",
+              }}
+            />
+          </RootStack.Group>
         </RootStack.Navigator>
       </NavigationContainer>
     </Provider>

@@ -37,6 +37,10 @@ export const selectorSlice = createSlice({
       const payload = action.payload;
       delete state.dairy[payload];
     },
+    deleteExtras: (state, action: PayloadAction<string>) => {
+      const payload = action.payload;
+      delete state.extras[payload];
+    },
   },
 });
 
@@ -48,6 +52,7 @@ export const {
   deleteProduce,
   deleteDairy,
   deleteMeat,
+  deleteExtras,
 } = selectorSlice.actions;
 
 export default selectorSlice.reducer;

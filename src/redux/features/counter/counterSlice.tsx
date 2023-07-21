@@ -4,6 +4,7 @@ export const counterSlice = createSlice({
   name: "counter",
   initialState: {
     value: 0,
+    lineLength: 25,
   },
   reducers: {
     increment: (state) => {
@@ -19,6 +20,21 @@ export const counterSlice = createSlice({
     incrementByAmount: (state, action) => {
       state.value += action.payload;
     },
+    widenLine: (state) => {
+      // Redux Toolkit allows us to write "mutating" logic in reducers. It
+      // doesn't actually mutate the state because it uses the immer library,
+      // which detects changes to a "draft state" and produces a brand new
+      // immutable state based off those changes
+      state.lineLength += 25;
+    },
+    shrinkLine: (state) => {
+      // Redux Toolkit allows us to write "mutating" logic in reducers. It
+      // doesn't actually mutate the state because it uses the immer library,
+      // which detects changes to a "draft state" and produces a brand new
+      // immutable state based off those changes
+      state.lineLength -= 25;
+      console.log(state.lineLength);
+    },
   },
 });
 
@@ -27,6 +43,12 @@ export const counterSlice = createSlice({
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 // export const selectCount = state => state.counter.value
 
-export const { increment, decrement, incrementByAmount } = counterSlice.actions;
+export const {
+  increment,
+  decrement,
+  incrementByAmount,
+  widenLine,
+  shrinkLine,
+} = counterSlice.actions;
 
 export default counterSlice.reducer;

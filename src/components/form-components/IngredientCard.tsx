@@ -34,6 +34,7 @@ const IngredientCard: React.FC = () => {
   //redux data
   const dispatch = useDispatch();
   const currentTopic = useSelector((state: any) => state.counter.value);
+  const lineLength = useSelector((state: any) => state.counter.lineLength);
   const produceData = useSelector((state: any) => state.selector.produce);
   const meatData = useSelector((state: any) => state.selector.meat);
   const dairyData = useSelector((state: any) => state.selector.dairy);
@@ -83,6 +84,13 @@ const IngredientCard: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <View
+        style={{
+          borderBottomColor: "black",
+          borderBottomWidth: 5,
+          width: `${lineLength}%`,
+        }}
+      />
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {scrollableIngredients.map((ingredient: string, index: number) => (
           <View
@@ -94,18 +102,19 @@ const IngredientCard: React.FC = () => {
           >
             <Pressable onPress={() => handlePress(ingredient)}>
               <Image
-                alt="sheesh"
+                alt="ingredient"
                 style={{
-                  height: 80,
-                  width: 80,
+                  height: 90,
+                  width: 90,
                   resizeMode: "contain",
+                  borderRadius: 10,
                 }}
                 source={{
                   uri: "https://bonnieplants.com/cdn/shop/products/060721_T110854_201997_202120_Bonnie_RomaineLettuce_ALT_01.jpg?v=1653420386",
                 }}
               />
             </Pressable>
-            <Text>{ingredient}</Text>
+            <Text style={styles.text}>{ingredient}</Text>
           </View>
         ))}
       </ScrollView>
@@ -137,26 +146,26 @@ const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
-    marginTop: CARD_MARGIN,
+    marginTop: CARD_MARGIN * 4,
     marginBottom: CARD_MARGIN,
     backgroundColor: "white",
-    // padding: 40,
-
-    borderRadius: 8,
+    // borderRadius: 80,
     elevation: 3,
     textAlign: "center",
     justifyContent: "center",
+    alignItems: "center",
   },
   selectedCard: {
     backgroundColor: "#7474741a",
-    opacity: 80,
+    height: 100,
+    width: 100,
   },
   text: {
-    fontSize: 16,
-    lineHeight: 21,
-    fontWeight: "bold",
+    fontSize: 13,
+    lineHeight: 15,
+    paddingTop: 10,
+    // fontWeight: "bold",
     letterSpacing: 0.25,
-    color: "white",
   },
 });
 

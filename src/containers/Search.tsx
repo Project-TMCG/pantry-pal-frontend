@@ -12,7 +12,12 @@ import {
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import IngredientCard from "../components/form-components/IngredientCard";
 import { createStackNavigator } from "@react-navigation/stack";
-import { decrement, increment } from "../redux/features/counter/counterSlice";
+import {
+  decrement,
+  increment,
+  shrinkLine,
+  widenLine,
+} from "../redux/features/counter/counterSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { addExtras } from "../redux/features/selector/selectorSlice";
 import { useState } from "react";
@@ -26,6 +31,7 @@ import {
 } from "react-native-elements";
 //Types for React Navigation
 
+import { RootStackParams } from "../../App";
 export type SearchStackParams = {
   next: undefined;
   back: undefined;
@@ -42,77 +48,39 @@ const Search: React.FC = () => {
   //redux data
   const dispatch = useDispatch();
   const SearchStack = createStackNavigator<SearchStackParams>();
+  const RootNavigate =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const navigation =
     useNavigation<NativeStackNavigationProp<SearchStackParams>>();
   const currentPage = useSelector((state: any) => state.counter.value);
   const extraData = useSelector((state: any) => state.selector.extras);
 
   //variables
-  const [text, onChangeText] = useState("");
+  const [lineWidth, setLineWidth] = useState(25);
   const categories: string[] = ["Produce", "Meat & Seafood", "Dairy"];
   const extraArr = Object.keys(extraData);
-  const BadgedIcon = withBadge(extraArr.length || 0)(Icon);
+  const badgeVisible = extraArr.length || 0;
 
   const handleNext = () => {
     //handler for next page button
     if (currentPage !== 2) {
       dispatch(increment());
       navigation.push("next");
+      dispatch(widenLine());
+    }
+
+    if (lineWidth < 100) {
     }
   };
   const handleBack = () => {
     //handler for back button
+
     if (currentPage !== 0) {
       dispatch(decrement());
       navigation.push("back");
+      dispatch(shrinkLine());
     } else navigation.pop();
   };
-
-  const closeModal = () => {
-    //closes the add ingredient modal
-    navigation.push("back");
-  };
-
-  const addExtra = () => {
-    if (text !== "") {
-      dispatch(addExtras(text));
-    }
-    console.log(text);
-  };
-
-  //modal component
-
-  function ModalScreen() {
-    return (
-      <KeyboardAvoidingView
-        style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-      >
-        <View style={styles.inputContainer}>
-          <TextInput
-            style={styles.input}
-            onChangeText={onChangeText}
-            keyboardAppearance={"dark"}
-            value={text}
-          />
-        </View>
-
-        <ScrollView contentContainerStyle={styles.container}>
-          {extraArr.map((ingredient: string, index: number) => (
-            <Pressable key={index} style={[]}>
-              <Text>{ingredient}</Text>
-            </Pressable>
-          ))}
-        </ScrollView>
-
-        <Pressable onPress={addExtra}>
-          <Text>Add</Text>
-        </Pressable>
-        <Pressable onPress={closeModal}>
-          <Text>Close</Text>
-        </Pressable>
-      </KeyboardAvoidingView>
-    );
-  }
 
   //home screen component
 
@@ -121,31 +89,37 @@ const Search: React.FC = () => {
       <View
         style={{
           flex: 0,
-          height: CARD_HEIGHT * 2,
+          height: CARD_HEIGHT * 3,
           alignItems: "center",
-          justifyContent: "space-evenly",
-          flexDirection: "row",
+
+          flexDirection: "column",
           backgroundColor: "white",
         }}
       >
         <View style={styles.buttonContainer}>
           <Pressable
             //opens the modal
-            style={{ backgroundColor: "green" }}
-            onPress={() => navigation.navigate("MyModal")}
+            style={styles.addButton}
+            onPress={() => RootNavigate.navigate("Modal")}
           >
-            <Icon name="add" />
+            <Icon name="add" color={"white"} />
           </Pressable>
-          <Badge value={extraArr.length || 0} status="error" />
+          <Badge
+            value={badgeVisible}
+            status="error"
+            badgeStyle={{ opacity: extraArr.length ? 100 : 0 }}
+          />
         </View>
-        <Pressable
-          style={styles.button}
-          onPress={() => {
-            handleNext();
-          }}
-        >
-          <Text style={styles.text}>Next</Text>
-        </Pressable>
+        <View>
+          <Pressable
+            style={styles.button}
+            onPress={() => {
+              handleNext();
+            }}
+          >
+            <Icon name="chevron-right" style={styles.button} />
+          </Pressable>
+        </View>
       </View>
     );
   }
@@ -165,7 +139,7 @@ const Search: React.FC = () => {
                   handleBack();
                 }}
               >
-                <Text style={styles.text}>🔙</Text>
+                <Icon name="arrow-back" style={styles.text} />
               </Pressable>
             ),
           }}
@@ -182,22 +156,12 @@ const Search: React.FC = () => {
                   handleBack();
                 }}
               >
-                <Text style={styles.text}>🔙</Text>
+                <Icon name="arrow-back" style={styles.text} />
               </Pressable>
             ),
             gestureDirection: "horizontal-inverted",
           }}
         />
-        <SearchStack.Group screenOptions={{ presentation: "modal" }}>
-          <SearchStack.Screen
-            name="MyModal"
-            component={ModalScreen}
-            options={{
-              headerShown: false,
-              keyboardHandlingEnabled: true,
-            }}
-          />
-        </SearchStack.Group>
       </SearchStack.Navigator>
       <HomeScreen />
     </KeyboardAvoidingView>
@@ -211,8 +175,10 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     flexDirection: "row",
-    justifyContent: "space-evenly",
-    alignItems: "center",
+    marginLeft: 40,
+    marginTop: 30,
+    width: width,
+    alignItems: "flex-start",
     paddingHorizontal: CARD_MARGIN,
     paddingBottom: CARD_MARGIN,
   },
@@ -221,8 +187,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 10,
     elevation: 3,
-    backgroundColor: "green",
-    width: CARD_WIDTH / 2,
+    backgroundColor: "#72927C",
+    width: 50,
     height: CARD_HEIGHT / 2,
   },
   button: {
