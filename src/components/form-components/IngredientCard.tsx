@@ -13,11 +13,19 @@ import {
   addProduce,
   addMeat,
   addDairy,
+  addBaking,
+  addDiet,
   deleteDairy,
   deleteProduce,
   deleteMeat,
+  deleteBaking,
+  deleteDiet,
 } from "../../redux/features/selector/selectorSlice";
 import { ingredients } from "../../services/ingredients/ingredients";
+import { createStackNavigator } from "@react-navigation/stack";
+import { SearchStackParams } from "../../containers/Search";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
 
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
@@ -38,12 +46,22 @@ const IngredientCard: React.FC = () => {
   const produceData = useSelector((state: any) => state.selector.produce);
   const meatData = useSelector((state: any) => state.selector.meat);
   const dairyData = useSelector((state: any) => state.selector.dairy);
-
+  const bakingData = useSelector((state: any) => state.selector.baking);
+  const dietData = useSelector((state: any) => state.selector.diet);
+  const SearchStack = createStackNavigator<SearchStackParams>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<SearchStackParams>>();
   //variables
   let scrollableIngredients = ingredients[currentTopic];
-  const dataArr: any = [produceData, meatData, dairyData];
-  const addArr: any = [addProduce, addMeat, addDairy];
-  const deleteArr: any = [deleteProduce, deleteMeat, deleteDairy];
+  const dataArr: any = [produceData, meatData, dairyData, bakingData, dietData];
+  const addArr: any = [addProduce, addMeat, addDairy, addBaking, addDiet];
+  const deleteArr: any = [
+    deleteProduce,
+    deleteMeat,
+    deleteDairy,
+    deleteBaking,
+    deleteDiet,
+  ];
   let current = dataArr[currentTopic];
   //functionality for highlighting selected cards
   const [selectedCards, setSelectedCards] = useState<string[]>([]);
@@ -86,11 +104,39 @@ const IngredientCard: React.FC = () => {
     <View style={styles.container}>
       <View
         style={{
-          borderBottomColor: "black",
+          borderBottomColor: "#72927C",
           borderBottomWidth: 5,
+          borderRadius: 100,
           width: `${lineLength}%`,
         }}
       />
+      <View
+        style={{
+          backgroundColor: "#F5D2C2",
+          borderRadius: 100,
+          marginTop: 20,
+          marginLeft: "-7%",
+          padding: 15,
+          // flex: 1,
+          // justifyContent: "center",
+          width: `75%`,
+        }}
+      >
+        <Text
+          style={{
+            color: "black",
+            fontWeight: "400",
+            paddingLeft: 10,
+            letterSpacing: 0.2,
+            fontSize: 12,
+          }}
+        >
+          Tap an ingredient to select it
+        </Text>
+        {/* <Pressable onPress={() => navigation.navigate("next")}>
+          <Text style={{ textDecorationLine: "underline" }}>Skip</Text>
+        </Pressable> */}
+      </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {scrollableIngredients.map((ingredient: string, index: number) => (
           <View

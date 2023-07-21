@@ -25,14 +25,14 @@ export const counterSlice = createSlice({
       // doesn't actually mutate the state because it uses the immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.lineLength += 25;
+      state.lineLength += 20;
     },
     shrinkLine: (state) => {
       // Redux Toolkit allows us to write "mutating" logic in reducers. It
       // doesn't actually mutate the state because it uses the immer library,
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
-      state.lineLength -= 25;
+      state.lineLength -= 20;
       console.log(state.lineLength);
     },
   },

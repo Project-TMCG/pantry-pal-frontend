@@ -57,13 +57,19 @@ const Search: React.FC = () => {
 
   //variables
   const [lineWidth, setLineWidth] = useState(25);
-  const categories: string[] = ["Produce", "Meat & Seafood", "Dairy"];
+  const categories: string[] = [
+    "Produce",
+    "Meat & Seafood",
+    "Dairy",
+    "Baking Goods & Spices",
+    "Dietary Restrictions",
+  ];
   const extraArr = Object.keys(extraData);
   const badgeVisible = extraArr.length || 0;
 
   const handleNext = () => {
     //handler for next page button
-    if (currentPage !== 2) {
+    if (currentPage !== 4) {
       dispatch(increment());
       navigation.push("next");
       dispatch(widenLine());
@@ -90,34 +96,38 @@ const Search: React.FC = () => {
         style={{
           flex: 0,
           height: CARD_HEIGHT * 3,
-          alignItems: "center",
-
+          width: width,
+          alignItems: "flex-end",
+          justifyContent: "center",
           flexDirection: "column",
           backgroundColor: "white",
         }}
       >
         <View style={styles.buttonContainer}>
-          <Pressable
-            //opens the modal
-            style={styles.addButton}
-            onPress={() => RootNavigate.navigate("Modal")}
-          >
-            <Icon name="add" color={"white"} />
-          </Pressable>
+          <View>
+            <Pressable
+              //opens the modal
+              style={styles.addButton}
+              onPress={() => RootNavigate.navigate("Modal")}
+            >
+              <Icon name="add" color={"white"} />
+            </Pressable>
+            <Text style={{ textAlign: "center", paddingTop: 10 }}>Other</Text>
+          </View>
           <Badge
             value={badgeVisible}
             status="error"
             badgeStyle={{ opacity: extraArr.length ? 100 : 0 }}
           />
         </View>
-        <View>
+        <View style={{ flex: 1, alignItems: "center", paddingRight: 30 }}>
           <Pressable
             style={styles.button}
             onPress={() => {
               handleNext();
             }}
           >
-            <Icon name="chevron-right" style={styles.button} />
+            <Icon name="arrow-forward" color={"white"} />
           </Pressable>
         </View>
       </View>
@@ -131,16 +141,21 @@ const Search: React.FC = () => {
           name="next"
           component={IngredientCard}
           options={{
-            headerTitle: `${categories[currentPage]}`,
+            headerTitleStyle: { display: "none" },
             headerLeft: () => (
-              <Pressable
-                style={styles.button}
-                onPress={() => {
-                  handleBack();
-                }}
-              >
-                <Icon name="arrow-back" style={styles.text} />
-              </Pressable>
+              <View style={styles.header}>
+                <Pressable
+                  style={styles.backButton}
+                  onPress={() => {
+                    handleBack();
+                  }}
+                >
+                  <Icon name="arrow-back" color={"black"} />
+                </Pressable>
+                <Text
+                  style={styles.headerText}
+                >{`${categories[currentPage]}`}</Text>
+              </View>
             ),
           }}
         />
@@ -148,16 +163,21 @@ const Search: React.FC = () => {
           name="back"
           component={IngredientCard}
           options={{
-            headerTitle: `${categories[currentPage]}`,
+            headerTitleStyle: { display: "none" },
             headerLeft: () => (
-              <Pressable
-                style={styles.button}
-                onPress={() => {
-                  handleBack();
-                }}
-              >
-                <Icon name="arrow-back" style={styles.text} />
-              </Pressable>
+              <View style={styles.header}>
+                <Pressable
+                  style={styles.backButton}
+                  onPress={() => {
+                    handleBack();
+                  }}
+                >
+                  <Icon name="arrow-back" color={"black"} />
+                </Pressable>
+                <Text
+                  style={styles.headerText}
+                >{`${categories[currentPage]}`}</Text>
+              </View>
             ),
             gestureDirection: "horizontal-inverted",
           }}
@@ -178,7 +198,7 @@ const styles = StyleSheet.create({
     marginLeft: 40,
     marginTop: 30,
     width: width,
-    alignItems: "flex-start",
+    alignItems: "stretch",
     paddingHorizontal: CARD_MARGIN,
     paddingBottom: CARD_MARGIN,
   },
@@ -196,10 +216,29 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 100,
     elevation: 3,
+    backgroundColor: "#72927C",
+    width: CARD_WIDTH / 2,
+    height: CARD_HEIGHT / 2,
+    marginRight: 10,
+  },
+  backButton: {
     backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
     width: CARD_WIDTH / 2,
     height: CARD_HEIGHT / 2,
   },
+  header: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    width: width,
+  },
+  icon: {
+    color: "white",
+  },
+
   inputContainer: {
     width: "80%",
     marginBottom: CARD_MARGIN,
@@ -212,6 +251,9 @@ const styles = StyleSheet.create({
   },
   text: {
     color: "black",
+  },
+  headerText: {
+    fontSize: 20,
   },
 });
 
