@@ -129,6 +129,12 @@ const Search: React.FC = () => {
           >
             <Icon name="arrow-forward" color={"white"} />
           </Pressable>
+          {/* Mock button for testing route to Loading Screen, to be deleted later */}
+          <Button
+            title={"Results"}
+            onPress={() => RootNavigate.navigate("Loading")}
+          />
+          {/* End of mock button code */}
         </View>
       </View>
     );
