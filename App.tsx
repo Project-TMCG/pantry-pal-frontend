@@ -19,6 +19,8 @@ import { configureStore } from "@reduxjs/toolkit";
 import Loading from "./src/containers/Loading";
 import IngredientCard from "./src/components/form-components/IngredientCard";
 
+import Config from 'react-native-config'
+
 //TypeScripts React Navigation Types
 export type RootStackParams = {
   Landing: undefined;
