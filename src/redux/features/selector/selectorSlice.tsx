@@ -6,6 +6,8 @@ export const selectorSlice = createSlice({
     produce: {} as Record<string, number>, // Specify the type for produce
     meat: {} as Record<string, number>,
     dairy: {} as Record<string, number>,
+    baking: {} as Record<string, number>,
+    diet: {} as Record<string, number>,
     extras: {} as Record<string, number>,
   },
   reducers: {
@@ -25,6 +27,14 @@ export const selectorSlice = createSlice({
       const payload = action.payload;
       state.extras[payload] = 1;
     },
+    addBaking: (state, action: PayloadAction<string>) => {
+      const payload = action.payload;
+      state.baking[payload] = 1;
+    },
+    addDiet: (state, action: PayloadAction<string>) => {
+      const payload = action.payload;
+      state.diet[payload] = 1;
+    },
     deleteProduce: (state, action: PayloadAction<string>) => {
       const payload = action.payload;
       delete state.produce[payload];
@@ -37,6 +47,18 @@ export const selectorSlice = createSlice({
       const payload = action.payload;
       delete state.dairy[payload];
     },
+    deleteExtras: (state, action: PayloadAction<string>) => {
+      const payload = action.payload;
+      delete state.extras[payload];
+    },
+    deleteDiet: (state, action: PayloadAction<string>) => {
+      const payload = action.payload;
+      delete state.diet[payload];
+    },
+    deleteBaking: (state, action: PayloadAction<string>) => {
+      const payload = action.payload;
+      delete state.baking[payload];
+    },
   },
 });
 
@@ -45,9 +67,14 @@ export const {
   addMeat,
   addDairy,
   addExtras,
+  addBaking,
+  addDiet,
   deleteProduce,
   deleteDairy,
   deleteMeat,
+  deleteExtras,
+  deleteBaking,
+  deleteDiet,
 } = selectorSlice.actions;
 
 export default selectorSlice.reducer;
