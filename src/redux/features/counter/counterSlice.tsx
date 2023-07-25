@@ -33,7 +33,6 @@ export const counterSlice = createSlice({
       // which detects changes to a "draft state" and produces a brand new
       // immutable state based off those changes
       state.lineLength -= 20;
-      console.log(state.lineLength);
     },
   },
 });

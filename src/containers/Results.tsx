@@ -17,40 +17,43 @@ import FilterButtonGroup from "../components/form-components/FilterButtonGroup";
 type Recipe = {
   name: string;
   cuisine: string;
-}
+};
 
 const recipes: Recipe[] = [
-  {name: "hamburger", cuisine: "American"}, 
-  {name: "pizza", cuisine: "Italian"}, 
-  {name: "empanadas", cuisine: "Bolivian"},
-]
+  { name: "hamburger", cuisine: "American" },
+  { name: "pizza", cuisine: "Italian" },
+  { name: "empanadas", cuisine: "Bolivian" },
+];
 //Filter button options
-const options = ["All", ...recipes.map((recipe) => recipe.cuisine)]
+const options = ["All", ...recipes.map((recipe) => recipe.cuisine)];
 //End of Mock Data____
 
 const Results: React.FC = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  const [selectedFilter, setSelectedFilter] = useState<string>('All')
+  const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>(recipes);
 
   const handleFilterSelect = (filter: string) => {
     setSelectedFilter(filter);
-    if(filter === 'All') {
+    if (filter === "All") {
       setFilteredRecipes(recipes);
-    }
-    else {
+    } else {
       const filtered = recipes.filter((recipe) => recipe.cuisine === filter);
-      setFilteredRecipes(filtered)
+      setFilteredRecipes(filtered);
     }
-  }
+  };
 
   return (
     <View style={styles.container}>
       <Text>Results Page</Text>
       <TextField placeholderText="Enter Recipe" />
-      <FilterButtonGroup options={options} onFilterSelect={handleFilterSelect}/>
-      <RecipeCard recipes={filteredRecipes.map(recipe => recipe.name)} />
+      <FilterButtonGroup
+        options={options}
+        onFilterSelect={handleFilterSelect}
+      />
+      <RecipeCard recipes={filteredRecipes.map((recipe) => recipe.name)} />
     </View>
   );
 };

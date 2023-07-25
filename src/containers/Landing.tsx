@@ -9,7 +9,6 @@ import { RootStackParams } from "./../../App";
 
 //Import Components
 import Counter from "./../components/redux-test-components/counter";
-import AddIngredient from "../components/redux-test-components/addIngredient";
 
 //Import Test
 import getData from "../services/axios";
