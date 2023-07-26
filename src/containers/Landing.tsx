@@ -11,12 +11,12 @@ import { RootStackParams } from "./../../App";
 import Counter from "./../components/redux-test-components/counter";
 
 //Import Test
-import getData from "../services/axios";
+import getRecipes from "../services/axios";
 
 const Landing: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
-  getData();
+  getRecipes();
   
   return (
     <View style={styles.container}>
