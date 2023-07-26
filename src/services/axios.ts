@@ -4,6 +4,7 @@ const axios = require('axios').default;
 //Grab Backend Endpoint from Env Variables
 const backend_url = process.env.EXPO_PUBLIC_BACKEND_ENDPOINT
 
+//Provide Test API Query Parameters
 const testPostData = {
   includeIngredients: 'tomato,lettuce',
   diet: "vegetarian",
@@ -19,7 +20,7 @@ export default async function getRecipes(postData: Object=testPostData){
     const data = response.data
     return(data)
 
-  } catch (error) {
+  } catch (error: any) {
 
     if (error.response) {
       // The request was made, but the server responded with an error status code
