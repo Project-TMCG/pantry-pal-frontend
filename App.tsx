@@ -3,8 +3,11 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 
 //Import React Navigation
-import { NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
+import {
+  NativeStackNavigationProp,
+  createNativeStackNavigator,
+} from "@react-navigation/native-stack";
 
 //Import Redux
 import { Provider } from "react-redux";
@@ -19,6 +22,10 @@ import Details from "./src/containers/Details";
 import { configureStore } from "@reduxjs/toolkit";
 import Loading from "./src/containers/Loading";
 import IngredientCard from "./src/components/form-components/IngredientCard";
+import { View } from "react-native";
+import { Dimensions, Pressable, StyleSheet } from "react-native";
+import { Icon, Text } from "react-native-elements";
+import BackButton from "./src/components/form-components/BackButtonComponent";
 
 //TypeScripts React Navigation Types
 export type RootStackParams = {
@@ -29,7 +36,7 @@ export type RootStackParams = {
   Loading: undefined;
   Modal: undefined;
 };
-
+const { width } = Dimensions.get("window");
 //App Component
 export default function App() {
   const RootStack = createNativeStackNavigator<RootStackParams>();
@@ -55,7 +62,18 @@ export default function App() {
             }}
           />
           <RootStack.Screen name="Results" component={Results} />
-          <RootStack.Screen name="Details" component={Details} />
+          <RootStack.Screen
+            name="Details"
+            options={{
+              headerLeft: () => (
+                <View style={styles.header}>
+                  <BackButton />
+                  <Text style={styles.headerText}>Vegetarian Falafel</Text>
+                </View>
+              ),
+            }}
+            component={Details}
+          />
           <RootStack.Group screenOptions={{ presentation: "modal" }}>
             <RootStack.Screen
               name="Modal"
@@ -71,3 +89,23 @@ export default function App() {
     </Provider>
   );
 }
+
+const styles = StyleSheet.create({
+  backButton: {
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 20,
+    height: 20,
+  },
+  header: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    width: width,
+  },
+  headerText: {
+    fontSize: 25,
+  },
+});

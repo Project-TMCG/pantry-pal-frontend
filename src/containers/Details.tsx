@@ -1,39 +1,15 @@
 //Import Dependencies
 import * as React from "react";
-import {
-  NavigationRouteContext,
-  useNavigation,
-} from "@react-navigation/native";
-import {
-  StyleSheet,
-  Button,
-  Text,
-  View,
-  Pressable,
-  Dimensions,
-} from "react-native";
+import { StyleSheet, Text, View, Pressable, Dimensions } from "react-native";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faBasketShopping } from "@fortawesome/free-solid-svg-icons/faBasketShopping";
 import { faFireBurner } from "@fortawesome/free-solid-svg-icons/faFireBurner";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { fakeRecipe } from "../services/recipes/fakeRecipe";
-
-//Types for React Navigation
-import { RootStackParams } from "./../../App";
-import {
-  FlatList,
-  GestureHandlerRootView,
-  NativeViewGestureHandler,
-  ScrollView,
-} from "react-native-gesture-handler";
 import { useDispatch } from "react-redux";
-import { UseSelector } from "react-redux/es/hooks/useSelector";
 import { toggleTrue } from "../redux/features/details/detailSlice";
 import { toggleFalse } from "../redux/features/details/detailSlice";
-import { useSelector } from "react-redux";
 import RecipeTab from "../components/form-components/RecipeTab";
-import { setStatusBarBackgroundColor } from "expo-status-bar";
-import { Icon, Image } from "react-native-elements";
+import { Image } from "react-native-elements";
+import { fakeRecipe } from "../services/recipes/fakeRecipe";
 
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
@@ -71,6 +47,25 @@ const Details: React.FC = () => {
 
   return (
     <View style={styles.container}>
+      <View style={styles.bioContainer}>
+        <View>
+          <Text>
+            Total Time: {fakeRecipe["Vegetarian Falafels"].readyInMinutes} Min
+          </Text>
+        </View>
+        <Image
+          alt="ingredient"
+          style={{
+            height: 150,
+            width: 150,
+            resizeMode: "cover",
+            borderRadius: 10,
+          }}
+          source={{
+            uri: fakeRecipe["Vegetarian Falafels"].image,
+          }}
+        />
+      </View>
       <View style={styles.buttonContainer}>
         <Pressable
           style={[styles.button, leftTab]}
@@ -93,27 +88,30 @@ const Details: React.FC = () => {
   );
 };
 const styles = StyleSheet.create({
+  bioContainer: {
+    flexDirection: "row",
+    width: width,
+    justifyContent: "space-evenly",
+    paddingTop: 60,
+    alignItems: "center",
+  },
   button: {
     height: "100%",
     justifyContent: "center",
     width: "50%",
     alignItems: "center",
-
-    // borderTopRightRadius: 10,
   },
   buttonContainer: {
     flexDirection: "row",
-    // justifyContent: "center", // Adjust the spacing between the buttons
     width: width,
-    height: "10%",
+    height: "8%",
+    backgroundColor: "#72927C",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    marginTop: "20%",
   },
   container: {
     flex: 1,
-    backgroundColor: "#72927C",
-
-    marginTop: "65%",
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
   },
   item: {
     padding: 10,
@@ -123,6 +121,7 @@ const styles = StyleSheet.create({
   tabTitle: {
     alignContent: "center",
     padding: 15,
+    backgroundColor: "#72927C",
   },
   tabText: {
     color: "white",
