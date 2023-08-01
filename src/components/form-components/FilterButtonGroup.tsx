@@ -43,8 +43,6 @@ const FilterButtonGroup: React.FC<filterButtonsProps> = ({ options, onFilterSele
                             style={[
                                 styles.filterButton,
                                 selectedFilter === filter && styles.selectedFilterButton,
-                                index === 0 && styles.firstFilterButton,
-                                index === options.length - 1 && styles.lastFilterButton,
                             ]}
                             onPress={() => handleFilterSelection(filter)}
                         >
@@ -67,7 +65,6 @@ const FilterButtonGroup: React.FC<filterButtonsProps> = ({ options, onFilterSele
 //Styling for the buttons
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
     },
@@ -78,32 +75,20 @@ const styles = StyleSheet.create({
     },
     buttonGroup: {
         flexDirection: 'row',
-        alignItems: 'center',
-        borderRadius: 20,
-        backgroundColor: '#e5e5e5',
-        overflow: 'hidden',
     },
     filterButton: {
-        // flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingVertical: 10,
-        borderRadius: 5,
-    },
-    firstFilterButton: {
-        borderTopLeftRadius: 20,
-        borderBottomLeftRadius: 20,
-    },
-    lastFilterButton: {
-        borderTopRightRadius: 20,
-        borderBottomRightRadius: 20,
+        borderRadius: 34,
+        padding: 8,
+        marginHorizontal: 5,
+        marginVertical: 4,
+        backgroundColor: '#72927C',
     },
     selectedFilterButton: {
         backgroundColor: '#007AFF',
     },
     filterButtonText: {
-        fontSize: 16,
-        color: '#000',
+        fontSize: 12,
+        color: '#FFFCF7',
     },
     selectedFilterButtonText: {
         color: '#FFF',

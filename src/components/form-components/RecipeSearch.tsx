@@ -8,17 +8,10 @@ interface Props {
   placeholderText: string
 }
 
-const TextField: React.FC<Props> = ({ placeholderText }) => {
+const RecipeSearch: React.FC<Props> = ({ placeholderText }) => {
   const [text, setText] = useState('');
 
   return (
-    // <TextInput
-    //   style={styles.input}
-    //   placeholder={placeholderText}
-    //   onChangeText={newText => setText(newText)}
-    //   value={text}
-    //   clearButtonMode="always"
-    // />
     <View style={styles.input}>
       <SearchBar
         placeholder={placeholderText}
@@ -36,7 +29,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     margin: 10,
+    width: 150,
   },
 });
 
-export default TextField;
+export default RecipeSearch;
