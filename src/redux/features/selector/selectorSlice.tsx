@@ -9,6 +9,7 @@ export const selectorSlice = createSlice({
     baking: {} as Record<string, number>,
     diet: {} as Record<string, number>,
     extras: {} as Record<string, number>,
+    totalIngredients: [] as string[],
   },
   reducers: {
     addProduce: (state, action: PayloadAction<string>) => {
