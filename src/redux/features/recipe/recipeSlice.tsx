@@ -7,15 +7,15 @@ export const recipeSlice = createSlice({
     lastCall: {fart: "yum"}
   },
   reducers: {
-    addRecipes: (state, action: PayloadAction<Object>) => {
+    addRecipes: (state, action: PayloadAction<any>) => {
       //Get API Call From Action Payload
       const payload = action.payload;
 
-      //Add new recipes to all
-      state.all = {...state.all, ...payload}
+      // //Add new recipes to all
+      // state.all = {...state.all, ...payload}
 
-      //Replace lastCall
-      state.lastCall = payload
+      // //Replace lastCall
+      // state.lastCall = payload
     },
   },
 });
