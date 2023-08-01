@@ -4,23 +4,19 @@ import { StyleSheet, Text, Button, View } from "react-native";
 
 //Import Redux Store & Action Dispatch
 import { useSelector, useDispatch } from "react-redux";
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-} from "./../../redux/features/counter/counterSlice";
+import { addRecipes } from "./../../redux/features/recipe/recipeSlice";
 
 //Declare and Import Types
 interface Props {}
 
 const Counter: React.FC<Props> = ({}) => {
-  const count = useSelector((state: any) => state.counter.value);
+  const count = useSelector((state: any) => state.recipe.lastCall);
   const dispatch = useDispatch();
 
   return (
     <View style={styles.container}>
-      <Button title="Add One" onPress={() => dispatch(increment())} />
-      <Button title="Subtract One" onPress={() => dispatch(decrement())} />
+      <Button title="Update Recipes" onPress={() => dispatch(addRecipes({vegetarianFalafels: {}}))} />
+      {/* <Button title="Subtract One" onPress={() => dispatch(decrement())} /> */}
       <Text>{count}</Text>
     </View>
   );
