@@ -1,0 +1,37 @@
+#&#&#&#&# This doc provides all the available parameters that postData (the argument for the Axios function) is meant to have. #&#&#&#&# 
+
+The key-value pairs that make up the postData object are each a parameter that is sent to Spoonacular when the backend makes a request to the Spoonacular API.
+Each key-value pair represents a property that we restrict the API Query by.
+All possible key-value pairs are listed below:
+___________________________________________________________________________________________________
+"number": The number of recipes to return (defaulted to 10 if not provided but can go up to 100),
+"cuisine": "African, Asian, American, British, Cajun, Caribbean, Chinese, Eastern European, European, French, German, Greek, Indian, Irish, Italian, Japanese, Jewish, Korean, Latin, American, Mediterranean, Mexican, Middle Eastern, Nordic, Southern, Spanish, Thai, Vietnamese" (comma-separated list)
+"excludeCuisine": African, Asian, American, British, Cajun, Caribbean, Chinese, Eastern European, European, French, German, Greek, Indian, Irish, Italian, Japanese, Jewish, Korean, Latin, American, Mediterranean, Mexican, Middle Eastern, Nordic, Southern, Spanish, Thai, Vietnamese" (comma-separated list),
+"diet": Comma-separated list (multiple values means AND)"Gluten Free, Keyogenic, Vegetarian, Lacto-Vegetarian, Ovo-Vegetarian, Vegan, Pescetarian, Paleo, Primal, Low FODMAP, Whole30",
+"intolerances": "Dairy, Egg, Gluten, Grain, Peanut, Seafood, Sesame, Shellfish, Soy, Sulfite, Tree Nut, Wheat",
+"equipment": Equipment required - multiple values construed as 'or'. 'blender, frying pan, bowl',
+"includeIngredients": Comma-separated list of ingredients that must be used in the recipes,
+"excludeIngredients": Comma-seperated list of ingredients that must NOT be used in the recipes,
+"type": "main course side dish dessert appetizer salad bread breakfast soup beverage sauce marinade fingerfood snack drink",
+"titleMatch": Text that must be found in the title of the recipes,
+"maxReadyTime": Maximum times in minutes to should take ot prepare and cook the recipe,
+"ignorePantry": Whether to ignore typicaly pantry items, such as water, flour, salt, etc,
+"minCarbs": Minimum amount in grams per serving,
+"maxCarbs": Maximum amount in grams per serving,
+"minProtein": Minimum amount in grams per serving,
+"maxProtein": Maximum amount in grams per serving,
+"minCalories": Minimum amount in grams per serving,
+"maxCalories": Maximum amount in grams per serving,
+"minFat": Minimum amount in grams per serving,
+"maxFat": Maximum amount in grams per serving,
+"minAlchohol": Minimum amount in grams per serving,
+"maxAlchohol": Maximum amount in grams per serving,
+"minCaffeine": Minimum amount in MILIGRAMS per serving,
+"maxCaffeine": Maximum amount in MILIGRAMS per serving,
+"minCholesterol": Minimum amount in MILIGRAMS per serving,
+"maxCholesterol": Maximum amount in MILIGRAMS per serving,
+"minFiber": Minimum amount in grams per serving,
+"maxFiber": Maximum amount in grams per serving,
+"minSugar": Minimum amount in grams per serving,
+"maxSugar": Maximum amount in grams per serving,
+"offset": The number of results to skip 0 - 900,

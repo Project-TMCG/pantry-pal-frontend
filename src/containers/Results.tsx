@@ -17,7 +17,7 @@ import { RootStackParams } from "../../App";
 type Recipe = {
   name: string;
   cuisine: string;
-}
+};
 
 const recipes: Recipe[] = [
   {name: "hamburger", cuisine: "American"}, 
@@ -47,14 +47,13 @@ const Results: React.FC = () => {
   // This function handles the cuisine filter option button selection
   const handleFilterSelect = (filter: string) => {
     setSelectedFilter(filter);
-    if(filter === 'All') {
+    if (filter === "All") {
       setFilteredRecipes(recipes);
-    }
-    else {
+    } else {
       const filtered = recipes.filter((recipe) => recipe.cuisine === filter);
-      setFilteredRecipes(filtered)
+      setFilteredRecipes(filtered);
     }
-  }
+  };
 
   // This function handles the search entries of the search bar
   const handleSearchbarEntry = (text: string) => {
@@ -65,9 +64,11 @@ const Results: React.FC = () => {
       setFilteredRecipes([recipeSearched]);
     }
     else {
-      setFilteredRecipes(recipes);
+      const filtered = recipes.filter((recipe) => recipe.cuisine === text);
+      setFilteredRecipes(filtered)
     }
   }
+
 
   return (
     <View style={styles.container}>

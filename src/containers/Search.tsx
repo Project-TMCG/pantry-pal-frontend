@@ -73,10 +73,7 @@ const Search: React.FC = () => {
       dispatch(increment());
       navigation.push("next");
       dispatch(widenLine());
-    }
-
-    if (lineWidth < 100) {
-    }
+    } else RootNavigate.navigate("Loading");
   };
   const handleBack = () => {
     //handler for back button
@@ -129,12 +126,6 @@ const Search: React.FC = () => {
           >
             <Icon name="arrow-forward" color={"white"} />
           </Pressable>
-          {/* Mock button for testing route to Loading Screen, to be deleted later */}
-          <Button
-            title={"Results"}
-            onPress={() => RootNavigate.navigate("Loading")}
-          />
-          {/* End of mock button code */}
         </View>
       </View>
     );

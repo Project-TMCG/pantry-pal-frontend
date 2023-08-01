@@ -1,0 +1,292 @@
+The below is an example of the output
+that will be returned upon calling the backend API.
+Please note that the below is an example of one single
+recipe being returned. However most calls will contain
+up to 10 named objects (recipes) in the returned object.
+
+{
+    "Vegetarian Falafels": {
+        "vegetarian": true,
+        "vegan": false,
+        "glutenFree": false,
+        "dairyFree": false,
+        "veryHealthy": false,
+        "cheap": false,
+        "veryPopular": false,
+        "sustainable": false,
+        "preparationMinutes": -1,
+        "cookingMinutes": -1,
+        "aggregateLikes": 1,
+        "healthScore": 36,
+        "creditsText": "foodista.com",
+        "sourceName": "foodista.com",
+        "pricePerServing": 189.51,
+        "id": 664658,
+        "title": "Vegetarian Falafels",
+        "readyInMinutes": 45,
+        "servings": 6,
+        "sourceUrl": "https://www.foodista.com/recipe/BG5RMDJW/vegetarian-falafels",
+        "image": "https://spoonacular.com/recipeImages/664658-556x370.jpg",
+        "summary": "Vegetarian Falafels requires roughly <b>45 minutes</b> from start to finish. Watching your figure? This lacto ovo vegetarian recipe has <b>552 calories</b>, <b>22g of protein</b>, and <b>10g of fat</b> per serving. This recipe serves 6 and costs $1.9 per serving. 1 person has made this recipe and would make it again. A mixture of lrgs garlic clove, tomatoes, pepper flakes, and a handful of other ingredients are all it takes to make this recipe so delicious. Only a few people really liked this main course. It is brought to you by Foodista. With a spoonacular <b>score of 67%</b>, this dish is solid. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/vegetarian-falafels-1576695\">Vegetarian Falafels</a>, <a href=\"https://spoonacular.com/recipes/vegetarian-falafels-1424641\">Vegetarian Falafels</a>, and <a href=\"https://spoonacular.com/recipes/yam-falafels-263199\">Yam Falafels</a>.",
+        "cuisines": [],
+        "dishTypes": [
+            "lunch",
+            "main course",
+            "main dish",
+            "dinner"
+        ],
+        "diets": [
+            "lacto ovo vegetarian"
+        ],
+        "tips": {
+            "health": [
+                "To make this recipe more nutritious, skip the iceberg lettuce and choose some darker leafy greens higher in <a href=\"https://spoonacular.com/academy/vitamin-k\">vitamin K</a> like romaine, kale, spinach, etc.",
+                "Yogurt is a good source of probiotics, \"good\" bacteria that contribute to intestinal health and can improve digestion. Look at the label on your yogurt and make sure it says it contains \"live and active cultures.\" ",
+                "If you're following a gluten-free diet, make sure your bread (and all other ingredients) is truly gluten free.",
+                "Lycopene, the chemical in tomatoes that makes them red (and healthy), is fat soluble. This means eating tomatoes with a <a href=\"https://spoonacular.com/academy/fat\">fat</a> &mdash; say, avocado or olive oil?improves the body's ability to absorb the lycopene. Don't hesitate to include some healthy fats in this dish to get the most health benefits from the tomatoes!",
+                "Although the body needs salt to survive, most of us get too much. The problem with consuming too much salt (what chemists call \"sodium chloride\") is actually the <a href=\"https://spoonacular.com/academy/sodium\">sodium</a> part, which is why people concerned about high blood pressure go on low-sodium diets. If you are trying to reduce salt in your diet, you can try salt substitutes like potassium chloride or try to make do with less salt by using more black pepper, herbs, and spices."
+            ],
+            "price": [
+                "Most dairy products stay good well past their sell-by date. Instead of throwing out perfectly safe food that is just a few days or maybe even a week or two old, make sure the product smells fine, has a normal texture, and doesn't taste funny. Sniff testing isn't exactly rocket science and it can keep you from wasting food (and money)."
+            ],
+            "cooking": [
+                "The average fresh lemon contains between 2 to 3 tablespoons of lemon juice (just in case you are substituting bottled lemon juice).",
+                "You do not have to remove the seeds from a cucumber. In fact, the seeds are probably the most nutritious part! As for the skin, you should probably peel cucumbers (unless you like the skin and know the cucumber has not been waxed).",
+                "Just a head's up: tomatoes shouldn't be refrigerated! They will lose their flavor and probably get mushy too. For more on selecting and storing tomatoes and other vegetables, check out the <a href=\"https://spoonacular.com/academy#Ingredients\">academy</a>."
+            ],
+            "green": [
+                "Tomatoes, especially cherry tomatoes, should be bought <a href=\"http://www.ewg.org/foodnews/list.php\">organic</a> when possible. Moreover, buying tomatoes from your <a href=\"http://www.localharvest.org/farmers-markets/\">local farmers' market</a> when they are in season is going to make your dish much, much tastier, not to mention more eco-friendly. In fact, we recommend using canned &mdash; or better yet, jarred?tomato products when tomatoes aren't in season instead of buying imported or greenhouse-grown tomatoes."
+            ]
+        },
+        "ingredients": {
+            "bulgur wheat": {
+                "original": "cup bulgur wheat",
+                "amount": 1,
+                "unit": "cup"
+            },
+            "coarsely bread": {
+                "original": "2 cups coarsely crumbled stale whole-wheat bread",
+                "amount": 2,
+                "unit": "cups"
+            },
+            "garbanzo beans": {
+                "original": "1 can garbanzo beans (16 oz) drained and",
+                "amount": 16,
+                "unit": "oz"
+            },
+            "lemon": {
+                "original": "1 large lemon juiced",
+                "amount": 1,
+                "unit": "large"
+            },
+            "lrgs garlic clove": {
+                "original": "2 lrgs garlic clove finely chopped",
+                "amount": 2,
+                "unit": ""
+            },
+            "cilantro": {
+                "original": "4 tablespoons fresh cilantro chopped",
+                "amount": 4,
+                "unit": "tablespoons"
+            },
+            "pepper flakes": {
+                "original": "teaspoon red pepper flakes crushed",
+                "amount": 1,
+                "unit": "teaspoon"
+            },
+            "ground cumin": {
+                "original": "teaspoon ground cumin",
+                "amount": 1,
+                "unit": "teaspoon"
+            },
+            "pepper": {
+                "original": "teaspoon freshly ground black pepper",
+                "amount": 1,
+                "unit": "teaspoon"
+            },
+            "scallions": {
+                "original": "3 scallions shredded",
+                "amount": 3,
+                "unit": ""
+            },
+            "salt": {
+                "original": "teaspoon salt",
+                "amount": 1,
+                "unit": "teaspoon"
+            },
+            "vegetable oil": {
+                "original": "Vegetable oil for frying",
+                "amount": 6,
+                "unit": "servings"
+            },
+            "rounds pita bread": {
+                "original": "4 rounds pita bread warmed and halved",
+                "amount": 4,
+                "unit": ""
+            },
+            "tomatoes": {
+                "original": "2 tomatoes sliced",
+                "amount": 2,
+                "unit": ""
+            },
+            "cucumber": {
+                "original": "1 cucumber julienned",
+                "amount": 1,
+                "unit": ""
+            },
+            "bell pepper": {
+                "original": "1 bell pepper thinly sliced",
+                "amount": 1,
+                "unit": ""
+            },
+            "lettuce": {
+                "original": "1 cup lettuce loosely packed finely shredded",
+                "amount": 1,
+                "unit": "cup"
+            },
+            "yoghurt sauce": {
+                "original": "cup tahini or yoghurt sauce",
+                "amount": 1,
+                "unit": "cup"
+            }
+        },
+        "instructionSummary": "Makes about thirty 1-inch balls\nIn a bowl, cover the bulgur with cold water and allow to soak for 30 minutes. while the bulgur is soaking, put the bread in another bowl, cover with cold water and soak for 15 minutes. Drain the bread in a colander, squeezing out the excess moisture. Drain the bulgur well through a fine sieve. In the bowl of a food processor fitted with the metal chopping blade, combine the garbanzos, lemon juice, garlic, cilantro, pepper flakes, cumin, black pepper and scallions. Process with an off-on motion until the mixture is finely chopped. Transfer the mixture to a bowl. Stir in the bulgur and bread\nHeat 1 inch of oil in a heavy 12 inch skillet over medium high heat until very hot but not smoking. Add the patties to the pan without crowding and fry for 2-3 minutes, turning once, until golden brown all over. As the patties brown, transfer to paper towels to drain and keep warm while frying the remainder. To serve, tuck 3-4 balls or patties in each pita half. Add several slices of tomato, cucumber, and bell pepper, and a sprinkling of scallions and lettuce. Drizzle with the tahini and 4NOTES : These are Delicious for Dinner with Hummus and Tabouli Salad.\nNOTES : These are Delicious for Dinner with Hummus and Tabouli Salad.\nHealthy and Fairly Low Fat.\nThe red pepper flakes gives this Middle Eastern Favorite a slow burn...a perfect partner for garlic-yogurt sauce or tahini.",
+        "instructionSteps": {
+            "1": {
+                "number": 1,
+                "step": "Makes about thirty 1-inch balls",
+                "ingredients": [],
+                "equipment": []
+            },
+            "2": {
+                "number": 2,
+                "step": "In a bowl, cover the bulgur with cold water and allow to soak for 30 minutes. while the bulgur is soaking, put the bread in another bowl, cover with cold water and soak for 15 minutes.",
+                "ingredients": [
+                    "bulgur",
+                    "bread",
+                    "water"
+                ],
+                "equipment": [
+                    "bowl"
+                ],
+                "length": {
+                    "number": 45,
+                    "unit": "minutes"
+                }
+            },
+            "3": {
+                "number": 3,
+                "step": "Drain the bread in a colander, squeezing out the excess moisture.",
+                "ingredients": [
+                    "bread"
+                ],
+                "equipment": [
+                    "colander"
+                ]
+            },
+            "4": {
+                "number": 4,
+                "step": "Drain the bulgur well through a fine sieve. In the bowl of a food processor fitted with the metal chopping blade, combine the garbanzos, lemon juice, garlic, cilantro, pepper flakes, cumin, black pepper and scallions. Process with an off-on motion until the mixture is finely chopped.",
+                "ingredients": [
+                    "black pepper",
+                    "lemon juice",
+                    "chickpeas",
+                    "green onions",
+                    "cilantro",
+                    "bulgur",
+                    "garlic",
+                    "pepper",
+                    "cumin"
+                ],
+                "equipment": [
+                    "food processor",
+                    "sieve",
+                    "bowl"
+                ]
+            },
+            "5": {
+                "number": 5,
+                "step": "Transfer the mixture to a bowl. Stir in the bulgur and bread",
+                "ingredients": [
+                    "bulgur",
+                    "bread"
+                ],
+                "equipment": [
+                    "bowl"
+                ]
+            },
+            "6": {
+                "number": 6,
+                "step": "Heat 1 inch of oil in a heavy 12 inch skillet over medium high heat until very hot but not smoking.",
+                "ingredients": [
+                    "cooking oil"
+                ],
+                "equipment": [
+                    "frying pan"
+                ]
+            },
+            "7": {
+                "number": 7,
+                "step": "Add the patties to the pan without crowding and fry for 2-3 minutes, turning once, until golden brown all over. As the patties brown, transfer to paper towels to drain and keep warm while frying the remainder. To serve, tuck 3-4 balls or patties in each pita half.",
+                "ingredients": [
+                    "pita"
+                ],
+                "equipment": [
+                    "paper towels",
+                    "frying pan"
+                ],
+                "length": {
+                    "number": 3,
+                    "unit": "minutes"
+                }
+            },
+            "8": {
+                "number": 8,
+                "step": "Add several slices of tomato, cucumber, and bell pepper, and a sprinkling of scallions and lettuce.",
+                "ingredients": [
+                    "bell pepper",
+                    "green onions",
+                    "cucumber",
+                    "lettuce",
+                    "tomato"
+                ],
+                "equipment": []
+            },
+            "9": {
+                "number": 9,
+                "step": "Drizzle with the tahini and 4NOTES : These are Delicious for Dinner with Hummus and Tabouli Salad.",
+                "ingredients": [
+                    "hummus",
+                    "tahini"
+                ],
+                "equipment": []
+            },
+            "10": {
+                "number": 10,
+                "step": "NOTES : These are Delicious for Dinner with Hummus and Tabouli Salad.",
+                "ingredients": [
+                    "hummus"
+                ],
+                "equipment": []
+            },
+            "11": {
+                "number": 11,
+                "step": "Healthy and Fairly Low Fat.",
+                "ingredients": [],
+                "equipment": []
+            },
+            "12": {
+                "number": 12,
+                "step": "The red pepper flakes gives this Middle Eastern Favorite a slow burn...a perfect partner for garlic-yogurt sauce or tahini.",
+                "ingredients": [
+                    "red pepper flakes",
+                    "garlic",
+                    "tahini",
+                    "yogurt",
+                    "sauce"
+                ],
+                "equipment": []
+            }
+        }
+    }
+}
