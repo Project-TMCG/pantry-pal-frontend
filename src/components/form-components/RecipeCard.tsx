@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, ScrollView, StyleSheet, Image, Pressable } from "react-native";
+import { View, ScrollView, StyleSheet, Image, Pressable, Dimensions } from "react-native";
 import { Text, Card, Button, Icon } from "@rneui/themed";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
@@ -7,6 +7,13 @@ import { addProduce } from "../../redux/features/selector/selectorSlice";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "../../../App";
+
+// Card Sizes that are being tested
+const { width } = Dimensions.get("window");
+const { height } = Dimensions.get("window");
+const CARD_MARGIN = 10;
+const CARD_WIDTH = (width - CARD_MARGIN * 4) / 2;
+const CARD_HEIGHT = (height - CARD_MARGIN * 9) / 8;
 
 type CardsComponentsProps = {
     recipes: string[];
@@ -20,66 +27,62 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
         useNavigation<NativeStackNavigationProp<RootStackParams>>();
 
     return (
-        <ScrollView>
-            <View style={styles.container}>
+        <View style={styles.container}>
+            <ScrollView contentContainerStyle={styles.scrollContainer}>
                 {recipes.map((recipe: string, index: number) => (
-                    <Card key={index}>
-                        <Pressable
-                            style={[
-                                styles.card,
-                                // selectedCards.includes(recipe) && styles.selectedCard,
-                            ]}
-                            onPress={() => navigation.navigate("Details")}
-                        >
-                            <Card.Title>
-                                {recipe}
-                            </Card.Title>
-                            <Card.Divider />
-                            <Card.Image
-                                style={{
-                                    padding: 0,
-                                }}
-                                source={{
-                                    uri: "https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg",
-                                }}
-                            />
-                            <Text style={{ marginBottom: 10 }}>
-                                The idea with React Native Elements is more about component
-                                structure than actual design.
-                            </Text>
-                        </Pressable>
-                    </Card>
+                    <View >
+                            <Pressable
+                                onPress={() => navigation.navigate("Details")}
+                            >
+                                <Image
+                                    style={styles.image}
+                                    source={{
+                                        uri: "https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg",
+                                    }}
+                                />
+                                <Text>
+                                    {recipe}
+                                </Text>
+                                <Text style={{ marginBottom: 10 }}>
+                                    Rating
+                                </Text>
+                            </Pressable>
+                    </View>
                 ))}
-            </View>
-        </ScrollView>
+            </ScrollView>
+        </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
+        flex: 1,
+        padding: CARD_MARGIN,
+    },
+    // Testing this styling for recipe cards, futher styling edits needed
+    scrollContainer: {
+        flexDirection: "row",
+        flexWrap: "wrap",
+        justifyContent: 'space-between',
     },
     card: {
         backgroundColor: "white",
-    },
-    selectedCard: {
-        backgroundColor: "red",
-    },
-    fonts: {
-        marginBottom: 8,
-    },
-    user: {
-        flexDirection: "row",
-        marginBottom: 6,
+        width: CARD_WIDTH,
+        height: CARD_HEIGHT,
+        marginTop: CARD_MARGIN * 4,
+        marginBottom: CARD_MARGIN,
+        // borderRadius: 80,
+        elevation: 3,
+        textAlign: "center",
+        justifyContent: "center",
+        alignItems: "center",
     },
     image: {
-        width: 30,
-        height: 30,
-        marginRight: 10,
-    },
-    name: {
-        fontSize: 16,
-        marginTop: 5,
+        padding: 0,
+        height: 120,
+        width: 120,
+        borderRadius: 20,
+
     },
 });
 

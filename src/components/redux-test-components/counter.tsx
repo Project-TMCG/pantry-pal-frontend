@@ -10,14 +10,14 @@ import { addRecipes } from "./../../redux/features/recipe/recipeSlice";
 interface Props {}
 
 const Counter: React.FC<Props> = ({}) => {
-  const count = useSelector((state: any) => state.recipe.lastCall);
+  const count = useSelector((state: any) => state.recipe.all);
   const dispatch = useDispatch();
 
   return (
     <View style={styles.container}>
       <Button title="Update Recipes" onPress={() => dispatch(addRecipes({vegetarianFalafels: {}}))} />
       {/* <Button title="Subtract One" onPress={() => dispatch(decrement())} /> */}
-      <Text>{count}</Text>
+      <Text>{`this is the last call to recipes: ${count}`}</Text>
     </View>
   );
 };

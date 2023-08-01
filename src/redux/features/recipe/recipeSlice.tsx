@@ -3,8 +3,8 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 export const recipeSlice = createSlice({
   name: "recipe",
   initialState: {
-    all: {},
-    lastCall: {}
+    all: "test",
+    lastCall: {fart: "yum"}
   },
   reducers: {
     addRecipes: (state, action: PayloadAction<Object>) => {
