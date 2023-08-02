@@ -4,24 +4,33 @@ import { StyleSheet, Text, Button, View } from "react-native";
 
 //Import Redux Store & Action Dispatch
 import { useSelector, useDispatch } from "react-redux";
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-} from "./../../redux/features/counter/counterSlice";
+import { addRecipes } from "./../../redux/features/recipe/recipeSlice";
+
+//Import Axios API Call
+import getRecipes from "./../../services/axios"
 
 //Declare and Import Types
 interface Props {}
 
 const Counter: React.FC<Props> = ({}) => {
-  const count = useSelector((state: any) => state.counter.value);
+  const recentRecipeRetrieved = useSelector((state: any) => state.recipe.lastCall);
+  const allRecipesRetrieved = useSelector((state: any) => state.recipe.all);
+
   const dispatch = useDispatch();
+  
+  console.log(recentRecipeRetrieved);
+  console.log(allRecipesRetrieved);
+
+  async function onButton(){
+    const newRecipes = await getRecipes()
+    dispatch(addRecipes(newRecipes))
+  }
 
   return (
     <View style={styles.container}>
-      <Button title="Add One" onPress={() => dispatch(increment())} />
-      <Button title="Subtract One" onPress={() => dispatch(decrement())} />
-      <Text>{count}</Text>
+      <Button title="Update Recipes" onPress={onButton} />
+      {/* <Button title="Subtract One" onPress={() => dispatch(decrement())} /> */}
+      {/* <Text>{`this is the last call to recipes: ${recentRecipeRetrieved}`}</Text> */}
     </View>
   );
 };
