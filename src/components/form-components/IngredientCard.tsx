@@ -49,8 +49,8 @@ const IngredientCard: React.FC = () => {
   const bakingData = useSelector((state: any) => state.selector.baking);
   const dietData = useSelector((state: any) => state.selector.diet);
   const SearchStack = createStackNavigator<SearchStackParams>();
-  const navigation =
-    useNavigation<NativeStackNavigationProp<SearchStackParams>>();
+  const navigation = useNavigation<NativeStackNavigationProp<SearchStackParams>>();
+
   //variables
   let scrollableIngredients = ingredients[currentTopic];
   const dataArr: any = [produceData, meatData, dairyData, bakingData, dietData];
@@ -63,6 +63,7 @@ const IngredientCard: React.FC = () => {
     deleteDiet,
   ];
   let current = dataArr[currentTopic];
+
   //functionality for highlighting selected cards
   const [selectedCards, setSelectedCards] = useState<string[]>([]);
   const select = (ingredient: string) => {
@@ -88,7 +89,7 @@ const IngredientCard: React.FC = () => {
   };
 
   useEffect(() => {
-    //checks for and highlights previously slected ingredients
+    //checks for and highlights previously selected ingredients
     let currentData = Object.keys(current);
 
     if (currentData.length) {

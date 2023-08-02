@@ -12,7 +12,7 @@ const backend_url = process.env.EXPO_PUBLIC_BACKEND_ENDPOINT
 const testPostData = {
   includeIngredients: 'tomato,lettuce',
   diet: "vegetarian",
-  number: 1
+  number: 5
 }
 
 export default async function getRecipes(postData: Object=testPostData){
