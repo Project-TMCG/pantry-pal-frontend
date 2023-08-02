@@ -38,6 +38,11 @@ type CardsComponentsProps = {
   ingredients: string[];
 };
 
+interface IngredientSelection {
+  name: string,
+  image: string | null
+}
+
 const IngredientCard: React.FC = () => {
   //redux data
   const dispatch = useDispatch();
@@ -49,8 +54,8 @@ const IngredientCard: React.FC = () => {
   const bakingData = useSelector((state: any) => state.selector.baking);
   const dietData = useSelector((state: any) => state.selector.diet);
   const SearchStack = createStackNavigator<SearchStackParams>();
-  const navigation =
-    useNavigation<NativeStackNavigationProp<SearchStackParams>>();
+  const navigation = useNavigation<NativeStackNavigationProp<SearchStackParams>>();
+  
   //variables
   let scrollableIngredients = ingredients[currentTopic];
   const dataArr: any = [produceData, meatData, dairyData, bakingData, dietData];
@@ -63,6 +68,7 @@ const IngredientCard: React.FC = () => {
     deleteDiet,
   ];
   let current = dataArr[currentTopic];
+
   //functionality for highlighting selected cards
   const [selectedCards, setSelectedCards] = useState<string[]>([]);
   const select = (ingredient: string) => {
@@ -88,11 +94,11 @@ const IngredientCard: React.FC = () => {
   };
 
   useEffect(() => {
-    //checks for and highlights previously slected ingredients
+    //checks for and highlights previously selected ingredients
     let currentData = Object.keys(current);
 
     if (currentData.length) {
-      currentData.forEach((item: string) => {
+      currentData.forEach((item: se) => {
         if (scrollableIngredients.includes(item)) {
           select(item);
         }
@@ -138,15 +144,15 @@ const IngredientCard: React.FC = () => {
         </Pressable> */}
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {scrollableIngredients.map((ingredient: string, index: number) => (
+        {scrollableIngredients.map((ingredient: IngredientSelection, index: number) => (
           <View
             key={index}
             style={[
               styles.card,
-              selectedCards.includes(ingredient) && styles.selectedCard,
+              selectedCards.includes(ingredient.name) && styles.selectedCard,
             ]}
           >
-            <Pressable onPress={() => handlePress(ingredient)}>
+            <Pressable onPress={() => handlePress(ingredient.name)}>
               <Image
                 alt="ingredient"
                 style={{
@@ -156,11 +162,11 @@ const IngredientCard: React.FC = () => {
                   borderRadius: 10,
                 }}
                 source={{
-                  uri: "https://bonnieplants.com/cdn/shop/products/060721_T110854_201997_202120_Bonnie_RomaineLettuce_ALT_01.jpg?v=1653420386",
+                  uri: ingredient.image,
                 }}
               />
             </Pressable>
-            <Text style={styles.text}>{ingredient}</Text>
+            <Text style={styles.text}>{ingredient.name}</Text>
           </View>
         ))}
       </ScrollView>
