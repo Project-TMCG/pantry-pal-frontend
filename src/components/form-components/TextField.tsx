@@ -1,9 +1,8 @@
 //Import Dependencies
 import React, { useState } from 'react';
 import { StyleSheet, TextInput, View, Button, Dimensions } from 'react-native';
-// import Icon from 'react-native-vector-icons/Feather';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+// import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 
 // Search bar width
 const barWidth = 2 / 3 * Dimensions.get('screen').width
@@ -44,7 +43,7 @@ const TextField: React.FC<Props> = ({ placeholderText, onSearchEntry }) => {
       name={showIcon ? "clear" : ""} 
       onPress={handleClear} 
       />
-      <AntDesignIcon name="filter" />
+      {/* <AntDesignIcon name="filter" size={22}/> */}
     </View>
   );
 };
@@ -58,14 +57,15 @@ const styles = StyleSheet.create({
   },
   searchBarContainer: {
     flexDirection: "row",
-    borderColor: '#ccc',
+    borderColor: '#F5D2C2',
     height: 40,
     width: 280,
-    borderWidth: 1,
+    borderWidth: 2,
     borderRadius: 34,
     padding: 10,
-    marginVertical: 4,
-  }
+    marginVertical: 6,
+    marginHorizontal: 6,
+  },
 });
 
 export default TextField;

@@ -9,6 +9,7 @@ import { useState } from "react";
 import RecipeCard from "../components/form-components/RecipeCard";
 import TextField from "../components/form-components/TextField";
 import FilterButtonGroup from "../components/form-components/FilterButtonGroup";
+import FilterOverlayButton from "../components/form-components/FiltersOverlayButton";
 
 //Types for React Navigation
 import { RootStackParams } from "../../App";
@@ -59,20 +60,24 @@ const Results: React.FC = () => {
   const handleSearchbarEntry = (text: string) => {
 
     const recipeSearched = recipes.find((recipe) => recipe.name.toLowerCase() == text.toLowerCase());
+    console.log(recipeSearched)
 
     if(recipeSearched) {
       setFilteredRecipes([recipeSearched]);
     }
     else {
-      const filtered = recipes.filter((recipe) => recipe.cuisine === text);
-      setFilteredRecipes(filtered)
+      // const filtered = recipes.filter((recipe) => recipe.cuisine === text);
+      setFilteredRecipes(recipes)
     }
   }
 
 
   return (
     <View style={styles.container}>
+      <View style={styles.topRow}>
       <TextField placeholderText="Search Recipe" onSearchEntry={handleSearchbarEntry}/>
+      <FilterOverlayButton/>
+      </View>
       <FilterButtonGroup options={options} onFilterSelect={handleFilterSelect}/>
       <RecipeCard recipes={filteredRecipes.map(recipe => recipe.name)} />
     </View>
@@ -83,9 +88,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    // alignItems: "center",
+    // justifyContent: "center",
   },
+  topRow: {
+    flexDirection:'row',
+  }
 });
 
 export default Results;
