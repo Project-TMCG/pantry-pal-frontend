@@ -71,7 +71,7 @@ const IngredientCard: React.FC = () => {
   let current = dataArr[currentTopic];
 
   //functionality for highlighting selected cards
-  const [selectedCards, setSelectedCards] = useState<Ingredient[]>([]);
+  const [selectedCards, setSelectedCards] = useState<string[]>([]);
 
   const select = (ingredient: string) => {
 
@@ -90,9 +90,6 @@ const IngredientCard: React.FC = () => {
     select(ingredient);
     let add = addArr[currentTopic];
     let remove = deleteArr[currentTopic];
-
-    console.log('current inside handlePress')
-    console.log(current)
     
     if (!current.hasOwnProperty(ingredient)) {
       dispatch(add(ingredient));
@@ -106,12 +103,10 @@ const IngredientCard: React.FC = () => {
     let currentData = Object.keys(current);
 
     if (currentData.length) {
-      console.log('running useEffect function')
-      console.log('scrollable Ingredients')
-      console.log(scrollableIngredients)
+      const matchIngredients = scrollableIngredients.map(ingredient => ingredient.name)
 
       currentData.forEach((item: string) => {
-        if (scrollableIngredients.includes(item)) {
+        if (matchIngredients.includes(item)) {
           select(item);
         }
       });
@@ -161,7 +156,7 @@ const IngredientCard: React.FC = () => {
             key={index}
             style={[
               styles.card,
-              selectedCards.includes(ingredient) && styles.selectedCard,
+              selectedCards.includes(ingredient.name) && styles.selectedCard,
             ]}
           >
             <Pressable onPress={() => handlePress(ingredient.name)}>

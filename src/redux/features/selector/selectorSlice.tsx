@@ -1,44 +1,44 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
-interface IngredientInfo {
-  number: number,
-  image: string | undefined
+interface Ingredient {
+  name: string,
+  image: string | null
 }
 
 export const selectorSlice = createSlice({
   name: "selector",
   initialState: {
-    produce: {} as Record<string, IngredientInfo>, // Specify the type for produce
-    meat: {} as Record<string, IngredientInfo>,
-    dairy: {} as Record<string, IngredientInfo>,
-    baking: {} as Record<string, IngredientInfo>,
-    diet: {} as Record<string, IngredientInfo>,
-    extras: {} as Record<string, IngredientInfo>,
+    produce: {} as Record<string, number>, // Specify the type for produce
+    meat: {} as Record<string, number>,
+    dairy: {} as Record<string, number>,
+    baking: {} as Record<string, number>,
+    diet: {} as Record<string, number>,
+    extras: {} as Record<string, number>,
   },
   reducers: {
     addProduce: (state, action: PayloadAction<string>) => {
       const payload = action.payload;
-      state.produce[payload]['number'] = 1;
+      state.produce[payload] = 1;
     },
     addMeat: (state, action: PayloadAction<string>) => {
       const payload = action.payload;
-      state.meat[payload]['number'] = 1;
+      state.meat[payload] = 1;
     },
     addDairy: (state, action: PayloadAction<string>) => {
       const payload = action.payload;
-      state.dairy[payload]['number'] = 1;
+      state.dairy[payload] = 1;
     },
     addExtras: (state, action: PayloadAction<string>) => {
       const payload = action.payload;
-      state.extras[payload]['number'] = 1;
+      state.extras[payload] = 1;
     },
     addBaking: (state, action: PayloadAction<string>) => {
       const payload = action.payload;
-      state.baking[payload]['number'] = 1;
+      state.baking[payload] = 1;
     },
     addDiet: (state, action: PayloadAction<string>) => {
       const payload = action.payload;
-      state.diet[payload]['number'] = 1;
+      state.diet[payload] = 1;
     },
     deleteProduce: (state, action: PayloadAction<string>) => {
       const payload = action.payload;
