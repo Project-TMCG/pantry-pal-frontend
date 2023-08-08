@@ -1,9 +1,9 @@
-interface IngredientSelection {
+interface Ingredient {
   name: string,
-  image: string | null
+  image: string | undefined
 }
 
-const Produce: IngredientSelection[] = [
+const Produce: Ingredient[] = [
   { name: "Apple", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Avocados", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Bannanas", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
@@ -28,12 +28,12 @@ const Produce: IngredientSelection[] = [
   { name: "Lime", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Mushroom", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Onion", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
-  { name: "Tomato", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
+  { name: "Tomato", image: "https://wallpapercave.com/wp/wp5329505.jpg" },
   { name: "Watermelon", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Zuchini", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" }
 ];
 
-const Meat: IngredientSelection[] = [
+const Meat: Ingredient[] = [
   { name: "Beef", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Chicken", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Clams", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
@@ -54,7 +54,7 @@ const Meat: IngredientSelection[] = [
   { name: "Turkey", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" }
 ];
 
-const Dairy: IngredientSelection[] = [
+const Dairy: Ingredient[] = [
   { name: "Almond Milk", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Brie", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Butter", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
@@ -83,7 +83,7 @@ const Dairy: IngredientSelection[] = [
   { name: "Whole Milk", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Yoghurt", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" }
 ];
-const Baking: IngredientSelection[] = [
+const Baking: Ingredient[] = [
   { name: "Baking Powder", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Baking Soda", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
   { name: "Brown Sugar", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" },
@@ -104,25 +104,25 @@ const Baking: IngredientSelection[] = [
   { name: "Pepper", image: "https://spoonacular.com/recipeImages/642582-312x231.jpg" }
 ];
 
-const Diet: IngredientSelection[] = [
-  { name: "Dairy-Free", image: null },
-  { name: "Egg-Free", image: null },
-  { name: "Gluten-Free", image: null },
-  { name: "Organic", image: null },
-  { name: "Paleo", image: null },
-  { name: "Pescatarian", image: null },
-  { name: "Halal", image: null },
-  { name: "Kosher", image: null },
-  { name: "Lactose-Free", image: null },
-  { name: "Shelfish-Free", image: null },
-  { name: "Soy-Free", image: null },
-  { name: "Sugar-Free", image: null },
-  { name: "Low-Carb", image: null },
-  { name: "Low-Fat", image: null },
-  { name: "Nut-Free", image: null },
-  { name: "Vegan", image: null },
-  { name: "Vegetarian", image: null },
-  { name: "Wheat-Free", image: null }
+const Diet: Ingredient[] = [
+  { name: "Dairy-Free", image: undefined },
+  { name: "Egg-Free", image: undefined },
+  { name: "Gluten-Free", image: undefined },
+  { name: "Organic", image: undefined },
+  { name: "Paleo", image: undefined },
+  { name: "Pescatarian", image: undefined },
+  { name: "Halal", image: undefined },
+  { name: "Kosher", image: undefined },
+  { name: "Lactose-Free", image: undefined },
+  { name: "Shelfish-Free", image: undefined },
+  { name: "Soy-Free", image: undefined },
+  { name: "Sugar-Free", image: undefined },
+  { name: "Low-Carb", image: undefined },
+  { name: "Low-Fat", image: undefined },
+  { name: "Nut-Free", image: undefined },
+  { name: "Vegan", image: undefined },
+  { name: "Vegetarian", image: undefined },
+  { name: "Wheat-Free", image: undefined }
 ];
 
-export const ingredients: IngredientSelection[][] = [Produce, Meat, Dairy, Baking, Diet];
+export const ingredients: Ingredient[][] = [Produce, Meat, Dairy, Baking, Diet];
