@@ -65,6 +65,7 @@ export default function App() {
           <RootStack.Screen
             name="Details"
             options={{
+              headerBackVisible: false,
               headerLeft: () => (
                 <View style={styles.header}>
                   <BackButton />

@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import counterReducer from "./features/counter/counterSlice";
 import detailReducer from "./features/details/detailSlice";
 import selectorReducer from "./features/selector/selectorSlice";
-import recipeReducer from "./features/recipes/recipeSlice";
+import recipeReducer from "./features/recipe/recipeSlice";
 
 export default configureStore({
   reducer: {

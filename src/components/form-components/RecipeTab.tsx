@@ -13,15 +13,29 @@ import { useSelector } from "react-redux";
 import { fakeRecipe } from "../../services/recipes/fakeRecipe";
 const { height } = Dimensions.get("window");
 const { width } = Dimensions.get("window");
+type ItemProps = { step: string; stepNumber: number };
+type IngredientType = {
+  original: string;
+};
+type InstrctionType = {
+  number: number;
+  step: string;
+};
 
 const TabNavigator = () => {
   const leftTab = useSelector((state: any) => state.detail.value);
 
-  const ingredientList = fakeRecipe["Vegetarian Falafels"].ingredients;
-  const instructions = Object.values(
-    fakeRecipe["Vegetarian Falafels"].instructionSteps
+  const recipeObject = useSelector((state: any) => state.recipe.all);
+  const activeRecipeName = useSelector(
+    (state: any) => state.recipe.activeRecipe
   );
-  type ItemProps = { step: string; stepNumber: number };
+  const activeRecipe = recipeObject[activeRecipeName];
+
+  const ingredientList: IngredientType[] = activeRecipe.ingredients;
+  const instructions: InstrctionType[] = Object.values(
+    activeRecipe.instructionSteps
+  );
+
   type IngredientProps = { step: string };
   const Item = ({ step, stepNumber }: ItemProps) => (
     <View style={styles.item}>
@@ -41,7 +55,9 @@ const TabNavigator = () => {
       <GestureHandlerRootView style={styles.ingredientContainer}>
         <FlatList
           data={Object.values(ingredientList)}
-          renderItem={({ item }) => <Ingredient step={item.original} />}
+          renderItem={({ item }: { item: IngredientType }) => (
+            <Ingredient step={item.original} />
+          )}
         />
       </GestureHandlerRootView>
     );
@@ -50,7 +66,7 @@ const TabNavigator = () => {
       <GestureHandlerRootView style={styles.ingredientContainer}>
         <FlatList
           data={instructions}
-          renderItem={({ item }) => (
+          renderItem={({ item }: { item: InstrctionType }) => (
             <Item stepNumber={item.number} step={item.step} />
           )}
           keyExtractor={(item) => item.number.toString()}

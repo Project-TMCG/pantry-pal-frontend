@@ -1,12 +1,18 @@
 //Import Dependencies
 import React, { useState, useRef } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, PanResponder, Animated } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, PanResponder, Animated, Dimensions, ScrollView } from 'react-native';
 
 //Type Declaration for filterButton props
 type filterButtonsProps = {
     options: string[];
     onFilterSelect: (filter: string) => void;
 }
+
+const screenWidth = Dimensions.get('window').width
+
+const firstButtonMargin = 10;
+
+const lastButtonMargin = 10;
 
 const FilterButtonGroup: React.FC<filterButtonsProps> = ({ options, onFilterSelect }) => {
     //Hook handling the seleted filter button
@@ -17,25 +23,9 @@ const FilterButtonGroup: React.FC<filterButtonsProps> = ({ options, onFilterSele
         onFilterSelect(filter);
     };
 
-    const pan = useRef(new Animated.ValueXY()).current;
-
-    const panResponder = useRef(PanResponder.create({
-        onMoveShouldSetPanResponder: () => true,
-        onPanResponderMove: Animated.event([null, { dx: pan.x }]),
-        onPanResponderRelease: () => {
-            pan.extractOffset()
-        },
-    }),
-    ).current;
-
     return (
         <View style={styles.container}>
-            {/* Animated.View tag animates the position of the buttons when they are dragged */}
-            <Animated.View
-                style={{
-                    transform: [{ translateX: pan.x }],
-                }}
-                {...panResponder.panHandlers}>
+            <ScrollView horizontal={true} style={styles.scrollContainer}>
                 <View style={styles.buttonGroup}>
                     {options.map((filter: string, index: number) => (
                         <TouchableOpacity
@@ -43,8 +33,6 @@ const FilterButtonGroup: React.FC<filterButtonsProps> = ({ options, onFilterSele
                             style={[
                                 styles.filterButton,
                                 selectedFilter === filter && styles.selectedFilterButton,
-                                index === 0 && styles.firstFilterButton,
-                                index === options.length - 1 && styles.lastFilterButton,
                             ]}
                             onPress={() => handleFilterSelection(filter)}
                         >
@@ -59,7 +47,7 @@ const FilterButtonGroup: React.FC<filterButtonsProps> = ({ options, onFilterSele
                         </TouchableOpacity>
                     ))}
                 </View>
-            </Animated.View>
+            </ScrollView>
         </View>
     );
 };
@@ -67,9 +55,11 @@ const FilterButtonGroup: React.FC<filterButtonsProps> = ({ options, onFilterSele
 //Styling for the buttons
 const styles = StyleSheet.create({
     container: {
-        // flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+    },
+    scrollContainer: {
+        height: 45,
     },
     title: {
         fontSize: 24,
@@ -78,36 +68,40 @@ const styles = StyleSheet.create({
     },
     buttonGroup: {
         flexDirection: 'row',
-        alignItems: 'center',
-        borderRadius: 20,
-        backgroundColor: '#e5e5e5',
-        overflow: 'hidden',
+        height: 40,
     },
     filterButton: {
-        // flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingVertical: 10,
-        borderRadius: 5,
-    },
-    firstFilterButton: {
-        borderTopLeftRadius: 20,
-        borderBottomLeftRadius: 20,
-    },
-    lastFilterButton: {
-        borderTopRightRadius: 20,
-        borderBottomRightRadius: 20,
+        borderRadius: 14,
+        padding: 8,
+        marginHorizontal: 5,
+        marginVertical: 4,
+        backgroundColor: '#72927C',
+        // Shadow styling
+        shadowColor: "#000000",
+        shadowOffset: {
+            width: 0,
+            height: 4,
+        },
+        shadowOpacity: 0.19,
+        shadowRadius: 5.62,
+        elevation: 6
     },
     selectedFilterButton: {
         backgroundColor: '#007AFF',
     },
     filterButtonText: {
-        fontSize: 16,
-        color: '#000',
+        fontSize: 12,
+        color: '#FFFCF7',
     },
     selectedFilterButtonText: {
         color: '#FFF',
     },
+    firstButton: {
+        marginLeft: firstButtonMargin,
+    },
+    lastButton: {
+        marginRight: lastButtonMargin,
+    }
 });
 
 export default FilterButtonGroup;

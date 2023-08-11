@@ -88,7 +88,7 @@ const IngredientCard: React.FC = () => {
   };
 
   useEffect(() => {
-    //checks for and highlights previously slected ingredients
+    //checks for and highlights previously selected ingredients
     let currentData = Object.keys(current);
 
     if (currentData.length) {

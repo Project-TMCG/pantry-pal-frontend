@@ -15,7 +15,7 @@ import { RootStackParams } from "../../App";
 import getRecipes from "../services/axios";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { saveRecipes } from "../redux/features/recipes/recipeSlice";
+import { addRecipes } from "../redux/features/recipe/recipeSlice";
 
 const Loading: React.FC = () => {
   const navigation =
@@ -44,9 +44,8 @@ const Loading: React.FC = () => {
       number: 10,
     });
 
-    dispatch(saveRecipes(recipes));
-    console.log(recipes);
-    // navigation.navigate("Results");
+    dispatch(addRecipes(recipes));
+    navigation.navigate("Results");
   };
 
   useEffect(() => {
