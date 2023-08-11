@@ -13,8 +13,7 @@ export const recipeSlice = createSlice({
       const payload = action.payload;
 
       //Add new recipes to all
-      state.all = { ...state.all, ...payload };
-      console.log(state.all);
+      state.all = { ...payload };
       //Replace lastCall
       state.lastCall = payload;
     },
