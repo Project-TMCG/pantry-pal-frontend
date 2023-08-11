@@ -19,6 +19,7 @@ import Search from "./src/containers/Search";
 import Results from "./src/containers/Results";
 import ModalScreen from "./src/components/form-components/Modal";
 import Details from "./src/containers/Details";
+import FiltersOverlayModal from "./src/components/form-components/FiltersOverlayModal";
 import { configureStore } from "@reduxjs/toolkit";
 import Loading from "./src/containers/Loading";
 import IngredientCard from "./src/components/form-components/IngredientCard";
@@ -35,8 +36,10 @@ export type RootStackParams = {
   Details: undefined;
   Loading: undefined;
   Modal: undefined;
+  Filters: undefined;
 };
 const { width } = Dimensions.get("window");
+
 //App Component
 export default function App() {
   const RootStack = createNativeStackNavigator<RootStackParams>();
@@ -48,11 +51,11 @@ export default function App() {
           <RootStack.Screen name="Landing" component={Landing} />
           <RootStack.Screen
             name="Search"
+            component={Search}
             options={{
               headerShown: false,
               headerBackVisible: false,
             }}
-            component={Search}
           />
           <RootStack.Screen
             name="Loading"
@@ -82,6 +85,16 @@ export default function App() {
               options={{
                 headerShown: false,
                 gestureDirection: "vertical",
+              }}
+            />
+          </RootStack.Group>
+          <RootStack.Group screenOptions={{ presentation: "modal" }}>
+            <RootStack.Screen
+              name="Filters"
+              component={FiltersOverlayModal}
+              options={{
+                // headerShown: false,
+                gestureDirection:"vertical"
               }}
             />
           </RootStack.Group>

@@ -1,7 +1,7 @@
 //Import Dependencies
 import * as React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
+import { Modal, StyleSheet, Text, View } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useState } from "react";
 
@@ -10,9 +10,13 @@ import RecipeCard from "../components/form-components/RecipeCard";
 import TextField from "../components/form-components/TextField";
 import FilterButtonGroup from "../components/form-components/FilterButtonGroup";
 import FilterOverlayButton from "../components/form-components/FiltersOverlayButton";
+import FiltersOverlayModal from "../components/form-components/FiltersOverlayModal";
 
 //Types for React Navigation
 import { RootStackParams } from "../../App";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Pressable } from "react-native";
+import { Button } from "react-native-elements";
 
 //____Mock Data to later be deleted and replaced with API data____
 type Recipe = {
@@ -21,18 +25,18 @@ type Recipe = {
 };
 
 const recipes: Recipe[] = [
-  {name: "hamburger", cuisine: "American"}, 
-  {name: "pizza", cuisine: "Italian"}, 
-  {name: "empanadas", cuisine: "Bolivian"},
-  {name: "buffalo wings", cuisine: "American"},
-  {name: "tacos", cuisine: "Mexican"},
-  {name: "quesadilla", cuisine: "Mexican"},
-  {name: "pasta", cuisine: "Italian"},
-  {name: "saltenas", cuisine: "Bolivian"},
-  {name: "sushi", cuisine: "Japanese"},
-  {name: "ramen", cuisine: "Japanese"},
-  {name: "lo mein", cuisine: "Chinese"},
-  {name: "pho", cuisine: "Chinese"},
+  { name: "hamburger", cuisine: "American" },
+  { name: "pizza", cuisine: "Italian" },
+  { name: "empanadas", cuisine: "Bolivian" },
+  { name: "buffalo wings", cuisine: "American" },
+  { name: "tacos", cuisine: "Mexican" },
+  { name: "quesadilla", cuisine: "Mexican" },
+  { name: "pasta", cuisine: "Italian" },
+  { name: "saltenas", cuisine: "Bolivian" },
+  { name: "sushi", cuisine: "Japanese" },
+  { name: "ramen", cuisine: "Japanese" },
+  { name: "lo mein", cuisine: "Chinese" },
+  { name: "pho", cuisine: "Chinese" },
 ]
 //Filter button options
 // Function that condenses all the cuisine filter options with the Set removing duplicates
@@ -41,9 +45,11 @@ const options = ["All", ... new Set(recipes.map((recipe) => recipe.cuisine))]
 
 const Results: React.FC = () => {
   const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
+
   // Hooks
   const [selectedFilter, setSelectedFilter] = useState<string>('All')
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>(recipes);
+  const [isModalVisible, setModalVisible] = useState<boolean>(false);
 
   // This function handles the cuisine filter option button selection
   const handleFilterSelect = (filter: string) => {
@@ -62,23 +68,43 @@ const Results: React.FC = () => {
     const recipeSearched = recipes.find((recipe) => recipe.name.toLowerCase() == text.toLowerCase());
     console.log(recipeSearched)
 
-    if(recipeSearched) {
+    if (recipeSearched) {
       setFilteredRecipes([recipeSearched]);
     }
     else {
-      // const filtered = recipes.filter((recipe) => recipe.cuisine === text);
       setFilteredRecipes(recipes)
     }
+  }
+
+  // This function handles the visibility of the modal
+  const handleModalVisible = () => {
+    setModalVisible(!isModalVisible);
   }
 
 
   return (
     <View style={styles.container}>
       <View style={styles.topRow}>
-      <TextField placeholderText="Search Recipe" onSearchEntry={handleSearchbarEntry}/>
-      <FilterOverlayButton/>
+        <TextField placeholderText="Search Recipe" onSearchEntry={handleSearchbarEntry} />
+        <Pressable onPress={() => handleModalVisible()}>
+          <FilterOverlayButton />
+        </Pressable>
+        {/* <Button title="Show Modal" onPress={() => handleModalVisible()}></Button> */}
+        <Modal
+          transparent={true}
+          visible={isModalVisible}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.otherModalContainer}></View>
+            <Text>Modal Text</Text>
+            <Button title="Close Modal" onPress={() => handleModalVisible()}></Button>
+          </View>
+        </Modal>
       </View>
-      <FilterButtonGroup options={options} onFilterSelect={handleFilterSelect}/>
+      {/* <Pressable onPress={handleModalVisible}>
+          <Text>Show Modal</Text>
+        </Pressable> */}
+      <FilterButtonGroup options={options} onFilterSelect={handleFilterSelect} />
       <RecipeCard recipes={filteredRecipes.map(recipe => recipe.name)} />
     </View>
   );
@@ -92,7 +118,18 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   topRow: {
-    flexDirection:'row',
+    flexDirection: 'row',
+  },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: "white",
+  },
+  otherModalContainer: {
+    backgroundColor: "#ffffff",
+    margin: 50,
+    padding: 40,
+    borderRadius: 10,
+    width: '80%',
   }
 });
 
