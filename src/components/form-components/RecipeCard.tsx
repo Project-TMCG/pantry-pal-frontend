@@ -24,8 +24,6 @@ const CARD_WIDTH = (width - CARD_MARGIN * 4) / 2;
 const CARD_HEIGHT = (height * 2.25 - CARD_MARGIN * 10) / 9;
 const IMAGE_WIDTH = CARD_WIDTH * 0.9;
 const IMAGE_HEIGHT = CARD_HEIGHT * 0.85;
-console.log(IMAGE_WIDTH);
-console.log(IMAGE_HEIGHT);
 
 type CardsComponentsProps = {
   recipes: string[];
@@ -49,7 +47,7 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {recipes.map((recipe: string, index: number) => (
-          <View style={styles.card}>
+          <View key={index} style={styles.card}>
             <Pressable onPress={() => selectRecipe(recipe)}>
               <View style={styles.imageShadow}>
                 <Image
@@ -102,6 +100,7 @@ const styles = StyleSheet.create({
     height: IMAGE_HEIGHT,
     width: IMAGE_WIDTH,
     borderRadius: 20,
+    backgroundColor: "#000000",
     // Shadow styling
     shadowColor: "#000000",
     shadowOffset: {

@@ -48,7 +48,6 @@ const Details: React.FC = () => {
   };
 
   React.useEffect(() => {
-    console.log(activeRecipe, "ahhhhh", activeRecipeName);
     dispatch(toggleTrue());
   }, []);
 

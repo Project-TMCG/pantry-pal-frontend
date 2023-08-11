@@ -22,25 +22,6 @@ type Recipe = {
   image: string;
 };
 
-// const recipes: Recipe[] = [
-//   { name: "hamburger", cuisine: "American" },
-//   { name: "pizza", cuisine: "Italian" },
-//   { name: "empanadas", cuisine: "Bolivian" },
-//   { name: "buffalo wings", cuisine: "American" },
-//   { name: "tacos", cuisine: "Mexican" },
-//   { name: "quesadilla", cuisine: "Mexican" },
-//   { name: "pasta", cuisine: "Italian" },
-//   { name: "saltenas", cuisine: "Bolivian" },
-//   { name: "sushi", cuisine: "Japanese" },
-//   { name: "ramen", cuisine: "Japanese" },
-//   { name: "lo mein", cuisine: "Chinese" },
-//   { name: "pho", cuisine: "Chinese" },
-// ];
-//Filter button options
-// Function that condenses all the cuisine filter options with the Set removing duplicates
-
-//_____End of Mock Data____
-
 const Results: React.FC = () => {
   const recipeObject = useSelector((state: any) => state.recipe.all);
   const recipes = Object.keys(recipeObject).map((key) => {
@@ -64,22 +45,22 @@ const Results: React.FC = () => {
     if (filter === "All") {
       setFilteredRecipes(recipes);
     } else {
-      const filtered = recipes.filter((recipe) => recipe.cuisines === filter);
+      const filtered = recipes.filter((recipe) =>
+        recipe.cuisines.includes(filter)
+      );
       setFilteredRecipes(filtered);
     }
   };
 
   // This function handles the search entries of the search bar
   const handleSearchbarEntry = (text: string) => {
-    const recipeSearched = recipes.find(
-      (recipe) => recipe.title.toLowerCase() == text.toLowerCase()
+    const recipeSearched = recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(text.toLowerCase())
     );
-    console.log(recipeSearched);
 
     if (recipeSearched) {
-      setFilteredRecipes([recipeSearched]);
+      setFilteredRecipes(recipeSearched);
     } else {
-      // const filtered = recipes.filter((recipe) => recipe.cuisine === text);
       setFilteredRecipes(recipes);
     }
   };
