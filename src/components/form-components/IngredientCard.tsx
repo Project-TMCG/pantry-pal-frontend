@@ -38,6 +38,11 @@ type CardsComponentsProps = {
   ingredients: string[];
 };
 
+interface Ingredient {
+  name: string,
+  image: string | undefined
+}
+
 const IngredientCard: React.FC = () => {
   //redux data
   const dispatch = useDispatch();
@@ -49,8 +54,8 @@ const IngredientCard: React.FC = () => {
   const bakingData = useSelector((state: any) => state.selector.baking);
   const dietData = useSelector((state: any) => state.selector.diet);
   const SearchStack = createStackNavigator<SearchStackParams>();
-  const navigation =
-    useNavigation<NativeStackNavigationProp<SearchStackParams>>();
+  const navigation = useNavigation<NativeStackNavigationProp<SearchStackParams>>();
+  
   //variables
   let scrollableIngredients = ingredients[currentTopic];
   const dataArr: any = [produceData, meatData, dairyData, bakingData, dietData];
@@ -62,10 +67,14 @@ const IngredientCard: React.FC = () => {
     deleteBaking,
     deleteDiet,
   ];
+
   let current = dataArr[currentTopic];
+
   //functionality for highlighting selected cards
   const [selectedCards, setSelectedCards] = useState<string[]>([]);
+
   const select = (ingredient: string) => {
+
     setSelectedCards((prevSelectedCards) => {
       if (prevSelectedCards.includes(ingredient)) {
         return prevSelectedCards.filter((item) => item !== ingredient);
@@ -73,6 +82,7 @@ const IngredientCard: React.FC = () => {
         return [...prevSelectedCards, ingredient];
       }
     });
+
   };
 
   const handlePress = (ingredient: string) => {
@@ -80,6 +90,7 @@ const IngredientCard: React.FC = () => {
     select(ingredient);
     let add = addArr[currentTopic];
     let remove = deleteArr[currentTopic];
+    
     if (!current.hasOwnProperty(ingredient)) {
       dispatch(add(ingredient));
     } else if (current.hasOwnProperty(ingredient)) {
@@ -92,8 +103,10 @@ const IngredientCard: React.FC = () => {
     let currentData = Object.keys(current);
 
     if (currentData.length) {
+      const matchIngredients = scrollableIngredients.map(ingredient => ingredient.name)
+
       currentData.forEach((item: string) => {
-        if (scrollableIngredients.includes(item)) {
+        if (matchIngredients.includes(item)) {
           select(item);
         }
       });
@@ -138,29 +151,29 @@ const IngredientCard: React.FC = () => {
         </Pressable> */}
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {scrollableIngredients.map((ingredient: string, index: number) => (
+        {scrollableIngredients.map((ingredient: Ingredient, index: number) => (
           <View
             key={index}
             style={[
               styles.card,
-              selectedCards.includes(ingredient) && styles.selectedCard,
+              selectedCards.includes(ingredient.name) && styles.selectedCard,
             ]}
           >
-            <Pressable onPress={() => handlePress(ingredient)}>
+            <Pressable onPress={() => handlePress(ingredient.name)}>
               <Image
                 alt="ingredient"
+                source={{
+                  uri: ingredient.image,
+                }}
                 style={{
                   height: 90,
                   width: 90,
                   resizeMode: "contain",
                   borderRadius: 10,
                 }}
-                source={{
-                  uri: "https://bonnieplants.com/cdn/shop/products/060721_T110854_201997_202120_Bonnie_RomaineLettuce_ALT_01.jpg?v=1653420386",
-                }}
               />
             </Pressable>
-            <Text style={styles.text}>{ingredient}</Text>
+            <Text style={styles.text}>{ingredient.name}</Text>
           </View>
         ))}
       </ScrollView>

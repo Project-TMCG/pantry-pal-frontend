@@ -1,5 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
+interface Ingredient {
+  name: string,
+  image: string | null
+}
+
 export const selectorSlice = createSlice({
   name: "selector",
   initialState: {
