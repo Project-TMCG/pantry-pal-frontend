@@ -13,36 +13,49 @@ import FilterOverlayButton from "../components/form-components/FiltersOverlayBut
 
 //Types for React Navigation
 import { RootStackParams } from "../../App";
+import { useSelector } from "react-redux";
 
 //____Mock Data to later be deleted and replaced with API data____
 type Recipe = {
-  name: string;
+  title: string;
   cuisine: string;
+  image: string;
 };
 
-const recipes: Recipe[] = [
-  {name: "hamburger", cuisine: "American"}, 
-  {name: "pizza", cuisine: "Italian"}, 
-  {name: "empanadas", cuisine: "Bolivian"},
-  {name: "buffalo wings", cuisine: "American"},
-  {name: "tacos", cuisine: "Mexican"},
-  {name: "quesadilla", cuisine: "Mexican"},
-  {name: "pasta", cuisine: "Italian"},
-  {name: "saltenas", cuisine: "Bolivian"},
-  {name: "sushi", cuisine: "Japanese"},
-  {name: "ramen", cuisine: "Japanese"},
-  {name: "lo mein", cuisine: "Chinese"},
-  {name: "pho", cuisine: "Chinese"},
-]
+// const recipes: Recipe[] = [
+//   { name: "hamburger", cuisine: "American" },
+//   { name: "pizza", cuisine: "Italian" },
+//   { name: "empanadas", cuisine: "Bolivian" },
+//   { name: "buffalo wings", cuisine: "American" },
+//   { name: "tacos", cuisine: "Mexican" },
+//   { name: "quesadilla", cuisine: "Mexican" },
+//   { name: "pasta", cuisine: "Italian" },
+//   { name: "saltenas", cuisine: "Bolivian" },
+//   { name: "sushi", cuisine: "Japanese" },
+//   { name: "ramen", cuisine: "Japanese" },
+//   { name: "lo mein", cuisine: "Chinese" },
+//   { name: "pho", cuisine: "Chinese" },
+// ];
 //Filter button options
 // Function that condenses all the cuisine filter options with the Set removing duplicates
-const options = ["All", ... new Set(recipes.map((recipe) => recipe.cuisine))]
+
 //_____End of Mock Data____
 
 const Results: React.FC = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const recipeObject = useSelector((state: any) => state.recipe.all);
+  const recipes = Object.keys(recipeObject).map((key) => {
+    return recipeObject[key];
+  });
+  const allCuisines = Array.from(
+    new Set(recipes.reduce((acc, recipe) => [...acc, ...recipe.cuisines], []))
+  ) as string[];
+
+  const options: string[] = ["All", ...allCuisines];
+
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
   // Hooks
-  const [selectedFilter, setSelectedFilter] = useState<string>('All')
+  const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>(recipes);
 
   // This function handles the cuisine filter option button selection
@@ -51,35 +64,43 @@ const Results: React.FC = () => {
     if (filter === "All") {
       setFilteredRecipes(recipes);
     } else {
-      const filtered = recipes.filter((recipe) => recipe.cuisine === filter);
+      const filtered = recipes.filter((recipe) => recipe.cuisines === filter);
       setFilteredRecipes(filtered);
     }
   };
 
   // This function handles the search entries of the search bar
   const handleSearchbarEntry = (text: string) => {
+    const recipeSearched = recipes.find(
+      (recipe) => recipe.title.toLowerCase() == text.toLowerCase()
+    );
+    console.log(recipeSearched);
 
-    const recipeSearched = recipes.find((recipe) => recipe.name.toLowerCase() == text.toLowerCase());
-    console.log(recipeSearched)
-
-    if(recipeSearched) {
+    if (recipeSearched) {
       setFilteredRecipes([recipeSearched]);
-    }
-    else {
+    } else {
       // const filtered = recipes.filter((recipe) => recipe.cuisine === text);
-      setFilteredRecipes(recipes)
+      setFilteredRecipes(recipes);
     }
-  }
-
+  };
 
   return (
     <View style={styles.container}>
       <View style={styles.topRow}>
-      <TextField placeholderText="Search Recipe" onSearchEntry={handleSearchbarEntry}/>
-      <FilterOverlayButton/>
+        <TextField
+          placeholderText="Search Recipe"
+          onSearchEntry={handleSearchbarEntry}
+        />
+        <FilterOverlayButton />
       </View>
-      <FilterButtonGroup options={options} onFilterSelect={handleFilterSelect}/>
-      <RecipeCard recipes={filteredRecipes.map(recipe => recipe.name)} />
+      <FilterButtonGroup
+        options={options}
+        onFilterSelect={handleFilterSelect}
+      />
+      <RecipeCard
+        recipes={filteredRecipes.map((recipe) => recipe.title)}
+        images={filteredRecipes.map((recipe) => recipe.image)}
+      />
     </View>
   );
 };
@@ -92,8 +113,8 @@ const styles = StyleSheet.create({
     // justifyContent: "center",
   },
   topRow: {
-    flexDirection:'row',
-  }
+    flexDirection: "row",
+  },
 });
 
 export default Results;

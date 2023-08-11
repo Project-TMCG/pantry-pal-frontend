@@ -10,12 +10,18 @@ import { toggleFalse } from "../redux/features/details/detailSlice";
 import RecipeTab from "../components/form-components/RecipeTab";
 import { Image } from "react-native-elements";
 import { fakeRecipe } from "../services/recipes/fakeRecipe";
+import { useSelector } from "react-redux";
 
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
 
 // const color = Dimensions.get();
 const Details: React.FC = () => {
+  const recipeObject = useSelector((state: any) => state.recipe.all);
+  const activeRecipeName = useSelector(
+    (state: any) => state.recipe.activeRecipe
+  );
+  const activeRecipe = recipeObject[activeRecipeName];
   const dispatch = useDispatch();
 
   const [rightTab, setRightTab] = React.useState({
@@ -42,6 +48,7 @@ const Details: React.FC = () => {
   };
 
   React.useEffect(() => {
+    console.log(activeRecipe, "ahhhhh", activeRecipeName);
     dispatch(toggleTrue());
   }, []);
 
@@ -49,9 +56,7 @@ const Details: React.FC = () => {
     <View style={styles.container}>
       <View style={styles.bioContainer}>
         <View>
-          <Text>
-            Total Time: {fakeRecipe["Vegetarian Falafels"].readyInMinutes} Min
-          </Text>
+          <Text>Total Time: {activeRecipe.readyInMinutes} Min</Text>
         </View>
         <Image
           alt="ingredient"
@@ -62,7 +67,7 @@ const Details: React.FC = () => {
             borderRadius: 10,
           }}
           source={{
-            uri: fakeRecipe["Vegetarian Falafels"].image,
+            uri: activeRecipe.image,
           }}
         />
       </View>
