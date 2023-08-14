@@ -14,7 +14,7 @@ ________________________________________________________________________________
 "excludeIngredients": Comma-seperated list of ingredients that must NOT be used in the recipes,
 "type": "main course side dish dessert appetizer salad bread breakfast soup beverage sauce marinade fingerfood snack drink",
 "titleMatch": Text that must be found in the title of the recipes,
-"maxReadyTime": Maximum times in minutes to should take ot prepare and cook the recipe,
+"maxReadyTime": Maximum times in minutes it should take to prepare and cook the recipe,
 "ignorePantry": Whether to ignore typicaly pantry items, such as water, flour, salt, etc,
 "minCarbs": Minimum amount in grams per serving,
 "maxCarbs": Maximum amount in grams per serving,
