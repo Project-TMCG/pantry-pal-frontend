@@ -8,6 +8,7 @@ export default configureStore({
   reducer: {
     counter: counterReducer,
     selector: selectorReducer,
-    recipe: recipeReducer
+    detail: detailReducer,
+    recipe: recipeReducer,
   },
 });

@@ -4,7 +4,8 @@ export const recipeSlice = createSlice({
   name: "recipe",
   initialState: {
     all: {},
-    lastCall: {}
+    lastCall: {},
+    activeRecipe: "",
   },
   reducers: {
     addRecipes: (state, action: PayloadAction<Object>) => {
@@ -12,16 +13,17 @@ export const recipeSlice = createSlice({
       const payload = action.payload;
 
       //Add new recipes to all
-      state.all = {...state.all, ...payload}
-
+      state.all = { ...payload };
       //Replace lastCall
-      state.lastCall = payload
+      state.lastCall = payload;
+    },
+    chooseRecipe: (state, action: PayloadAction<string>) => {
+      const payload = action.payload;
+      state.activeRecipe = payload;
     },
   },
 });
 
-export const {
-  addRecipes,
-} = recipeSlice.actions;
+export const { addRecipes, chooseRecipe } = recipeSlice.actions;
 
 export default recipeSlice.reducer;

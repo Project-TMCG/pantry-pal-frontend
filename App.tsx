@@ -1,7 +1,7 @@
 //Import Dependencies
 import * as React from "react";
 import { useState, useEffect } from "react";
-
+import ActiceRecipeName from "./src/components/form-components/ActiveRecipeName";
 //Import React Navigation
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import {
@@ -26,6 +26,7 @@ import { View } from "react-native";
 import { Dimensions, Pressable, StyleSheet } from "react-native";
 import { Icon, Text } from "react-native-elements";
 import BackButton from "./src/components/form-components/BackButtonComponent";
+import { useSelector } from "react-redux";
 
 //TypeScripts React Navigation Types
 export type RootStackParams = {
@@ -69,7 +70,7 @@ export default function App() {
               headerLeft: () => (
                 <View style={styles.header}>
                   <BackButton />
-                  <Text style={styles.headerText}>Vegetarian Falafel</Text>
+                  <ActiceRecipeName />
                 </View>
               ),
             }}
@@ -105,8 +106,5 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     width: width,
-  },
-  headerText: {
-    fontSize: 25,
   },
 });
