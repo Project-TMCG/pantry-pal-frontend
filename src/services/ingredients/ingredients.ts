@@ -304,150 +304,174 @@ const Dairy: Ingredient[] = [
 const Baking: Ingredient[] = [
   {
     name: "Baking Powder",
-    image: "https://i.gyazo.com/7a56e2fb4c148a318b1593744fefeed3.png",
+    image: "https://i.gyazo.com/dac7326c4ad6b76f4df0e40d232e3eba.png",
   },
   {
     name: "Baking Soda",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/de7e9919c0296049fc68974d88409fd6.png",
   },
   {
     name: "Brown Sugar",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/ab1fa47df4920d923e316fd48c321c5f.png",
   },
   {
     name: "Cream of Tartar",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/3b393698d895ef91dcfbac1a710a31d6.png",
   },
   {
     name: "Flour",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/efd648d25c7c0fa0705f14dd1502c435.png",
   },
   {
     name: "Ginger",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/c8181ae8dc74f9e37d263206bf1c6e25.png",
   },
   {
     name: "Cardamom",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/767e7a35fcb7587f5ed7926f56a6c064.png",
   },
   {
     name: "Cayenne Pepper",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/a6de0c39c171a04c5f7517b9436d4a36.png",
   },
   {
     name: "Cinnamon",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/7d9d4a918fd7b8e8a6ee3cd95c0d0545.png",
   },
   {
     name: "Honey",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/f498256b9e4c0bb5fc544484420c030c.png",
   },
   {
     name: "Maple Syrup",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/736dcbabfdbe4e56a1ab54e633816c3b.png",
   },
   {
     name: "Nutmeg",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/cfa7772f896a37a2d17039af983113ea.png",
   },
   {
     name: "Cloves",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/d381f2fa3536bf46aa9d45a2bfa29908.png",
   },
   {
     name: "Cocoa Powder",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/090f239cf06a763107ac46d4873f3594.png",
   },
   {
     name: "Corn Starch",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/85abd33eefbb2dd76df47988c4d763dc.png",
   },
   {
     name: "Olive Oil",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/4519ca8e6c729d4490478452db6f7f0c.png",
   },
   {
     name: "Oregano",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/049f465913aa6f62656ffd0d756ed326.png",
   },
   {
     name: "Pepper",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/6ba850b9b61593af96be0224c42958c3.png",
+  },
+  {
+    name: "White Sugar",
+    image: "https://i.gyazo.com/5643d50c1d14ea461317d0fd24dedcc6.png",
+  },
+  {
+    name: "Powdered Sugar",
+    image: "https://i.gyazo.com/eb62abec9430e7b7cc19f41dc6409ae9.png",
+  },
+  {
+    name: "Salt",
+    image: "https://i.gyazo.com/c9a74b768ffad8a3156471d4010e455d.png",
+  },
+  {
+    name: "Vanilla Extract",
+    image: "https://i.gyazo.com/129d7d9c55f1201e714336f4421e5aad.png",
+  },
+  {
+    name: "Rosemary",
+    image: "https://i.gyazo.com/90d76ebbb2c9645458f2074e4bad20e8.png",
+  },
+  {
+    name: "Thyme",
+    image: "https://i.gyazo.com/3ac4136641a2ca66606cd73db655eec8.png",
+  },
+  {
+    name: "Turmeric",
+    image: "https://i.gyazo.com/13d0aafb8a4ae82176089501abe99dc5.png",
   },
 ];
 
 const Diet: Ingredient[] = [
   {
     name: "Dairy-Free",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/361f4f83a7b916f41f22cf732c8514aa.png",
   },
   {
     name: "Egg-Free",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/b5da943c6f9113f856e2497d2bbb5e18.png",
   },
   {
     name: "Gluten-Free",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/54ebfc9e98d26a88916ea7934b0209b1.png",
   },
   {
     name: "Organic",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/6d46e6b9ac15d290ad784da2c03e35fd.png",
   },
   {
     name: "Paleo",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/2ccee43ae7c3d39a6e240c3fca4a9a1d.png",
   },
   {
     name: "Pescatarian",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/505461a664d67fd921b70c46441c19ee.png",
   },
   {
     name: "Halal",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/4e57c5107f30698ad19c7945168876dc.png",
   },
   {
     name: "Kosher",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/22b32adebd512449adf9e498b1b4aeb1.png",
   },
   {
     name: "Lactose-Free",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/aecc75907549482f6442492ce07c00f0.png",
   },
   {
     name: "Shelfish-Free",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/8b15e2175497d881011f8f3680e710ea.png",
   },
   {
     name: "Soy-Free",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/5d979d05d455d95224e3e80bddfee440.png",
   },
   {
     name: "Sugar-Free",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/12d22819990bc88e4354e3aa889d9cb6.png",
   },
   {
     name: "Low-Carb",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/fe7dcb08a9855cc32bfc5e6ac2f358dc.png",
   },
   {
     name: "Low-Fat",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/e3e3d7e2f62f3da826bf542b41e901b2.png",
   },
   {
     name: "Nut-Free",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/f389de44bd2ef42a26886fff3e8fac1e.png",
   },
   {
     name: "Vegan",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/7f331ad4bc91185c3c4b886ed612e93c.png",
   },
   {
     name: "Vegetarian",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
-  },
-  {
-    name: "Wheat-Free",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/4571f496108c47d0101c33648ba67681.png",
   },
 ];
 
