@@ -19,6 +19,7 @@ export const recipeSlice = createSlice({
     },
     chooseRecipe: (state, action: PayloadAction<string>) => {
       const payload = action.payload;
+
       state.activeRecipe = payload;
     },
   },

@@ -20,6 +20,7 @@ type Recipe = {
   title: string;
   cuisine: string;
   image: string;
+  aggregateLikes: number;
 };
 
 const Results: React.FC = () => {
@@ -81,6 +82,7 @@ const Results: React.FC = () => {
       <RecipeCard
         recipes={filteredRecipes.map((recipe) => recipe.title)}
         images={filteredRecipes.map((recipe) => recipe.image)}
+        rating={filteredRecipes.map((recipe) => recipe.aggregateLikes)}
       />
     </View>
   );
