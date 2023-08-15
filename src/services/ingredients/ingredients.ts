@@ -118,192 +118,193 @@ const Produce: Ingredient[] = [
 const Meat: Ingredient[] = [
   {
     name: "Beef",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/37a2d37cb3368e71713bacd757b232d0.png",
   },
   {
     name: "Chicken",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/591c7aeafd977bfd7cce3e5d2dcc4af3.png",
   },
   {
     name: "Clams",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/d290f1edd579cc8f5ba423dd17b82860.png",
   },
   {
     name: "Pork",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/e4c0dfbca410bc259cf375d86cdfaa1a.png",
   },
   {
     name: "Sardines",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/75e6785bef32e15fc92f27795a6a702f.png",
   },
   {
     name: "Salmon",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/7a56e2fb4c148a318b1593744fefeed3.png",
   },
   {
     name: "Cod",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/0b39694fc2984fd194de106eeddb15e2.png",
   },
   {
     name: "Crab",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/8b918ca94e9dc12dd351423d0877892e.png",
   },
   {
     name: "Ham",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/b8fd68ef6c297cae484c6df5360889f0.png",
   },
   {
     name: "Sausage",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/8a6a96350c1cca4ffee929352345b7d4.png",
   },
   {
     name: "Scallops",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/694285ea89ecf94f6ae78a4e5a559994.png",
   },
   {
     name: "Shrimp",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/7fafcadd9e0402bd1da07e47c9ad4de7.png",
   },
   {
     name: "Lamb",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/fbca157e72cee47ff6a5b13cc65e4f38.png",
   },
   {
     name: "Lobster",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/c11c1d878d6fb414ee05d28f663b369f.png",
   },
   {
     name: "Muscles",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/6c567a1d00219e89ee189a94c7c97c53.png",
   },
   {
     name: "Tilapia",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/134e560c366b846d4ea5610e189e9ae3.png",
   },
   {
     name: "Tuna",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/77e20c7c0b370c1bdd1d5530fbcd06b3.png",
   },
   {
     name: "Turkey",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/f6550eca9a5157b7b362a82d719725c7.png",
   },
 ];
+
 
 const Dairy: Ingredient[] = [
   {
     name: "Almond Milk",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/b3c3960f30c7a30c3c351459c719546e.png",
   },
   {
     name: "Brie",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/b8605d13b20290df4d3e4740db8f6014.png",
   },
   {
     name: "Butter",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/7e27dbdb06d6882092f0aad07a6f9536.png",
   },
   {
     name: "Cream Cheese",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/f81e650878fe6db051d84318564cf835.png",
   },
   {
     name: "Feta",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/3d90ce9b2a4417b4d8d91a932adad29c.png",
   },
   {
     name: "Goat Cheese",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/82b79e4da68f122fc05cc30d4c8c9d7a.png",
   },
   {
     name: "Parmesean",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/56728233969ef23e4f0a540f9e59fb7b.png",
   },
   {
     name: "Provolone",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/01775f93a558621255efc72bc6f46ddb.png",
   },
   {
     name: "Ricotta",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/cb9105e69fb1c2e7c81ef0d7ea455523.png",
   },
   {
     name: "Buttermilk",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/6d893e5d7a205230458f422559e599d1.png",
   },
   {
     name: "Cheddar",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/c61844906b756039cf3ecade47987176.png",
   },
   {
     name: "Cheese",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/27e461e99cad8307a4488644e89d9c5b.png",
   },
   {
-    name: "Greek Yoghurt",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    name: "Greek Yogurt",
+    image: "https://i.gyazo.com/1cd764111fdc3e80593bdc519253e544.png",
   },
   {
     name: "Heavy Cream",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/19e3fa3e6b8c1a259d690c1f3fb6b9bf.png",
   },
   {
     name: "Low-Fat Milk",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/44f0613d8ba28d480a0753712bbafa9a.png",
   },
   {
     name: "Sour Cream",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/a5664b10517b125bf46f0a3024489663.png",
   },
   {
     name: "Soy Milk",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/3245de7e91195eb59cf66eb0b61f4476.png",
   },
   {
-    name: "Swiss",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    name: "Swiss Cheese",
+    image: "https://i.gyazo.com/0da7d9b60441223f2d48ec2d7f0b987c.png",
   },
   {
     name: "Coconut Milk",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/ebc30f67a56d503cfbc5f985a412a39f.png",
   },
   {
     name: "Condensed Milk",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/6ac512156e24126bf6f46cf674756ac4.png",
   },
   {
     name: "Cottage Cheese",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/53e58df371476d7d17a02b5d0ae9bf8b.png",
   },
   {
     name: "Milk",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/19e3fa3e6b8c1a259d690c1f3fb6b9bf.png",
   },
   {
     name: "Mozarella",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/bb53f7db618fc987f6a708a7d3151fab.png",
   },
   {
     name: "Oat Milk",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/707b4b4c02273021c03181f46baacaca.png",
   },
   {
     name: "Whipped Cream",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/0e35bba54f72e609eb20d74d0017d00c.png",
   },
   {
     name: "Whole Milk",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/76d509133a549c0ab0a0e6f84866902f.png",
   },
   {
-    name: "Yoghurt",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    name: "Yogurt",
+    image: "https://i.gyazo.com/6915f65d0af0b7e2bbebbd3662f53906.png",
   },
 ];
 const Baking: Ingredient[] = [
   {
     name: "Baking Powder",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/7a56e2fb4c148a318b1593744fefeed3.png",
   },
   {
     name: "Baking Soda",
