@@ -67,6 +67,7 @@ export default function App() {
             name="Details"
             options={{
               headerBackVisible: false,
+              headerTitle: "false",
               headerLeft: () => (
                 <View style={styles.header}>
                   <BackButton />
