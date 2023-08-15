@@ -406,6 +406,14 @@ const Baking: Ingredient[] = [
 
 const Diet: Ingredient[] = [
   {
+    name: "Vegetarian",
+    image: "https://i.gyazo.com/4571f496108c47d0101c33648ba67681.png",
+  },
+  {
+    name: "Vegan",
+    image: "https://i.gyazo.com/7f331ad4bc91185c3c4b886ed612e93c.png",
+  },
+  {
     name: "Dairy-Free",
     image: "https://i.gyazo.com/361f4f83a7b916f41f22cf732c8514aa.png",
   },
@@ -464,14 +472,6 @@ const Diet: Ingredient[] = [
   {
     name: "Nut-Free",
     image: "https://i.gyazo.com/f389de44bd2ef42a26886fff3e8fac1e.png",
-  },
-  {
-    name: "Vegan",
-    image: "https://i.gyazo.com/7f331ad4bc91185c3c4b886ed612e93c.png",
-  },
-  {
-    name: "Vegetarian",
-    image: "https://i.gyazo.com/4571f496108c47d0101c33648ba67681.png",
   },
 ];
 
