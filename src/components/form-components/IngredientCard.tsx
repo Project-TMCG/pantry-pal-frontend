@@ -214,8 +214,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
     alignItems: "center",
-    paddingTop: 5,
-    paddingBottom: 5,
+    paddingTop: 3,
+    paddingBottom: 1,
     borderWidth: 1,
     borderRadius: 8,
     borderColor: 'white'
