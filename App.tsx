@@ -19,7 +19,6 @@ import Search from "./src/containers/Search";
 import Results from "./src/containers/Results";
 import ModalScreen from "./src/components/form-components/Modal";
 import Details from "./src/containers/Details";
-import FiltersOverlayModal from "./src/components/form-components/FiltersOverlayModal";
 import { configureStore } from "@reduxjs/toolkit";
 import Loading from "./src/containers/Loading";
 import IngredientCard from "./src/components/form-components/IngredientCard";
@@ -37,7 +36,6 @@ export type RootStackParams = {
   Details: undefined;
   Loading: undefined;
   Modal: undefined;
-  Filters: undefined;
 };
 const { width } = Dimensions.get("window");
 
@@ -49,7 +47,13 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Landing">
-          <RootStack.Screen name="Landing" component={Landing} />
+          <RootStack.Screen 
+          name="Landing" 
+          component={Landing}
+          options={{
+            headerShown: false,
+          }}
+          />
           <RootStack.Screen
             name="Search"
             component={Search}
@@ -70,6 +74,7 @@ export default function App() {
             name="Details"
             options={{
               headerBackVisible: false,
+              headerTitle: '',
               headerLeft: () => (
                 <View style={styles.header}>
                   <BackButton />
@@ -86,16 +91,6 @@ export default function App() {
               options={{
                 headerShown: false,
                 gestureDirection: "vertical",
-              }}
-            />
-          </RootStack.Group>
-          <RootStack.Group screenOptions={{ presentation: "modal" }}>
-            <RootStack.Screen
-              name="Filters"
-              component={FiltersOverlayModal}
-              options={{
-                // headerShown: false,
-                gestureDirection:"vertical"
               }}
             />
           </RootStack.Group>

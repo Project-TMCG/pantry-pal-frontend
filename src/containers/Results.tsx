@@ -1,7 +1,7 @@
 //Import Dependencies
 import * as React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { Modal, StyleSheet, Text, View } from "react-native";
+import { Modal, StyleSheet, Text, View, Pressable } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useState } from "react";
 
@@ -10,12 +10,10 @@ import RecipeCard from "../components/form-components/RecipeCard";
 import TextField from "../components/form-components/TextField";
 import FilterButtonGroup from "../components/form-components/FilterButtonGroup";
 import FilterOverlayButton from "../components/form-components/FiltersOverlayButton";
-import FiltersOverlayModal from "../components/form-components/FiltersOverlayModal";
+import ModalFilterCategories from "../components/form-components/ModalFilterCategories";
 
 //Types for React Navigation
 import { RootStackParams } from "../../App";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { Pressable } from "react-native";
 import { Button } from "react-native-elements";
 import { useSelector } from "react-redux";
 
@@ -39,6 +37,7 @@ const Results: React.FC = () => {
 
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
+
   // Hooks
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>(recipes);
@@ -70,29 +69,45 @@ const Results: React.FC = () => {
     }
   };
 
+  // This function handles the visibility of the modal
+  const handleModalVisible = () => {
+    setModalVisible(!isModalVisible);
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.topRow}>
-        <TextField placeholderText="Search Recipe" onSearchEntry={handleSearchbarEntry} />
+        {/* Search Bar */}
+        <TextField
+          placeholderText="Search Recipe"
+          onSearchEntry={handleSearchbarEntry}
+        />
+        {/* Filters Modal */}
         <Pressable onPress={() => handleModalVisible()}>
           <FilterOverlayButton />
         </Pressable>
-        {/* <Button title="Show Modal" onPress={() => handleModalVisible()}></Button> */}
         <Modal
           transparent={true}
           visible={isModalVisible}
         >
           <View style={styles.modalContainer}>
-            <View style={styles.otherModalContainer}></View>
-            <Text>Modal Text</Text>
-            <Button title="Close Modal" onPress={() => handleModalVisible()}></Button>
+            <View style={styles.otherModalContainer}>
+              <View style={styles.modalTopRow}>
+                <Pressable style={styles.modalOptionButtons}><Text style={styles.modalTopButtonText}>Clear All</Text></Pressable>
+                <Pressable style={styles.modalOptionButtons}><Text style={styles.modalTopButtonText}>Apply Filters</Text></Pressable>
+              </View>
+              <ModalFilterCategories/>
+              <Button title="Close Modal" onPress={() => handleModalVisible()}></Button>
+            </View>
           </View>
         </Modal>
       </View>
+      {/* Horizontal Sliding Cuisine Filter Options */}
       <FilterButtonGroup
         options={options}
         onFilterSelect={handleFilterSelect}
       />
+      {/* Recipe Cards */}
       <RecipeCard
         recipes={filteredRecipes.map((recipe) => recipe.title)}
         images={filteredRecipes.map((recipe) => recipe.image)}
@@ -104,24 +119,46 @@ const Results: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    // alignItems: "center",
-    // justifyContent: "center",
+    backgroundColor: "#FFFCF7",
   },
   topRow: {
     flexDirection: 'row',
   },
   modalContainer: {
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "#000000aa",
   },
   otherModalContainer: {
     backgroundColor: "#ffffff",
-    margin: 50,
+    margin: 40,
     padding: 40,
-    borderRadius: 10,
+    borderRadius: 20,
     width: '80%',
-  }
+  },
+  modalOptionButtons: {
+    borderRadius: 14,
+    padding: 8,
+    marginHorizontal: 5,
+    marginVertical: 4,
+    backgroundColor: '#72927C',
+    // Shadow styling
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.19,
+    shadowRadius: 5.62,
+    elevation: 6,
+  },
+  modalTopRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  modalTopButtonText: {
+    fontSize: 12,
+    color: '#FFFCF7',
+  },
 });
 
 export default Results;
