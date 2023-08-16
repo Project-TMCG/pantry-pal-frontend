@@ -28,11 +28,13 @@ const IMAGE_HEIGHT = CARD_HEIGHT * 0.85;
 type CardsComponentsProps = {
   recipes: string[];
   images: string[];
+  rating: number[];
 };
 
 const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
   recipes,
   images,
+  rating,
 }) => {
   const dispatch = useDispatch();
   const navigation =
@@ -42,6 +44,18 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
     dispatch(chooseRecipe(recipeName));
     navigation.navigate("Details");
   };
+
+  const stars = rating.map((likes) => {
+    if (likes > 20) {
+      return "★★★★★";
+    } else if (likes > 10 && likes < 20) {
+      return "★★★★";
+    } else if (likes > 5 && likes < 10) {
+      return "★★★";
+    } else if (likes > 0 && likes < 5) {
+      return "★★";
+    } else return "★";
+  });
 
   return (
     <View style={styles.container}>
@@ -58,7 +72,8 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
                 />
               </View>
               <Text style={styles.title}>{recipe}</Text>
-              <Text>Rating</Text>
+
+              <Text>{stars[index]}</Text>
             </Pressable>
           </View>
         ))}
