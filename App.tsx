@@ -38,6 +38,7 @@ export type RootStackParams = {
   Modal: undefined;
 };
 const { width } = Dimensions.get("window");
+
 //App Component
 export default function App() {
   const RootStack = createNativeStackNavigator<RootStackParams>();
@@ -46,14 +47,20 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Landing">
-          <RootStack.Screen name="Landing" component={Landing} />
+          <RootStack.Screen 
+          name="Landing" 
+          component={Landing}
+          options={{
+            headerShown: false,
+          }}
+          />
           <RootStack.Screen
             name="Search"
+            component={Search}
             options={{
               headerShown: false,
               headerBackVisible: false,
             }}
-            component={Search}
           />
           <RootStack.Screen
             name="Loading"
@@ -67,7 +74,7 @@ export default function App() {
             name="Details"
             options={{
               headerBackVisible: false,
-              headerTitle: "false",
+              headerTitle: '',
               headerLeft: () => (
                 <View style={styles.header}>
                   <BackButton />
