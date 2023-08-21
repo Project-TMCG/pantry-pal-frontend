@@ -154,10 +154,7 @@ const IngredientCard: React.FC = () => {
         {scrollableIngredients.map((ingredient: Ingredient, index: number) => (
           <View
             key={index}
-            style={[
-              styles.card,
-              selectedCards.includes(ingredient.name) && styles.selectedCard,
-            ]}
+            style={styles.card}
           >
             <Pressable onPress={() => handlePress(ingredient.name)}>
               <Image
@@ -165,12 +162,10 @@ const IngredientCard: React.FC = () => {
                 source={{
                   uri: ingredient.image,
                 }}
-                style={{
-                  height: 90,
-                  width: 90,
-                  resizeMode: "contain",
-                  borderRadius: 10,
-                }}
+                style={[
+                  styles.image,
+                  selectedCards.includes(ingredient.name) && styles.selectedImage,
+                ]}
               />
             </Pressable>
             <Text style={styles.text}>{ingredient.name}</Text>
@@ -216,11 +211,14 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 3,
     paddingBottom: 1,
-    borderWidth: 1,
-    borderRadius: 8,
-    borderColor: 'white'
   },
-  selectedCard: {
+  image: {
+    height: 90,
+    width: 90,
+    resizeMode: "contain",
+    borderRadius: 10,
+  },
+  selectedImage: {
     backgroundColor: "#7474741a",
     borderColor: "#72927C",
   },
