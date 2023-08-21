@@ -50,6 +50,8 @@ const ModalFilterCategories = () => {
                         {selectedFilterCat == category && (
                             <View style={styles.optionsContainer}>
                                 <RadioGroup
+                                    containerStyle={styles.optionText}
+                                    // radioButtonContainerStyle={styles.radioButtonContainer}
                                     radioButtons={getRadioButtons}
                                     onPress={(selectedId: string) => {
                                         setSelectedId(selectedId);
@@ -83,17 +85,22 @@ const styles = StyleSheet.create({
         fontSize: 13,
     },
     optionsContainer: {
-        padding: 8,
+        // padding: 8,
         borderWidth: 1,
         borderColor: '#E0E0E0',
         backgroundColor: '#FFFFFF',
         marginTop: 4,
         borderRadius: 4,
+        alignItems: "flex-start",
+        marginLeft: 1,
     },
     optionText: {
-        fontSize: 13,
+        fontSize: 5,
         marginVertical: 4,
     },
+    radioButtonContainer: {
+        fontSize: 13,
+    }
 }
 
 )
