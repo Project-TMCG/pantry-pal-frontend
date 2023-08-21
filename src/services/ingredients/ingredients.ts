@@ -6,111 +6,111 @@ interface Ingredient {
 const Produce: Ingredient[] = [
   {
     name: "Apple",
-    image: "https://i.gyazo.com/37c70b488dceab57bec589f176bbcb18.png",
+    image: "https://i.gyazo.com/24e23c66589f6d0e7dc8d14017d98ff2.png",
   },
   {
     name: "Avocado",
-    image: "https://i.gyazo.com/2d149b5b1d4433f5310776ecb23fb872.png",
+    image: "https://i.gyazo.com/5ad86933eb129340cc6b3ab9fefa2cf4.png",
   },
   {
     name: "Bananas",
-    image: "https://i.gyazo.com/fafe13127de3874f7c5ecede5940c5a5.png",
+    image: "https://i.gyazo.com/7e1d2dde72b818fe96e5d6046259cd76.png",
   },
   {
     name: "Bell Pepper",
-    image: "https://i.gyazo.com/85f2da0d363434de8af57e79ccedd2cc.png",
+    image: "https://i.gyazo.com/e7394b962c8be0d710f8b4fb4222d257.png",
   },
   {
     name: "Broccoli",
-    image: "https://i.gyazo.com/372354b6b8e17b6902c7d20acbc6da99.png",
+    image: "https://i.gyazo.com/b2faa083424c17d3e055cf2a8eec2ad0.png",
   },
   {
     name: "Carrot",
-    image: "https://i.gyazo.com/adb1f52d3ea23272f4e466e64df38ff3.png",
+    image: "https://i.gyazo.com/48575e644c093f8f2cd0ae54107feb3d.png",
   },
   {
     name: "Cauliflower",
-    image: "https://i.gyazo.com/5a69d1305cf79570205d4fc5854ec404.png",
+    image: "https://i.gyazo.com/462fca9b18d69f8dcd32109353891c92.png",
   },
   {
     name: "Celery",
-    image: "https://i.gyazo.com/65772bc951d88633c2d62994d645b38e.png",
+    image: "https://i.gyazo.com/e46314748a6a47d5798e3060bf1abab6.png",
   },
   {
     name: "Corn",
-    image: "https://i.gyazo.com/0710c11b048ef573a605329a99616d84.png",
+    image: "https://i.gyazo.com/e1f151b69d176344c93137c843b65575.png",
   },
   {
     name: "Cucumber",
-    image: "https://i.gyazo.com/f051b9b88da7809f203e324c9c38d267.png",
+    image: "https://i.gyazo.com/ecabcf78aeaa6b04bec2a524007afdd8.png",
   },
   {
     name: "EggPlant",
-    image: "https://i.gyazo.com/7185cbb32df313d590a0a2aa1597e025.png",
+    image: "https://i.gyazo.com/c56319022fa52f29ec193e70f47414d6.png",
   },
   {
     name: "Grapes",
-    image: "https://i.gyazo.com/5a44acce68df7d5b0fbf7e5bee8a0c1f.png",
+    image: "https://i.gyazo.com/afdaecbe517b3ac4d7192d27cb2524cc.png",
   },
   {
     name: "Green Beans",
-    image: "https://i.gyazo.com/926d9010ed6b6332a1c4dd8d054cb807.png",
+    image: "https://i.gyazo.com/d53d93f22b8f24dd86fd8a707cee3ee4.png",
   },
   {
     name: "Lemon",
-    image: "https://i.gyazo.com/f848c00f927d2cb0ebe156a0e99d543c.png",
+    image: "https://i.gyazo.com/dcbbe5f5bb2b97b74ef597aee633a775.png",
   },
   {
     name: "Lettuce",
-    image: "https://i.gyazo.com/b50cb2d6f23a71da3293f0a96360bc88.png",
+    image: "https://i.gyazo.com/8acf1c3ddd4307bb223fc30e5b7670ab.png",
   },
   {
     name: "Lime",
-    image: "https://i.gyazo.com/ab25f1db52908add535e0172d91754bd.png",
+    image: "https://i.gyazo.com/0c3f9212f78608025409dd22e1588ee1.png",
   },
   {
     name: "Mushroom",
-    image: "https://i.gyazo.com/262ec8332f6b26be527f7a1edc9a69db.png",
+    image: "https://i.gyazo.com/feb702cc25e23de21c91c0bc8c202ffe.png",
   },
   {
     name: "Onion",
-    image: "https://i.gyazo.com/089f99f5314dafdfeaf6a3301885277b.png",
+    image: "https://i.gyazo.com/8b99742f5be20e40cd3f3e3c1567ccea.png",
   },
   {
     name: "Orange",
-    image: "https://i.gyazo.com/0dcec8c8140d378e1aea5c247dd49cb4.png",
+    image: "https://i.gyazo.com/fdc9a71d939bf6eabb6e0639aa29165e.png",
   },
   {
     name: "Peas",
-    image: "https://i.gyazo.com/fbd9a539ae3dac67ff047c87437731c8.png",
+    image: "https://i.gyazo.com/b8633179e86bf3cbb6f29a15e131a79d.png",
   },
   {
     name: "Pineapple",
-    image: "https://i.gyazo.com/47e15735eb100e5d4fef87902ad7ebb7.png",
+    image: "https://i.gyazo.com/bd17871c0ab204bddedbbb4ddcbc53c4.png",
   },
   {
     name: "Potato",
-    image: "https://i.gyazo.com/bbae3ca434f1bd4c44cc9c94a86a63fc.png",
+    image: "https://i.gyazo.com/f677d4edd92271a4cfcf60870d594686.png",
   },
   {
     name: "Spinach",
-    image: "https://i.gyazo.com/f003283ce24ca5a91d4623a579701a05.png",
+    image: "https://i.gyazo.com/6eda9b798cedb56743063f76f3710b17.png",
   },
   {
     name: "Strawberry",
-    image: "https://i.gyazo.com/0ee217ed0d07939fb41228857b39746f.png",
+    image: "https://i.gyazo.com/0141fef4bceea8f41c583ddba7563545.png",
   },
   {
     name: "Tomato",
-    image: "https://i.gyazo.com/4f1e1b7c1847e03a4ebae3b1164deb49.png",
+    image: "https://i.gyazo.com/b7ac2b78fd890c73e19b0e40ab5ee1a9.png",
   },
   {
     name: "Watermelon",
-    image: "https://i.gyazo.com/e18b008ae237829b9976cd8ef554cf0b.png",
+    image: "https://i.gyazo.com/7ea36c52a5cfdcfbf97243a545efc4ad.png",
   },
   {
     name: "Zucchini",
-    image: "https://i.gyazo.com/1a88c956d9e7590b9a92ccf6c0b6b96c.png",
+    image: "https://i.gyazo.com/360a516f1bb817c3fe9121977bfc0d1d.png",
   },
 ];
 

@@ -156,9 +156,9 @@ const IngredientCard: React.FC = () => {
             key={index}
             style={styles.card}
           >
-            <Pressable onPress={() => handlePress(ingredient.name)}>
+            <Pressable onPress={() => handlePress(ingredient.name)} style={styles.imageWrapper}>
               <Image
-                alt="ingredient"
+                alt={ingredient.name}
                 source={{
                   uri: ingredient.image,
                 }}
@@ -198,36 +198,54 @@ const styles = StyleSheet.create({
     marginBottom: CARD_MARGIN,
   },
   card: {
+    flexbox: 1,
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "center",
     width: CARD_WIDTH,
     // height: CARD_HEIGHT,
     marginTop: CARD_MARGIN,
-    // marginBottom: CARD_MARGIN,
+    marginBottom: CARD_MARGIN,
     backgroundColor: "white",
-    // borderRadius: 80,
+    borderRadius: 10,
     elevation: 3,
-    flexbox: 1,
     textAlign: "center",
-    justifyContent: "center",
-    alignItems: "center",
     paddingTop: 3,
     paddingBottom: 1,
+    // borderColor: 'black',
+    // borderWidth: 5,
   },
   image: {
-    height: 90,
-    width: 90,
-    resizeMode: "contain",
+    height:"100%",
+    width: "100%",
+    resizeMode: "cover",
+    overflow: "hidden",
     borderRadius: 10,
+    borderWidth: 3,
+    borderColor: "white",
+  },
+  imageWrapper: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: 'center',
+    height: 80,
+    width: 80,
+    margin: 0,
+    padding: 0,
+    borderColor: "blue",
   },
   selectedImage: {
-    backgroundColor: "#7474741a",
     borderColor: "#72927C",
   },
   text: {
+    marginTop: 1,
     fontSize: 13,
     lineHeight: 15,
     paddingTop: 1,
-    // fontWeight: "bold",
+    fontWeight: "bold",
     letterSpacing: 0.25,
+    // borderWidth: 2,
+    // borderColor: 'red'
   },
 });
 
