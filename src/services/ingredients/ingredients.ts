@@ -304,95 +304,103 @@ const Dairy: Ingredient[] = [
 const Baking: Ingredient[] = [
   {
     name: "Baking Powder",
-    image: "https://i.gyazo.com/dac7326c4ad6b76f4df0e40d232e3eba.png",
+    image: "https://i.gyazo.com/7efeddcc511456dd436cf413c8ff4af4.png",
   },
   {
     name: "Baking Soda",
-    image: "https://i.gyazo.com/de7e9919c0296049fc68974d88409fd6.png",
+    image: "https://i.gyazo.com/5a7bae7c265eca92ef40f0d7a7362d08.png",
   },
   {
     name: "Cardamom",
-    image: "https://i.gyazo.com/767e7a35fcb7587f5ed7926f56a6c064.png",
+    image: "https://i.gyazo.com/b7ed651f685a2bbc10c25cce3edcfaa5.png",
   },
   {
     name: "Cayenne Pepper",
-    image: "https://i.gyazo.com/a6de0c39c171a04c5f7517b9436d4a36.png",
+    image: "https://i.gyazo.com/865c36322533997a992ec6bd5fccf7cf.png",
+  },
+  {
+    name: "Chocolate",
+    image: "https://i.gyazo.com/2e61c13c1d8f1b947e565b283eaf9e39.png",
   },
   {
     name: "Cinnamon",
-    image: "https://i.gyazo.com/7d9d4a918fd7b8e8a6ee3cd95c0d0545.png",
+    image: "https://i.gyazo.com/5cf804c713539b981ee9cc5dff9be860.png",
   },
   {
     name: "Cloves",
-    image: "https://i.gyazo.com/d381f2fa3536bf46aa9d45a2bfa29908.png",
+    image: "https://i.gyazo.com/a0fde7fcafc0b83a350a60f18027df4f.png",
   },
   {
     name: "Cocoa Powder",
-    image: "https://i.gyazo.com/090f239cf06a763107ac46d4873f3594.png",
+    image: "https://i.gyazo.com/153896f70d374d29be71e4c95b424b03.png",
   },
   {
     name: "Corn Starch",
-    image: "https://i.gyazo.com/85abd33eefbb2dd76df47988c4d763dc.png",
+    image: "https://i.gyazo.com/148b04b76994f5f2b795f56b31657bb7.png",
   },
   {
     name: "Flour",
-    image: "https://i.gyazo.com/efd648d25c7c0fa0705f14dd1502c435.png",
+    image: "https://i.gyazo.com/683ce43972bba567ad966b80d697532d.png",
   },
   {
     name: "Ginger",
-    image: "https://i.gyazo.com/c8181ae8dc74f9e37d263206bf1c6e25.png",
+    image: "https://i.gyazo.com/1e6c10475d68c100fc59a1f65401310f.png",
   },
   {
     name: "Honey",
-    image: "https://i.gyazo.com/f498256b9e4c0bb5fc544484420c030c.png",
+    image: "https://i.gyazo.com/5d125b22110c1ea453ec1deb16bf954b.png",
   },
   {
     name: "Maple Syrup",
-    image: "https://i.gyazo.com/736dcbabfdbe4e56a1ab54e633816c3b.png",
+    image: "https://i.gyazo.com/e0625f9d4ca4c62d9bca418026dc68a3.png",
   },
   {
     name: "Nutmeg",
-    image: "https://i.gyazo.com/cfa7772f896a37a2d17039af983113ea.png",
+    image: "https://i.gyazo.com/9eef7deaaccdffc50e36d2cf8d1c16fb.png",
   },
   {
     name: "Olive Oil",
-    image: "https://i.gyazo.com/4519ca8e6c729d4490478452db6f7f0c.png",
+    image: "https://i.gyazo.com/65e373758128cf972973fcf1c194a2a0.png",
   },
   {
     name: "Oregano",
-    image: "https://i.gyazo.com/049f465913aa6f62656ffd0d756ed326.png",
+    image: "https://i.gyazo.com/9afdb2c73c5b44c31b4756f1af712c69.png",
   },
   {
     name: "Pepper",
-    image: "https://i.gyazo.com/6ba850b9b61593af96be0224c42958c3.png",
+    image: "https://i.gyazo.com/f7ac02e49f87a2f337c935a8ec0fb38e.png",
   },
   {
     name: "Powdered Sugar",
-    image: "https://i.gyazo.com/eb62abec9430e7b7cc19f41dc6409ae9.png",
+    image: "https://i.gyazo.com/07231b93ea5d95f525be0cbcd76c60c6.png",
   },
   {
     name: "Rosemary",
-    image: "https://i.gyazo.com/90d76ebbb2c9645458f2074e4bad20e8.png",
+    image: "https://i.gyazo.com/5198e6436aeb81a36ca9c782e5472556.png",
   },
   {
     name: "Salt",
-    image: "https://i.gyazo.com/c9a74b768ffad8a3156471d4010e455d.png",
+    image: "https://i.gyazo.com/8bde07e381d5644b2571402786f90367.png",
   },
   {
     name: "Thyme",
-    image: "https://i.gyazo.com/3ac4136641a2ca66606cd73db655eec8.png",
+    image: "https://i.gyazo.com/3a6814c36f8e39947d1ee3c3245c107b.png",
   },
   {
     name: "Turmeric",
-    image: "https://i.gyazo.com/13d0aafb8a4ae82176089501abe99dc5.png",
+    image: "https://i.gyazo.com/329a80cc5fdc4574572382189f5eba52.png",
   },
   {
     name: "Vanilla Extract",
-    image: "https://i.gyazo.com/129d7d9c55f1201e714336f4421e5aad.png",
+    image: "https://i.gyazo.com/e97cd8a7ce10c3b2b9f91b4f47231b9f.png",
   },
   {
     name: "White Sugar",
-    image: "https://i.gyazo.com/5643d50c1d14ea461317d0fd24dedcc6.png",
+    image: "https://i.gyazo.com/1e50db34a687eb63809925044b3282a4.png",
+  },
+  {
+    name: "Yeast",
+    image: "https://i.gyazo.com/8fc2033fd146170d024f1a9f2d1dcd50.png",
   },
 ];
 
