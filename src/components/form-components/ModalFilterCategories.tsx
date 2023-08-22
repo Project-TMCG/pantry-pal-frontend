@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react'
 import { View, ScrollView, Text, Pressable, StyleSheet } from 'react-native'
 import { filters } from './../../services/filters/filters'
-import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group'
+// import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group'
 
 const ModalFilterCategories = () => {
 

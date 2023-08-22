@@ -117,75 +117,75 @@ const Produce: Ingredient[] = [
 const Meat: Ingredient[] = [
   {
     name: "Beef",
-    image: "https://i.gyazo.com/37a2d37cb3368e71713bacd757b232d0.png",
+    image: "https://i.gyazo.com/b951a2aa5d3c63c2a61c942a97e148b0.png",
   },
   {
     name: "Chicken",
-    image: "https://i.gyazo.com/591c7aeafd977bfd7cce3e5d2dcc4af3.png",
+    image: "https://i.gyazo.com/b3d4c752d027d46cbd2faf2236ca239a.png",
   },
   {
     name: "Clams",
-    image: "https://i.gyazo.com/d290f1edd579cc8f5ba423dd17b82860.png",
+    image: "https://i.gyazo.com/b4c926cb019f28c20845c373df133451.png",
   },
   {
     name: "Cod",
-    image: "https://i.gyazo.com/0b39694fc2984fd194de106eeddb15e2.png",
+    image: "https://i.gyazo.com/c866894c40784d5b3fe567d4a02a46b1.png",
   },
   {
     name: "Crab",
-    image: "https://i.gyazo.com/8b918ca94e9dc12dd351423d0877892e.png",
+    image: "https://i.gyazo.com/87d02b92b80493ad942eb62bb370e43b.png",
   },
   {
     name: "Ham",
-    image: "https://i.gyazo.com/b8fd68ef6c297cae484c6df5360889f0.png",
+    image: "https://i.gyazo.com/6498a68ca6054f2d3757aa282fb469d7.png",
   },
   {
     name: "Lamb",
-    image: "https://i.gyazo.com/fbca157e72cee47ff6a5b13cc65e4f38.png",
+    image: "https://i.gyazo.com/fc5b99aa320bc1dacde6b7db88fc9875.png",
   },
   {
     name: "Lobster",
-    image: "https://i.gyazo.com/c11c1d878d6fb414ee05d28f663b369f.png",
+    image: "https://i.gyazo.com/52d79c8847176c214a8f54d8664a5d8c.png",
   },
   {
     name: "Muscles",
-    image: "https://i.gyazo.com/6c567a1d00219e89ee189a94c7c97c53.png",
+    image: "https://i.gyazo.com/3079a1b6bfca16f514ce432fa216b9db.png",
   },
   {
     name: "Pork",
-    image: "https://i.gyazo.com/e4c0dfbca410bc259cf375d86cdfaa1a.png",
+    image: "https://i.gyazo.com/fbe8d145a9b20140f5cfd3b0c0b6204a.png",
   },
   {
     name: "Sardines",
-    image: "https://i.gyazo.com/75e6785bef32e15fc92f27795a6a702f.png",
+    image: "https://i.gyazo.com/387829d3cd88c201c383daf400a8ba22.png",
   },
   {
     name: "Salmon",
-    image: "https://i.gyazo.com/7a56e2fb4c148a318b1593744fefeed3.png",
+    image: "https://i.gyazo.com/407e891e474847b61f1b08f2b202969f.png",
   },
   {
     name: "Sausage",
-    image: "https://i.gyazo.com/8a6a96350c1cca4ffee929352345b7d4.png",
+    image: "https://i.gyazo.com/abe79d2c4fc8f77a4e465f09b14105c3.png",
   },
   {
     name: "Scallops",
-    image: "https://i.gyazo.com/694285ea89ecf94f6ae78a4e5a559994.png",
+    image: "https://i.gyazo.com/803b268d16754ef2fe10c0d9a6dc046e.png",
   },
   {
     name: "Shrimp",
-    image: "https://i.gyazo.com/7fafcadd9e0402bd1da07e47c9ad4de7.png",
+    image: "https://i.gyazo.com/fac0ba933e563b6ad43484c7ffe3f564.png",
   },
   {
     name: "Tilapia",
-    image: "https://i.gyazo.com/134e560c366b846d4ea5610e189e9ae3.png",
+    image: "https://i.gyazo.com/a6ab0398bbb2047a30a160f73b87776c.png",
   },
   {
     name: "Tuna",
-    image: "https://i.gyazo.com/77e20c7c0b370c1bdd1d5530fbcd06b3.png",
+    image: "https://i.gyazo.com/b019f72b3b4426a24fce6690fb93ef34.png",
   },
   {
     name: "Turkey",
-    image: "https://i.gyazo.com/f6550eca9a5157b7b362a82d719725c7.png",
+    image: "https://i.gyazo.com/606b2c0445321ba3d259ad7bafedac9f.png",
   },
 ];
 
