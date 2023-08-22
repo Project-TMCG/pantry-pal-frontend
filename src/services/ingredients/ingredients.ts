@@ -193,111 +193,111 @@ const Meat: Ingredient[] = [
 const Dairy: Ingredient[] = [
   {
     name: "Almond Milk",
-    image: "https://i.gyazo.com/b3c3960f30c7a30c3c351459c719546e.png",
+    image: "https://i.gyazo.com/d4dbc13cdd4da6e4463492b807a989d5.png",
   },
   {
     name: "Brie",
-    image: "https://i.gyazo.com/b8605d13b20290df4d3e4740db8f6014.png",
+    image: "https://i.gyazo.com/f189df9c1a1812b2e855277319c7b176.png",
   },
   {
     name: "Butter",
-    image: "https://i.gyazo.com/7e27dbdb06d6882092f0aad07a6f9536.png",
+    image: "https://i.gyazo.com/ab806bfd429cf3db327cdf2489ed55bb.png",
   },
   {
     name: "Buttermilk",
-    image: "https://i.gyazo.com/6d893e5d7a205230458f422559e599d1.png",
+    image: "https://i.gyazo.com/4c8729a6c4d4299a5bd8ae6ef60ff329.png",
   },
   {
     name: "Cheddar",
-    image: "https://i.gyazo.com/c61844906b756039cf3ecade47987176.png",
+    image: "https://i.gyazo.com/f750f3842d28de7a2d07a6b9b47799f4.png",
   },
   {
     name: "Cheese",
-    image: "https://i.gyazo.com/27e461e99cad8307a4488644e89d9c5b.png",
+    image: "https://i.gyazo.com/490ee091355d15055dc35a36b7c102f7.png",
   },
   {
     name: "Coconut Milk",
-    image: "https://i.gyazo.com/ebc30f67a56d503cfbc5f985a412a39f.png",
+    image: "https://i.gyazo.com/13eb33198f641c74f2700fb898eec531.png",
   },
   {
     name: "Condensed Milk",
-    image: "https://i.gyazo.com/6ac512156e24126bf6f46cf674756ac4.png",
+    image: "https://i.gyazo.com/7bc850984f4a201d441d0bb9faf9b79d.png",
   },
   {
     name: "Cottage Cheese",
-    image: "https://i.gyazo.com/53e58df371476d7d17a02b5d0ae9bf8b.png",
+    image: "https://i.gyazo.com/0acb69937f41982c72fe9c9a9c1efb7c.png",
   },
   {
     name: "Cream Cheese",
-    image: "https://i.gyazo.com/f81e650878fe6db051d84318564cf835.png",
+    image: "https://i.gyazo.com/fca7a0d796deb969b67c125c016bc2e5.png",
   },
   {
     name: "Feta",
-    image: "https://i.gyazo.com/3d90ce9b2a4417b4d8d91a932adad29c.png",
+    image: "https://i.gyazo.com/377fba5547c6cbf20b5bb14d36f56ff7.png",
   },
   {
     name: "Goat Cheese",
-    image: "https://i.gyazo.com/82b79e4da68f122fc05cc30d4c8c9d7a.png",
+    image: "https://i.gyazo.com/fe5bd1b061130891fc82e1f96d7eb2bb.png",
   },
   {
     name: "Greek Yogurt",
-    image: "https://i.gyazo.com/1cd764111fdc3e80593bdc519253e544.png",
+    image: "https://i.gyazo.com/80bf30d550ca8376ae84a82aaf7eb35b.png",
   },
   {
     name: "Heavy Cream",
-    image: "https://i.gyazo.com/19e3fa3e6b8c1a259d690c1f3fb6b9bf.png",
+    image: "https://i.gyazo.com/b9ac8d003484b541f94817ef528916c9.png",
   },
   {
     name: "Low-Fat Milk",
-    image: "https://i.gyazo.com/44f0613d8ba28d480a0753712bbafa9a.png",
+    image: "https://i.gyazo.com/f032ccabc0acb7713e48ed2e7a0f9fb7.png",
   },
   {
     name: "Milk",
-    image: "https://i.gyazo.com/19e3fa3e6b8c1a259d690c1f3fb6b9bf.png",
+    image: "https://i.gyazo.com/26465923d757fd09a3a7ec11bdb04d37.png",
   },
   {
     name: "Mozarella",
-    image: "https://i.gyazo.com/bb53f7db618fc987f6a708a7d3151fab.png",
+    image: "https://i.gyazo.com/62b7fcf8103583ce2a0099e3d46c7b98.png",
   },
   {
     name: "Oat Milk",
-    image: "https://i.gyazo.com/707b4b4c02273021c03181f46baacaca.png",
+    image: "https://i.gyazo.com/301b41ba7fac1bd26586a914080e89c9.png",
   },
   {
     name: "Parmesean",
-    image: "https://i.gyazo.com/56728233969ef23e4f0a540f9e59fb7b.png",
+    image: "https://i.gyazo.com/0977930eaf1481c956192b964873fbc5.png",
   },
   {
     name: "Provolone",
-    image: "https://i.gyazo.com/01775f93a558621255efc72bc6f46ddb.png",
+    image: "https://i.gyazo.com/78e88970e34fba42aa25f0649d9d2a53.png",
   },
   {
     name: "Ricotta",
-    image: "https://i.gyazo.com/cb9105e69fb1c2e7c81ef0d7ea455523.png",
+    image: "https://i.gyazo.com/910dcc31aff93faac65d0dd1d76727ce.png",
   },
   {
     name: "Soy Milk",
-    image: "https://i.gyazo.com/3245de7e91195eb59cf66eb0b61f4476.png",
+    image: "https://i.gyazo.com/81e583a69dbe5bd079e871807e816605.png",
   },
   {
     name: "Sour Cream",
-    image: "https://i.gyazo.com/a5664b10517b125bf46f0a3024489663.png",
+    image: "https://i.gyazo.com/04b7b52c77186442350f5af678438809.png",
   },
   {
     name: "Swiss Cheese",
-    image: "https://i.gyazo.com/0da7d9b60441223f2d48ec2d7f0b987c.png",
+    image: "https://i.gyazo.com/11fd40e60f65e64794ac0e2863355dea.png",
   },
   {
     name: "Whipped Cream",
-    image: "https://i.gyazo.com/0e35bba54f72e609eb20d74d0017d00c.png",
+    image: "https://i.gyazo.com/1fa3ee7f0846180e64351fadbd140e6a.png",
   },
   {
     name: "Whole Milk",
-    image: "https://i.gyazo.com/76d509133a549c0ab0a0e6f84866902f.png",
+    image: "https://i.gyazo.com/36aabddeda6e4ac808383ce2a5090600.png",
   },
   {
     name: "Yogurt",
-    image: "https://i.gyazo.com/6915f65d0af0b7e2bbebbd3662f53906.png",
+    image: "https://i.gyazo.com/12926afd528e44a4be74234572729577.png",
   },
 ];
 
