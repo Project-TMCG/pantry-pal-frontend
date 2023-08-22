@@ -406,72 +406,72 @@ const Baking: Ingredient[] = [
 
 const Diet: Ingredient[] = [
   {
-    name: "Dairy-Free",
-    image: "https://i.gyazo.com/361f4f83a7b916f41f22cf732c8514aa.png",
-  },
-  {
-    name: "Egg-Free",
-    image: "https://i.gyazo.com/b5da943c6f9113f856e2497d2bbb5e18.png",
-  },
-  {
-    name: "Gluten-Free",
-    image: "https://i.gyazo.com/54ebfc9e98d26a88916ea7934b0209b1.png",
-  },
-  {
-    name: "Halal",
-    image: "https://i.gyazo.com/4e57c5107f30698ad19c7945168876dc.png",
-  },
-  {
-    name: "Kosher",
-    image: "https://i.gyazo.com/22b32adebd512449adf9e498b1b4aeb1.png",
-  },
-  {
-    name: "Lactose-Free",
-    image: "https://i.gyazo.com/aecc75907549482f6442492ce07c00f0.png",
-  },
-  {
-    name: "Low-Carb",
-    image: "https://i.gyazo.com/fe7dcb08a9855cc32bfc5e6ac2f358dc.png",
-  },
-  {
-    name: "Low-Fat",
-    image: "https://i.gyazo.com/e3e3d7e2f62f3da826bf542b41e901b2.png",
-  },
-  {
-    name: "Nut-Free",
-    image: "https://i.gyazo.com/f389de44bd2ef42a26886fff3e8fac1e.png",
-  },
-  {
-    name: "Organic",
-    image: "https://i.gyazo.com/6d46e6b9ac15d290ad784da2c03e35fd.png",
-  },
-  {
-    name: "Paleo",
-    image: "https://i.gyazo.com/2ccee43ae7c3d39a6e240c3fca4a9a1d.png",
+    name: "Vegetarian",
+    image: "https://i.gyazo.com/434717cf03f9b5a4e0e06505e7a6bf7d.png",
   },
   {
     name: "Pescatarian",
-    image: "https://i.gyazo.com/505461a664d67fd921b70c46441c19ee.png",
-  },
-  {
-    name: "Shelfish-Free",
-    image: "https://i.gyazo.com/8b15e2175497d881011f8f3680e710ea.png",
-  },
-  {
-    name: "Soy-Free",
-    image: "https://i.gyazo.com/5d979d05d455d95224e3e80bddfee440.png",
-  },
-  {
-    name: "Sugar-Free",
-    image: "https://i.gyazo.com/12d22819990bc88e4354e3aa889d9cb6.png",
+    image: "https://i.gyazo.com/c1b687dccb5c22099eb035efebbb3943.png",
   },
   {
     name: "Vegan",
-    image: "https://i.gyazo.com/7f331ad4bc91185c3c4b886ed612e93c.png",
+    image: "https://i.gyazo.com/81ff7275f8111452be84d1af15b2378a.png",
   },
   {
-    name: "Vegetarian",
-    image: "https://i.gyazo.com/4571f496108c47d0101c33648ba67681.png",
+    name: "Paleo",
+    image: "https://i.gyazo.com/88af88953b8361a8b99a48f79aa5d913.png",
+  },
+  {
+    name: "Kosher",
+    image: "https://i.gyazo.com/bae700324e6a7fb0e8b1574d76a70853.png",
+  },
+  {
+    name: "Halal",
+    image: "https://i.gyazo.com/0b420b8785707669343c78f35fd2dca1.png",
+  },
+  {
+    name: "Dairy-Free",
+    image: "https://i.gyazo.com/82a0d332a3dad6e5ffdc92d93fa603db.png",
+  },
+  {
+    name: "Gluten-Free",
+    image: "https://i.gyazo.com/e0f89737637982a256021e97befbe5f8.png",
+  },
+  {
+    name: "Lactose-Free",
+    image: "https://i.gyazo.com/8a4b69c9d1ce6c988e18021705ed9373.png",
+  },
+  {
+    name: "Egg-Free",
+    image: "https://i.gyazo.com/5bc31272249ff6b5969b3374447d4b9c.png",
+  },
+  {
+    name: "Low-Carb",
+    image: "https://i.gyazo.com/ff8ab8bd68840197af9e8e70affdcc7a.png",
+  },
+  {
+    name: "Low-Fat",
+    image: "https://i.gyazo.com/14c47141324f0f3cae8c4f0825c928fd.png",
+  },
+  {
+    name: "Nut-Free",
+    image: "https://i.gyazo.com/596c2232753ad10e9c5361b61c51b8d2.png",
+  },
+  {
+    name: "Shelfish-Free",
+    image: "https://i.gyazo.com/92400281ecd1debb76c3420e8d54dd08.png",
+  },
+  {
+    name: "Soy-Free",
+    image: "https://i.gyazo.com/50ea901fb3bacc215443c710ec73bc33.png",
+  },
+  {
+    name: "Sugar-Free",
+    image: "https://i.gyazo.com/da4eb90b863c05d4771ccd9954f3e1ad.png",
+  },
+  {
+    name: "Organic",
+    image: "https://i.gyazo.com/dc1e808e15ba785a2edbb988f6707593.png",
   },
 ];
 
