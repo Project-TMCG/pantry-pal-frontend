@@ -94,10 +94,14 @@ const Results: React.FC = () => {
           <View style={styles.modalContainer}>
             <View style={styles.otherModalContainer}>
               <View style={styles.modalTopRow}>
-                <Pressable style={styles.modalOptionButtons}><Text style={styles.modalTopButtonText}>Clear All</Text></Pressable>
-                <Pressable style={styles.modalOptionButtons}><Text style={styles.modalTopButtonText}>Apply Filters</Text></Pressable>
+                <Pressable style={styles.modalOptionButtons}>
+                  <Text style={styles.modalTopButtonText}>Clear All</Text>
+                </Pressable>
+                <Pressable style={styles.modalOptionButtons} onPress={() => handleModalVisible()}>
+                  <Text style={styles.modalTopButtonText}>Apply Filters</Text>
+                </Pressable>
               </View>
-              <ModalFilterCategories/>
+              <ModalFilterCategories />
               <Button title="Close Modal" onPress={() => handleModalVisible()}></Button>
             </View>
           </View>

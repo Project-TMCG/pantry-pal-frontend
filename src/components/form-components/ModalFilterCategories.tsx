@@ -8,17 +8,45 @@ const ModalFilterCategories = () => {
     // This is an array of the filter categories from the imported filters object
     const filterKeys = Object.keys(filters);
 
+    interface selectedIdProps {
+        "Dish Type": string,
+        "Equipment": string,
+        "Calories": string,
+        "Protien (g)": string,
+        "Fat (g)": string,
+        "Fiber (g)": string,
+        "Carbs (g)": string,
+        "Cholesterol": string,
+        "Reviews": string,
+    }
+
+    interface selectedFilterCatProps {
+        selection: "Dish Type"|"Equipment"|"Calories"|"Protien (g)"| "Fat (g)"| "Fiber (g)"|"Carbs (g)"|"Cholesterol"|"Reviews"
+    }
+
     // Hook
-    const [selectedFilterCat, setSelectedFilterCat] = useState<string | null>(null)
-    const [selectedId, setSelectedId] = useState<string | undefined>();
+    const [selectedFilterCat, setSelectedFilterCat] = useState<selectedFilterCatProps | null>(null)
+    const [selectedId, setSelectedId] = useState<selectedIdProps>({
+        "Dish Type": "",
+        "Equipment": "",
+        "Calories": "",
+        "Protien (g)": "",
+        "Fat (g)": "",
+        "Fiber (g)": "",
+        "Carbs (g)": "",
+        "Cholesterol": "",
+        "Reviews": "",
+    });
+    console.log(selectedFilterCat)
+    console.log(selectedId)
 
     // This function handles the selected filter categories
-    const handleSelectedFilterCat = (category: string) => {
+    const handleSelectedFilterCat = (category: selectedFilterCatProps) => {
         if (category === selectedFilterCat) {
             setSelectedFilterCat(null);
         } else {
             setSelectedFilterCat(category);
-            setSelectedId(undefined); // Clear the selected radio button when changing category
+        
         }
     };
 
@@ -51,12 +79,13 @@ const ModalFilterCategories = () => {
                             <View style={styles.optionsContainer}>
                                 <RadioGroup
                                     containerStyle={styles.optionText}
-                                    // radioButtonContainerStyle={styles.radioButtonContainer}
                                     radioButtons={getRadioButtons}
-                                    onPress={(selectedId: string) => {
-                                        setSelectedId(selectedId);
+                                    onPress={(selectedValue) => {
+                                        const newSelectedId = selectedId
+                                        newSelectedId[selectedFilterCat] = selectedValue
+                                        setSelectedId(newSelectedId);
                                     }}
-                                
+                                    selectedId={selectedId[selectedFilterCat]}
                                 />
                                 {/* {filters[category].map((option: string) => (
                                     <Text key={option} style={styles.optionText}>
