@@ -11,6 +11,10 @@ import RecipeTab from "../components/form-components/RecipeTab";
 import { Image } from "react-native-elements";
 import { fakeRecipe } from "../services/recipes/fakeRecipe";
 import { useSelector } from "react-redux";
+import {
+  decreaseServings,
+  increaseServings,
+} from "../redux/features/counter/counterSlice";
 
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
@@ -18,9 +22,11 @@ const { height } = Dimensions.get("window");
 // const color = Dimensions.get();
 const Details: React.FC = () => {
   const recipeObject = useSelector((state: any) => state.recipe.all);
+  const servingSize = useSelector((state: any) => state.counter.servingSize);
   const activeRecipeName = useSelector(
     (state: any) => state.recipe.activeRecipe
   );
+
   const activeRecipe = recipeObject[activeRecipeName];
   const dispatch = useDispatch();
 
@@ -49,6 +55,7 @@ const Details: React.FC = () => {
 
   React.useEffect(() => {
     dispatch(toggleTrue());
+    dispatch;
   }, []);
 
   return (
@@ -86,6 +93,15 @@ const Details: React.FC = () => {
       </View>
       <View style={styles.tabTitle}>
         <Text style={styles.tabText}>{tabTitle}</Text>
+        <View>
+          <Pressable onPress={() => dispatch(decreaseServings())}>
+            <Text>-</Text>
+          </Pressable>
+          <Text>{servingSize}</Text>
+          <Pressable onPress={() => dispatch(increaseServings())}>
+            <Text>+</Text>
+          </Pressable>
+        </View>
       </View>
       <RecipeTab />
     </View>

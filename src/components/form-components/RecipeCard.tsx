@@ -15,6 +15,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "../../../App";
 import { chooseRecipe } from "../../redux/features/recipe/recipeSlice";
+import { setServingSize } from "../../redux/features/counter/counterSlice";
 
 // Card Sizes that are being tested
 const { width } = Dimensions.get("window");
@@ -39,9 +40,12 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
   const dispatch = useDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const recipeObject = useSelector((state: any) => state.recipe.all);
 
   const selectRecipe = (recipeName: string) => {
+    const servingAmount = recipeObject[recipeName];
     dispatch(chooseRecipe(recipeName));
+    dispatch(setServingSize(servingAmount.servings));
     navigation.navigate("Details");
   };
 
