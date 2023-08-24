@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react'
 import { View, ScrollView, Text, Pressable, StyleSheet } from 'react-native'
 import { filters } from './../../services/filters/filters'
-// import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group'
+import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group'
 
 const ModalFilterCategories = () => {
 
@@ -24,7 +24,11 @@ const ModalFilterCategories = () => {
         selection: "Dish Type"|"Equipment"|"Calories"|"Protien (g)"| "Fat (g)"| "Fiber (g)"|"Carbs (g)"|"Cholesterol"|"Reviews"
     }
 
+    type FilterCategory = "Dish Type" | "Equipment" | "Calories" | "Protien (g)" | "Fat (g)" | "Fiber (g)" | "Carbs (g)" | "Cholesterol" | "Reviews";
+
+
     // Hook
+    const [active, setActive] = useState("")
     const [selectedFilterCat, setSelectedFilterCat] = useState<selectedFilterCatProps | null>(null)
     const [selectedId, setSelectedId] = useState<selectedIdProps>({
         "Dish Type": "",
@@ -37,25 +41,24 @@ const ModalFilterCategories = () => {
         "Cholesterol": "",
         "Reviews": "",
     });
-    console.log(selectedFilterCat)
-    console.log(selectedId)
+    // console.log(selectedFilterCat)
+    // console.log(selectedId)
 
     // This function handles the selected filter categories
-    const handleSelectedFilterCat = (category: selectedFilterCatProps) => {
-        if (category === selectedFilterCat) {
+    const handleSelectedFilterCat = (category: string) => {
+        if (category === selectedFilterCat?.selection) {
             setSelectedFilterCat(null);
         } else {
             setSelectedFilterCat(category);
-        
         }
     };
 
     const getRadioButtons = useMemo(() => {
         if (selectedFilterCat) {
-            return filters[selectedFilterCat].map((option: string, index: number) => ({
+            return filters[selectedFilterCat.selection].map((option: string, index: number) => ({
                 id: `${index}`, // Use index as the key for options in a category
                 label: option,
-                value: option,
+                value: selectedFilterCat.selection + "_" + option,
             }));
         }
         return [];
@@ -75,17 +78,19 @@ const ModalFilterCategories = () => {
                             <Text style={styles.buttonText}>{category}</Text>
                         </Pressable>
                         {/* This produces the dropdown filter options */}
-                        {selectedFilterCat == category && (
+                        {category === selectedFilterCat?.selection && (
                             <View style={styles.optionsContainer}>
                                 <RadioGroup
                                     containerStyle={styles.optionText}
                                     radioButtons={getRadioButtons}
                                     onPress={(selectedValue) => {
-                                        const newSelectedId = selectedId
-                                        newSelectedId[selectedFilterCat] = selectedValue
-                                        setSelectedId(newSelectedId);
+                                        setSelectedId(prevSelectedId => ({
+                                            ...prevSelectedId,
+                                            [selectedFilterCat?.selection]: selectedValue,
+                                        }));
+                                        
                                     }}
-                                    selectedId={selectedId[selectedFilterCat]}
+                                    selectedId={selectedId[selectedFilterCat.selection]}
                                 />
                                 {/* {filters[category].map((option: string) => (
                                     <Text key={option} style={styles.optionText}>
