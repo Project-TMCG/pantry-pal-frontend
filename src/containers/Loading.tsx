@@ -44,8 +44,13 @@ const Loading: React.FC = () => {
       number: 10,
     });
 
-    dispatch(addRecipes(recipes));
-    navigation.navigate("Results");
+    if (!recipes) {
+      alert("no results found");
+      navigation.pop();
+    } else {
+      dispatch(addRecipes(recipes));
+      navigation.navigate("Results");
+    }
   };
 
   useEffect(() => {
