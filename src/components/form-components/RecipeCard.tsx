@@ -15,7 +15,9 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RootStackParams } from "../../../App";
 import { chooseRecipe } from "../../redux/features/recipe/recipeSlice";
-
+import { setServingSize } from "../../redux/features/counter/counterSlice";
+import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
+import { faStopwatch } from "@fortawesome/free-solid-svg-icons/faStopwatch";
 // Card Sizes that are being tested
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
@@ -39,9 +41,12 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
   const dispatch = useDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const recipeObject = useSelector((state: any) => state.recipe.all);
 
   const selectRecipe = (recipeName: string) => {
+    const servingAmount = recipeObject[recipeName];
     dispatch(chooseRecipe(recipeName));
+    dispatch(setServingSize(servingAmount.servings));
     navigation.navigate("Details");
   };
 
@@ -71,9 +76,20 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
                   }}
                 />
               </View>
-              <Text style={styles.title}>{recipe}</Text>
-
-              <Text>{stars[index]}</Text>
+              <Text numberOfLines={1} style={styles.title}>
+                {recipe}
+              </Text>
+              <View style={styles.ratingBox}>
+                <Text>{stars[index]}</Text>
+                <Text>
+                  <FontAwesomeIcon
+                    icon={faStopwatch}
+                    size={20}
+                    color={"black"}
+                  />
+                  25 min
+                </Text>
+              </View>
             </Pressable>
           </View>
         ))}
@@ -104,7 +120,8 @@ const styles = StyleSheet.create({
     // alignItems: "center",
   },
   title: {
-    fontWeight: "bold",
+    fontWeight: "500",
+    fontSize: 17,
   },
   image: {
     height: IMAGE_HEIGHT,
@@ -125,6 +142,10 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.19,
     shadowRadius: 5.62,
     elevation: 6,
+  },
+  ratingBox: {
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
 });
 

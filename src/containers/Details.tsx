@@ -11,6 +11,10 @@ import RecipeTab from "../components/form-components/RecipeTab";
 import { Image } from "react-native-elements";
 import { fakeRecipe } from "../services/recipes/fakeRecipe";
 import { useSelector } from "react-redux";
+import {
+  decreaseServings,
+  increaseServings,
+} from "../redux/features/counter/counterSlice";
 
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
@@ -18,9 +22,11 @@ const { height } = Dimensions.get("window");
 // const color = Dimensions.get();
 const Details: React.FC = () => {
   const recipeObject = useSelector((state: any) => state.recipe.all);
+  const servingSize = useSelector((state: any) => state.counter.servingSize);
   const activeRecipeName = useSelector(
     (state: any) => state.recipe.activeRecipe
   );
+
   const activeRecipe = recipeObject[activeRecipeName];
   const dispatch = useDispatch();
 
@@ -49,6 +55,7 @@ const Details: React.FC = () => {
 
   React.useEffect(() => {
     dispatch(toggleTrue());
+    dispatch;
   }, []);
 
   return (
@@ -86,6 +93,20 @@ const Details: React.FC = () => {
       </View>
       <View style={styles.tabTitle}>
         <Text style={styles.tabText}>{tabTitle}</Text>
+        <View style={styles.servingBox}>
+          <Pressable onPress={() => dispatch(decreaseServings())}>
+            <Text>-</Text>
+          </Pressable>
+          <View style={styles.blackLine} />
+          <Text style={{ paddingHorizontal: 10 }}>{servingSize}</Text>
+          <View style={styles.blackLine} />
+          <Pressable onPress={() => dispatch(increaseServings())}>
+            <Text>
+              + <View style={{ paddingRight: 5 }} />
+              Servings
+            </Text>
+          </Pressable>
+        </View>
       </View>
       <RecipeTab />
     </View>
@@ -98,6 +119,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     paddingTop: 60,
     alignItems: "center",
+  },
+  blackLine: {
+    backgroundColor: "black",
+    height: "100%",
+    width: 1,
+    marginHorizontal: 6,
   },
   button: {
     height: "100%",
@@ -126,10 +153,13 @@ const styles = StyleSheet.create({
     alignContent: "center",
     padding: 15,
     backgroundColor: "#72927C",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
   tabText: {
     color: "white",
     fontWeight: "500",
+    width: "50%",
     fontSize: 25,
   },
   ingredientContainer: {
@@ -139,6 +169,14 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     justifyContent: "flex-start",
+  },
+  servingBox: {
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "45%",
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: "3%",
   },
 });
 

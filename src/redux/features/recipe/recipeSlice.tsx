@@ -14,12 +14,12 @@ export const recipeSlice = createSlice({
 
       //Add new recipes to all
       state.all = { ...payload };
+
       //Replace lastCall
       state.lastCall = payload;
     },
     chooseRecipe: (state, action: PayloadAction<string>) => {
       const payload = action.payload;
-
       state.activeRecipe = payload;
     },
   },
