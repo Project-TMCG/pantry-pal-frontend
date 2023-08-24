@@ -1,4 +1,3 @@
-
 const DishType: string[] = [
     "Appetizer",
     "Beverage",
@@ -80,7 +79,19 @@ const Reviews: string[] = [
     "★★★★★",
 ] 
 
-export const filters: {[key: string]: string[]} = {
+interface filterType {
+    "Dish Type": string[],
+    "Equipment": string[],
+    "Calories": string[],
+    "Protien (g)": string[],
+    "Fat (g)": string[],
+    "Fiber (g)": string[],
+    "Carbs (g)": string[],
+    "Cholesterol": string[],
+    "Reviews": string[],
+}
+
+export const filters: filterType = {
     "Dish Type": DishType,
     "Equipment": Equipment,
     "Calories": Calories,

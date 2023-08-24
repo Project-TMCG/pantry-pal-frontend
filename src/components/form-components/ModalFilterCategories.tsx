@@ -1,24 +1,64 @@
 import React, { useState, useMemo } from 'react'
 import { View, ScrollView, Text, Pressable, StyleSheet } from 'react-native'
 import { filters } from './../../services/filters/filters'
-// import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group'
+import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group'
 
 const ModalFilterCategories = () => {
 
     // This is an array of the filter categories from the imported filters object
-    const filterKeys = Object.keys(filters);
+    interface filterType {
+        "Dish Type": string[],
+        "Equipment": string[],
+        "Calories": string[],
+        "Protien (g)": string[],
+        "Fat (g)": string[],
+        "Fiber (g)": string[],
+        "Carbs (g)": string[],
+        "Cholesterol": string[],
+        "Reviews": string[],
+    }
+
+    type filterKeysType = keyof filterType
+    const filterKeys = Object.keys(filters) as filterKeysType[];
+
+    interface selectedIdType {
+        "Dish Type": string,
+        "Equipment": string,
+        "Calories": string,
+        "Protien (g)": string,
+        "Fat (g)": string,
+        "Fiber (g)": string,
+        "Carbs (g)": string,
+        "Cholesterol": string,
+        "Reviews": string,
+    }
+
+    type selectedIdKeysType = keyof selectedIdType
+    type selectedFilterCatType = selectedIdKeysType | null
 
     // Hook
-    const [selectedFilterCat, setSelectedFilterCat] = useState<string | null>(null)
-    const [selectedId, setSelectedId] = useState<string | undefined>();
+    const [active, setActive] = useState("")
+    const [selectedFilterCat, setSelectedFilterCat] = useState<selectedFilterCatType>(null)
+    const [selectedId, setSelectedId] = useState<selectedIdType>({
+        "Dish Type": "",
+        "Equipment": "",
+        "Calories": "",
+        "Protien (g)": "",
+        "Fat (g)": "",
+        "Fiber (g)": "",
+        "Carbs (g)": "",
+        "Cholesterol": "",
+        "Reviews": "",
+    });
+    // console.log(selectedFilterCat)
+    // console.log(selectedId)
 
     // This function handles the selected filter categories
-    const handleSelectedFilterCat = (category: string) => {
+    const handleSelectedFilterCat = (category: selectedFilterCatType) => {
         if (category === selectedFilterCat) {
             setSelectedFilterCat(null);
         } else {
             setSelectedFilterCat(category);
-            setSelectedId(undefined); // Clear the selected radio button when changing category
         }
     };
 
@@ -27,7 +67,7 @@ const ModalFilterCategories = () => {
             return filters[selectedFilterCat].map((option: string, index: number) => ({
                 id: `${index}`, // Use index as the key for options in a category
                 label: option,
-                value: option,
+                value: selectedFilterCat + "_" + option,
             }));
         }
         return [];
@@ -38,7 +78,7 @@ const ModalFilterCategories = () => {
         <View>
             <ScrollView>
                 {/* This produces the filter category buttons that appear in the modal */}
-                {filterKeys.map((category: string) =>
+                {filterKeys.map((category: filterKeysType) =>
                     <View>
                         <Pressable
                             style={styles.button}
@@ -47,16 +87,19 @@ const ModalFilterCategories = () => {
                             <Text style={styles.buttonText}>{category}</Text>
                         </Pressable>
                         {/* This produces the dropdown filter options */}
-                        {selectedFilterCat == category && (
+                        {category === selectedFilterCat && (
                             <View style={styles.optionsContainer}>
                                 <RadioGroup
                                     containerStyle={styles.optionText}
-                                    // radioButtonContainerStyle={styles.radioButtonContainer}
                                     radioButtons={getRadioButtons}
-                                    onPress={(selectedId: string) => {
-                                        setSelectedId(selectedId);
+                                    onPress={(selectedValue) => {
+                                        setSelectedId(prevSelectedId => ({
+                                            ...prevSelectedId,
+                                            [selectedFilterCat]: selectedValue,
+                                        }));
+                                        
                                     }}
-                                
+                                    selectedId={selectedId[selectedFilterCat]}
                                 />
                                 {/* {filters[category].map((option: string) => (
                                     <Text key={option} style={styles.optionText}>
