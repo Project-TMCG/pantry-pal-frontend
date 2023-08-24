@@ -6,9 +6,22 @@ import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group'
 const ModalFilterCategories = () => {
 
     // This is an array of the filter categories from the imported filters object
-    const filterKeys = Object.keys(filters);
+    interface filterType {
+        "Dish Type": string[],
+        "Equipment": string[],
+        "Calories": string[],
+        "Protien (g)": string[],
+        "Fat (g)": string[],
+        "Fiber (g)": string[],
+        "Carbs (g)": string[],
+        "Cholesterol": string[],
+        "Reviews": string[],
+    }
 
-    interface selectedIdProps {
+    type filterKeysType = keyof filterType
+    const filterKeys = Object.keys(filters) as filterKeysType[];
+
+    interface selectedIdType {
         "Dish Type": string,
         "Equipment": string,
         "Calories": string,
@@ -20,17 +33,13 @@ const ModalFilterCategories = () => {
         "Reviews": string,
     }
 
-    interface selectedFilterCatProps {
-        selection: "Dish Type"|"Equipment"|"Calories"|"Protien (g)"| "Fat (g)"| "Fiber (g)"|"Carbs (g)"|"Cholesterol"|"Reviews"
-    }
-
-    type FilterCategory = "Dish Type" | "Equipment" | "Calories" | "Protien (g)" | "Fat (g)" | "Fiber (g)" | "Carbs (g)" | "Cholesterol" | "Reviews";
-
+    type selectedIdKeysType = keyof selectedIdType
+    type selectedFilterCatType = selectedIdKeysType | null
 
     // Hook
     const [active, setActive] = useState("")
-    const [selectedFilterCat, setSelectedFilterCat] = useState<any>(null)
-    const [selectedId, setSelectedId] = useState<object>({
+    const [selectedFilterCat, setSelectedFilterCat] = useState<selectedFilterCatType>(null)
+    const [selectedId, setSelectedId] = useState<selectedIdType>({
         "Dish Type": "",
         "Equipment": "",
         "Calories": "",
@@ -45,7 +54,7 @@ const ModalFilterCategories = () => {
     // console.log(selectedId)
 
     // This function handles the selected filter categories
-    const handleSelectedFilterCat = (category: string) => {
+    const handleSelectedFilterCat = (category: selectedFilterCatType) => {
         if (category === selectedFilterCat) {
             setSelectedFilterCat(null);
         } else {
@@ -69,7 +78,7 @@ const ModalFilterCategories = () => {
         <View>
             <ScrollView>
                 {/* This produces the filter category buttons that appear in the modal */}
-                {filterKeys.map((category: string) =>
+                {filterKeys.map((category: filterKeysType) =>
                     <View>
                         <Pressable
                             style={styles.button}
