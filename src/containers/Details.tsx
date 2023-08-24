@@ -26,6 +26,7 @@ const Details: React.FC = () => {
   const activeRecipeName = useSelector(
     (state: any) => state.recipe.activeRecipe
   );
+  const rating = useSelector((state: any) => state.detail.rating);
 
   const activeRecipe = recipeObject[activeRecipeName];
   const dispatch = useDispatch();
@@ -63,6 +64,7 @@ const Details: React.FC = () => {
       <View style={styles.bioContainer}>
         <View>
           <Text>Total Time: {activeRecipe.readyInMinutes} Min</Text>
+          <Text>{rating}</Text>
         </View>
         <Image
           alt="ingredient"
@@ -177,6 +179,7 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     borderRadius: 20,
     padding: "3%",
+    height: 40,
   },
 });
 
