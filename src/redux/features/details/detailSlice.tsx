@@ -4,6 +4,7 @@ export const detailSlice = createSlice({
   name: "detail",
   initialState: {
     value: true,
+    rating: "",
   },
   reducers: {
     toggleTrue: (state) => {
@@ -11,6 +12,9 @@ export const detailSlice = createSlice({
     },
     toggleFalse: (state) => {
       state.value = false;
+    },
+    inputRating: (state, action) => {
+      state.rating = action.payload;
     },
   },
 });
@@ -20,6 +24,6 @@ export const detailSlice = createSlice({
 // in the slice file. For example: `useSelector((state) => state.counter.value)`
 // export const selectCount = state => state.counter.value
 
-export const { toggleTrue, toggleFalse } = detailSlice.actions;
+export const { toggleTrue, toggleFalse, inputRating } = detailSlice.actions;
 
 export default detailSlice.reducer;

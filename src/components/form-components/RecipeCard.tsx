@@ -18,6 +18,7 @@ import { chooseRecipe } from "../../redux/features/recipe/recipeSlice";
 import { setServingSize } from "../../redux/features/counter/counterSlice";
 import { FontAwesomeIcon } from "@fortawesome/react-native-fontawesome";
 import { faStopwatch } from "@fortawesome/free-solid-svg-icons/faStopwatch";
+import { inputRating } from "../../redux/features/details/detailSlice";
 // Card Sizes that are being tested
 const { width } = Dimensions.get("window");
 const { height } = Dimensions.get("window");
@@ -43,13 +44,6 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const recipeObject = useSelector((state: any) => state.recipe.all);
 
-  const selectRecipe = (recipeName: string) => {
-    const servingAmount = recipeObject[recipeName];
-    dispatch(chooseRecipe(recipeName));
-    dispatch(setServingSize(servingAmount.servings));
-    navigation.navigate("Details");
-  };
-
   const stars = rating.map((likes) => {
     if (likes > 20) {
       return "★★★★★";
@@ -62,12 +56,20 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
     } else return "★";
   });
 
+  const selectRecipe = (recipeName: string, stars: string) => {
+    const servingAmount = recipeObject[recipeName];
+    dispatch(chooseRecipe(recipeName));
+    dispatch(setServingSize(servingAmount.servings));
+    dispatch(inputRating(stars));
+    navigation.navigate("Details");
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {recipes.map((recipe: string, index: number) => (
           <View key={index} style={styles.card}>
-            <Pressable onPress={() => selectRecipe(recipe)}>
+            <Pressable onPress={() => selectRecipe(recipe, stars[index])}>
               <View style={styles.imageShadow}>
                 <Image
                   style={styles.image}
@@ -87,7 +89,7 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
                     size={20}
                     color={"black"}
                   />
-                  25 min
+                  {recipeObject[recipe].readyInMinutes} min
                 </Text>
               </View>
             </Pressable>
