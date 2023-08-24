@@ -29,8 +29,8 @@ const ModalFilterCategories = () => {
 
     // Hook
     const [active, setActive] = useState("")
-    const [selectedFilterCat, setSelectedFilterCat] = useState<selectedFilterCatProps | null>(null)
-    const [selectedId, setSelectedId] = useState<selectedIdProps>({
+    const [selectedFilterCat, setSelectedFilterCat] = useState<any>(null)
+    const [selectedId, setSelectedId] = useState<object>({
         "Dish Type": "",
         "Equipment": "",
         "Calories": "",
@@ -46,7 +46,7 @@ const ModalFilterCategories = () => {
 
     // This function handles the selected filter categories
     const handleSelectedFilterCat = (category: string) => {
-        if (category === selectedFilterCat?.selection) {
+        if (category === selectedFilterCat) {
             setSelectedFilterCat(null);
         } else {
             setSelectedFilterCat(category);
@@ -55,10 +55,10 @@ const ModalFilterCategories = () => {
 
     const getRadioButtons = useMemo(() => {
         if (selectedFilterCat) {
-            return filters[selectedFilterCat.selection].map((option: string, index: number) => ({
+            return filters[selectedFilterCat].map((option: string, index: number) => ({
                 id: `${index}`, // Use index as the key for options in a category
                 label: option,
-                value: selectedFilterCat.selection + "_" + option,
+                value: selectedFilterCat + "_" + option,
             }));
         }
         return [];
@@ -78,7 +78,7 @@ const ModalFilterCategories = () => {
                             <Text style={styles.buttonText}>{category}</Text>
                         </Pressable>
                         {/* This produces the dropdown filter options */}
-                        {category === selectedFilterCat?.selection && (
+                        {category === selectedFilterCat && (
                             <View style={styles.optionsContainer}>
                                 <RadioGroup
                                     containerStyle={styles.optionText}
@@ -86,11 +86,11 @@ const ModalFilterCategories = () => {
                                     onPress={(selectedValue) => {
                                         setSelectedId(prevSelectedId => ({
                                             ...prevSelectedId,
-                                            [selectedFilterCat?.selection]: selectedValue,
+                                            [selectedFilterCat]: selectedValue,
                                         }));
                                         
                                     }}
-                                    selectedId={selectedId[selectedFilterCat.selection]}
+                                    selectedId={selectedId[selectedFilterCat]}
                                 />
                                 {/* {filters[category].map((option: string) => (
                                     <Text key={option} style={styles.optionText}>
