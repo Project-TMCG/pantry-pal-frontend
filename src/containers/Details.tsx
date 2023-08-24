@@ -93,13 +93,18 @@ const Details: React.FC = () => {
       </View>
       <View style={styles.tabTitle}>
         <Text style={styles.tabText}>{tabTitle}</Text>
-        <View>
+        <View style={styles.servingBox}>
           <Pressable onPress={() => dispatch(decreaseServings())}>
             <Text>-</Text>
           </Pressable>
-          <Text>{servingSize}</Text>
+          <View style={styles.blackLine} />
+          <Text style={{ paddingHorizontal: 10 }}>{servingSize}</Text>
+          <View style={styles.blackLine} />
           <Pressable onPress={() => dispatch(increaseServings())}>
-            <Text>+</Text>
+            <Text>
+              + <View style={{ paddingRight: 5 }} />
+              Servings
+            </Text>
           </Pressable>
         </View>
       </View>
@@ -114,6 +119,12 @@ const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     paddingTop: 60,
     alignItems: "center",
+  },
+  blackLine: {
+    backgroundColor: "black",
+    height: "100%",
+    width: 1,
+    marginHorizontal: 6,
   },
   button: {
     height: "100%",
@@ -142,10 +153,13 @@ const styles = StyleSheet.create({
     alignContent: "center",
     padding: 15,
     backgroundColor: "#72927C",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
   },
   tabText: {
     color: "white",
     fontWeight: "500",
+    width: "50%",
     fontSize: 25,
   },
   ingredientContainer: {
@@ -155,6 +169,14 @@ const styles = StyleSheet.create({
 
     alignItems: "center",
     justifyContent: "flex-start",
+  },
+  servingBox: {
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "45%",
+    backgroundColor: "white",
+    borderRadius: 20,
+    padding: "3%",
   },
 });
 
