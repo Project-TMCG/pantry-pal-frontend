@@ -31,13 +31,19 @@ const Loading: React.FC = () => {
     const dietArr = Object.keys(diet);
     let dietString = dietArr.toString();
     for (const key in state) {
-      if (key !== "diet" && key !== "totalIngredients") {
-        let tempArr = Object.keys(state[key]);
+      let tempArr = Object.keys(state[key]);
+
+      if (key !== "diet" && key !== "totalIngredients" && tempArr.length) {
         sumArr.push(tempArr.toString());
       }
     }
-    sumString = sumArr.toString();
 
+    sumString = sumArr.toString();
+    console.log({
+      includeIngredients: sumString,
+      diet: dietString,
+      number: 10,
+    });
     const recipes = await getRecipes({
       includeIngredients: sumString,
       diet: dietString,
