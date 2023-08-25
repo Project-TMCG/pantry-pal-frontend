@@ -69,7 +69,7 @@ const IngredientCard: React.FC = () => {
   ];
 
   let current = dataArr[currentTopic];
-
+ 
   //functionality for highlighting selected cards
   const [selectedCards, setSelectedCards] = useState<string[]>([]);
 
