@@ -21,8 +21,10 @@ const ServingSize: React.FC<Props> = ({ step }) => {
 
   const singleServingAmount = step.amount / initialServingSize;
 
+  const newServingAmount = servingSize * singleServingAmount
+
   useEffect(() => {
-    setAmount(servingSize * singleServingAmount);
+    setAmount(parseFloat(newServingAmount.toFixed(2)));
   }, [servingSize]);
 
   return (
