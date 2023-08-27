@@ -54,6 +54,13 @@ const Details: React.FC = () => {
     setTitle("Cooking Instructions");
   };
 
+  // This function prevents the decrease servings button from going below zero servings
+  const handleDecreaseServings = () => {
+    if(servingSize > 0){
+      dispatch(decreaseServings())
+    }
+  }
+
   React.useEffect(() => {
     dispatch(toggleTrue());
     dispatch;
@@ -96,7 +103,7 @@ const Details: React.FC = () => {
       <View style={styles.tabTitle}>
         <Text style={styles.tabText}>{tabTitle}</Text>
         <View style={styles.servingBox}>
-          <Pressable onPress={() => dispatch(decreaseServings())}>
+          <Pressable onPress={handleDecreaseServings}>
             <Text>-</Text>
           </Pressable>
           <View style={styles.blackLine} />

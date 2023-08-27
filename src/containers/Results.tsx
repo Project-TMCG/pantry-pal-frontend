@@ -125,7 +125,7 @@ const Results: React.FC = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#FFFCF7",
+    backgroundColor: "#fff",
   },
   topRow: {
     flexDirection: 'row',
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#000000aa",
   },
   otherModalContainer: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "#fff",
     margin: 40,
     padding: 40,
     borderRadius: 20,

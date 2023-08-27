@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     marginTop: CARD_MARGIN,
     marginBottom: CARD_MARGIN,
     // textAlign: "center",
-    // justifyContent: "center",
+    justifyContent: "center",
     // alignItems: "center",
   },
   title: {

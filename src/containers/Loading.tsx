@@ -65,8 +65,9 @@ const Loading: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <ActivityIndicator size="large" color="0000ff" />
-      <Text>"Hold on tight" Loading Results</Text>
+      <ActivityIndicator size="large" color="72927C" />
+      <Text>"Hang on tight!"</Text> 
+      <Text>Whipping up some recipes...</Text>
     </View>
   );
 };

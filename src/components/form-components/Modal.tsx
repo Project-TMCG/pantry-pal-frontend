@@ -62,15 +62,16 @@ const ModalScreen: React.FC = () => {
           autoFocus={true}
           onSubmitEditing={addExtra}
           enablesReturnKeyAutomatically={true}
+          placeholder="Enter Ingredient"
         />
       </KeyboardAvoidingView>
       <ScrollView contentContainerStyle={styles.extraContainer}>
         {extraArr.map((ingredient: string, index: number) => (
           <View key={index} style={styles.extraItem}>
-            <Text numberOfLines={1}>{ingredient}</Text>
             <Pressable onPress={() => dispatch(deleteExtras(ingredient))}>
               <Icon name="close" />
             </Pressable>
+            <Text style={styles.filterButtontext} numberOfLines={1}>{ingredient}</Text>
           </View>
         ))}
       </ScrollView>
@@ -100,19 +101,37 @@ const styles = StyleSheet.create({
   },
   extraItem: {
     marginVertical: 5,
-    padding: 10,
-    borderWidth: 1,
+    padding: 8,
+    // borderWidth: 1,
     // borderColor: "black",
     // width: "fit-content",
     maxWidth: "100%",
     alignSelf: "flex-start",
+    borderRadius: 14,
+    backgroundColor: "#72927C",
+    marginRight: 10,
+    flexDirection: 'row',
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.19,
+    shadowRadius: 5.62,
+    elevation: 6
+  },
+  filterButtontext: {
+    color: "white",
   },
   input: {
+    borderColor: "#F5D2C2",
     height: 40,
-    width: "100%",
-    borderWidth: 1,
-    textAlign: "center",
-    // marginBottom: 40,
+    width: 280,
+    borderWidth: 2,
+    borderRadius: 34,
+    padding: 10,
+    // marginVertical: 6,
+    // marginHorizontal: 6,
   },
 });
 

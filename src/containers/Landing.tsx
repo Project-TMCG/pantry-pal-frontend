@@ -52,6 +52,7 @@ const styles = StyleSheet.create({
   },
   introText: {
     fontSize: 12,
+    margin: 10,
   },
   appName: {
     fontSize: 32,
