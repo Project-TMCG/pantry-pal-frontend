@@ -50,7 +50,7 @@ const ModalScreen: React.FC = () => {
 
   return (
     <View style={styles.container}>
-      <Pressable onPress={closeModal} style={styles.extraItem}>
+      <Pressable onPress={closeModal} style={styles.closeItem}>
         <Icon name="close" />
       </Pressable>
       <KeyboardAvoidingView style={styles.modalContainer}>
@@ -94,12 +94,30 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   extraContainer: {
-    flexGrow: 1,
-    backgroundColor: "white",
+    flexDirection: 'row',    // Arrange items horizontally
+    flexWrap: 'wrap',        // Wrap to the next row when needed
     paddingHorizontal: CARD_MARGIN,
     paddingBottom: CARD_MARGIN,
   },
   extraItem: {
+    marginLeft: 5,
+    marginVertical: 5,
+    padding: 8,
+    borderRadius: 14,
+    backgroundColor: "#72927C",
+    marginRight: 10,
+    flexDirection: 'row',
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.19,
+    shadowRadius: 5.62,
+    elevation: 6
+  },
+  closeItem: {
+    marginLeft: 5,
     marginVertical: 5,
     padding: 8,
     // borderWidth: 1,
