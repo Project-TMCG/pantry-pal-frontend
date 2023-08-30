@@ -51,7 +51,7 @@ const ModalScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <Pressable onPress={closeModal} style={styles.closeItem}>
-        <Icon name="close" />
+        <Icon name="close" color={"white"}/>
       </Pressable>
       <KeyboardAvoidingView style={styles.modalContainer}>
         <TextInput
@@ -120,9 +120,6 @@ const styles = StyleSheet.create({
     marginLeft: 5,
     marginVertical: 5,
     padding: 8,
-    // borderWidth: 1,
-    // borderColor: "black",
-    // width: "fit-content",
     maxWidth: "100%",
     alignSelf: "flex-start",
     borderRadius: 14,
@@ -140,6 +137,7 @@ const styles = StyleSheet.create({
   },
   filterButtontext: {
     color: "white",
+    fontSize: 18,
   },
   input: {
     borderColor: "#F5D2C2",
