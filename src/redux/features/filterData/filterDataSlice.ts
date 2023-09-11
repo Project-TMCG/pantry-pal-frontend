@@ -19,7 +19,7 @@ interface actionPayload {
 export const filterDataSlice = createSlice({
   name: "filterData",
   initialState: {
-    Dish_Type: "Test Data",
+    "Dish Type": "Test Data",
     Equipment: "",
     Calories: "",
     Protein: "",
@@ -35,7 +35,7 @@ export const filterDataSlice = createSlice({
       const payload: filterData = action.payload;
 
       //Add new recipes to all
-      state.Dish_Type = payload.Dish_Type
+      state["Dish Type"] = payload.Dish_Type
       state.Equipment = payload.Equipment
       state.Calories = payload.Calories
       state.Protein = payload.Protein

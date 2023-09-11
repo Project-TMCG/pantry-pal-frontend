@@ -80,25 +80,25 @@ const Reviews: string[] = [
 ] 
 
 interface filterType {
-    "Dish Type": string[],
-    "Equipment": string[],
-    "Calories": string[],
-    "Protein (g)": string[],
-    "Fat (g)": string[],
-    "Fiber (g)": string[],
-    "Carbs (g)": string[],
-    "Cholesterol": string[],
-    "Reviews": string[],
+    Dish_Type: string[],
+    Equipment: string[],
+    Calories: string[],
+    Protein: string[],
+    Fat: string[],
+    Fiber: string[],
+    Carbs: string[],
+    Cholesterol: string[],
+    Reviews: string[],
 }
 
 export const filters: filterType = {
-    "Dish Type": DishType,
-    "Equipment": Equipment,
-    "Calories": Calories,
-    "Protein (g)": Protein,
-    "Fat (g)": Fat,
-    "Fiber (g)": Fiber,
-    "Carbs (g)": Carbs,
-    "Cholesterol": Cholesterol,
-    "Reviews": Reviews,
+    Dish_Type: DishType,
+    Equipment: Equipment,
+    Calories: Calories,
+    Protein: Protein,
+    Fat: Fat,
+    Fiber: Fiber,
+    Carbs: Carbs,
+    Cholesterol: Cholesterol,
+    Reviews: Reviews,
 }
