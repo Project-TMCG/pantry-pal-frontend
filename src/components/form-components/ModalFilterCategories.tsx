@@ -1,7 +1,11 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useEffect } from 'react'
 import { View, ScrollView, Text, Pressable, StyleSheet } from 'react-native'
 import { filters } from './../../services/filters/filters'
 import RadioGroup, { RadioButtonProps } from 'react-native-radio-buttons-group'
+
+//Import Redux Store & Action Dispatch
+import { useSelector, useDispatch } from "react-redux";
+import { setNewData } from "./../../redux/features/filterData/filterDataSlice";
 
 const ModalFilterCategories = () => {
 
@@ -10,7 +14,7 @@ const ModalFilterCategories = () => {
         "Dish Type": string[],
         "Equipment": string[],
         "Calories": string[],
-        "Protien (g)": string[],
+        "Protein (g)": string[],
         "Fat (g)": string[],
         "Fiber (g)": string[],
         "Carbs (g)": string[],
@@ -25,7 +29,7 @@ const ModalFilterCategories = () => {
         "Dish Type": string,
         "Equipment": string,
         "Calories": string,
-        "Protien (g)": string,
+        "Protein (g)": string,
         "Fat (g)": string,
         "Fiber (g)": string,
         "Carbs (g)": string,
@@ -43,7 +47,7 @@ const ModalFilterCategories = () => {
         "Dish Type": "",
         "Equipment": "",
         "Calories": "",
-        "Protien (g)": "",
+        "Protein (g)": "",
         "Fat (g)": "",
         "Fiber (g)": "",
         "Carbs (g)": "",
@@ -73,6 +77,19 @@ const ModalFilterCategories = () => {
         return [];
     }, [selectedFilterCat]);
 
+    //Redux
+    const filterData = useSelector((state:any) => state.filterData)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        setSelectedId(filterData)
+    }, [])
+
+    useEffect(() => {
+        console.log(selectedId)
+        const newFilterData = selectedId;
+        dispatch(setNewData(newFilterData))
+    }, [selectedId])
 
     return (
         <View>
