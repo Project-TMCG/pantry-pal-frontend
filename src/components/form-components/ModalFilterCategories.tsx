@@ -11,30 +11,30 @@ const ModalFilterCategories = () => {
 
     // This is an array of the filter categories from the imported filters object
     interface filterType {
-        Dish_Type: string[],
-        Equipment: string[],
-        Calories: string[],
-        Protein: string[],
-        Fat: string[],
-        Fiber: string[],
-        Carbs: string[],
-        Cholesterol: string[],
-        Reviews: string[],
+        "Dish Type": string[],
+        "Equipment": string[],
+        "Calories": string[],
+        "Protein (g)": string[],
+        "Fat (g)": string[],
+        "Fiber (g)": string[],
+        "Carbs (g)": string[],
+        "Cholesterol (mg)": string[],
+        "Reviews": string[],
     }
 
     type filterKeysType = keyof filterType
     const filterKeys = Object.keys(filters) as filterKeysType[];
 
     interface selectedIdType {
-        Dish_Type: string,
-        Equipment: string,
-        Calories: string,
-        Protein: string,
-        Fat: string,
-        Fiber: string,
-        Carbs: string,
-        Cholesterol: string,
-        Reviews: string,
+        "Dish Type": string,
+        "Equipment": string,
+        "Calories": string,
+        "Protein (g)": string,
+        "Fat (g)": string,
+        "Fiber (g)": string,
+        "Carbs (g)": string,
+        "Cholesterol (mg)": string,
+        "Reviews": string,
     }
 
     type selectedIdKeysType = keyof selectedIdType
@@ -44,15 +44,15 @@ const ModalFilterCategories = () => {
     const [active, setActive] = useState("")
     const [selectedFilterCat, setSelectedFilterCat] = useState<selectedFilterCatType>(null)
     const [selectedId, setSelectedId] = useState<selectedIdType>({
-        Dish_Type: "",
-        Equipment: "",
-        Calories: "",
-        Protein: "",
-        Fat: "",
-        Fiber: "",
-        Carbs: "",
-        Cholesterol: "",
-        Reviews: "",
+        "Dish Type": "",
+        "Equipment": "",
+        "Calories": "",
+        "Protein (g)": "",
+        "Fat (g)": "",
+        "Fiber (g)": "",
+        "Carbs (g)": "",
+        "Cholesterol (mg)": "",
+        "Reviews": "",
     });
     // console.log(selectedFilterCat)
     // console.log(selectedId)
