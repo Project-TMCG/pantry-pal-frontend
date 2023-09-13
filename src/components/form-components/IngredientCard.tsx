@@ -38,6 +38,11 @@ type CardsComponentsProps = {
   ingredients: string[];
 };
 
+interface Ingredient {
+  name: string,
+  image: string | undefined
+}
+
 const IngredientCard: React.FC = () => {
   //redux data
   const dispatch = useDispatch();
@@ -50,7 +55,11 @@ const IngredientCard: React.FC = () => {
   const dietData = useSelector((state: any) => state.selector.diet);
   const SearchStack = createStackNavigator<SearchStackParams>();
   const navigation = useNavigation<NativeStackNavigationProp<SearchStackParams>>();
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 55d4bbba00464d82855c5b0802c2782c299152d3
   //variables
   let scrollableIngredients = ingredients[currentTopic];
   const dataArr: any = [produceData, meatData, dairyData, bakingData, dietData];
@@ -62,11 +71,18 @@ const IngredientCard: React.FC = () => {
     deleteBaking,
     deleteDiet,
   ];
-  let current = dataArr[currentTopic];
 
+  let current = dataArr[currentTopic];
+<<<<<<< HEAD
+
+=======
+ 
+>>>>>>> 55d4bbba00464d82855c5b0802c2782c299152d3
   //functionality for highlighting selected cards
   const [selectedCards, setSelectedCards] = useState<string[]>([]);
+
   const select = (ingredient: string) => {
+
     setSelectedCards((prevSelectedCards) => {
       if (prevSelectedCards.includes(ingredient)) {
         return prevSelectedCards.filter((item) => item !== ingredient);
@@ -74,6 +90,7 @@ const IngredientCard: React.FC = () => {
         return [...prevSelectedCards, ingredient];
       }
     });
+
   };
 
   const handlePress = (ingredient: string) => {
@@ -81,6 +98,7 @@ const IngredientCard: React.FC = () => {
     select(ingredient);
     let add = addArr[currentTopic];
     let remove = deleteArr[currentTopic];
+    
     if (!current.hasOwnProperty(ingredient)) {
       dispatch(add(ingredient));
     } else if (current.hasOwnProperty(ingredient)) {
@@ -93,8 +111,10 @@ const IngredientCard: React.FC = () => {
     let currentData = Object.keys(current);
 
     if (currentData.length) {
+      const matchIngredients = scrollableIngredients.map(ingredient => ingredient.name)
+
       currentData.forEach((item: string) => {
-        if (scrollableIngredients.includes(item)) {
+        if (matchIngredients.includes(item)) {
           select(item);
         }
       });
@@ -139,29 +159,24 @@ const IngredientCard: React.FC = () => {
         </Pressable> */}
       </View>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
-        {scrollableIngredients.map((ingredient: string, index: number) => (
+        {scrollableIngredients.map((ingredient: Ingredient, index: number) => (
           <View
             key={index}
-            style={[
-              styles.card,
-              selectedCards.includes(ingredient) && styles.selectedCard,
-            ]}
+            style={styles.card}
           >
-            <Pressable onPress={() => handlePress(ingredient)}>
+            <Pressable onPress={() => handlePress(ingredient.name)} style={styles.imageWrapper}>
               <Image
-                alt="ingredient"
-                style={{
-                  height: 90,
-                  width: 90,
-                  resizeMode: "contain",
-                  borderRadius: 10,
-                }}
+                alt={ingredient.name}
                 source={{
-                  uri: "https://bonnieplants.com/cdn/shop/products/060721_T110854_201997_202120_Bonnie_RomaineLettuce_ALT_01.jpg?v=1653420386",
+                  uri: ingredient.image,
                 }}
+                style={[
+                  styles.image,
+                  selectedCards.includes(ingredient.name) && styles.selectedImage,
+                ]}
               />
             </Pressable>
-            <Text style={styles.text}>{ingredient}</Text>
+            <Text style={styles.text}>{ingredient.name}</Text>
           </View>
         ))}
       </ScrollView>
@@ -191,28 +206,54 @@ const styles = StyleSheet.create({
     marginBottom: CARD_MARGIN,
   },
   card: {
+    flexbox: 1,
+    flexDirection: "column",
+    justifyContent: "space-around",
+    alignItems: "center",
     width: CARD_WIDTH,
-    height: CARD_HEIGHT,
-    marginTop: CARD_MARGIN * 4,
+    // height: CARD_HEIGHT,
+    marginTop: CARD_MARGIN,
     marginBottom: CARD_MARGIN,
     backgroundColor: "white",
-    // borderRadius: 80,
+    borderRadius: 10,
     elevation: 3,
     textAlign: "center",
-    justifyContent: "center",
-    alignItems: "center",
+    paddingTop: 3,
+    paddingBottom: 1,
+    // borderColor: 'black',
+    // borderWidth: 5,
   },
-  selectedCard: {
-    backgroundColor: "#7474741a",
-    height: 100,
-    width: 100,
+  image: {
+    height:"100%",
+    width: "100%",
+    resizeMode: "cover",
+    overflow: "hidden",
+    borderRadius: 10,
+    borderWidth: 3,
+    borderColor: "white",
+  },
+  imageWrapper: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: 'center',
+    height: 80,
+    width: 80,
+    margin: 0,
+    padding: 0,
+    borderColor: "blue",
+  },
+  selectedImage: {
+    borderColor: "#72927C",
   },
   text: {
+    marginTop: 1,
     fontSize: 13,
     lineHeight: 15,
-    paddingTop: 10,
-    // fontWeight: "bold",
+    paddingTop: 1,
+    fontWeight: "bold",
     letterSpacing: 0.25,
+    // borderWidth: 2,
+    // borderColor: 'red'
   },
 });
 

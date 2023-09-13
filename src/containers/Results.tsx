@@ -1,7 +1,7 @@
 //Import Dependencies
 import * as React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { StyleSheet, Text, View } from "react-native";
+import { Modal, StyleSheet, Text, View, Pressable } from "react-native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useState } from "react";
 
@@ -9,40 +9,40 @@ import { useState } from "react";
 import RecipeCard from "../components/form-components/RecipeCard";
 import TextField from "../components/form-components/TextField";
 import FilterButtonGroup from "../components/form-components/FilterButtonGroup";
+import FilterOverlayButton from "../components/form-components/FiltersOverlayButton";
+import ModalFilterCategories from "../components/form-components/ModalFilterCategories";
 
 //Types for React Navigation
 import { RootStackParams } from "../../App";
+import { Button } from "react-native-elements";
+import { useSelector } from "react-redux";
 
 //____Mock Data to later be deleted and replaced with API data____
 type Recipe = {
-  name: string;
+  title: string;
   cuisine: string;
+  image: string;
+  aggregateLikes: number;
 };
 
-const recipes: Recipe[] = [
-  {name: "hamburger", cuisine: "American"}, 
-  {name: "pizza", cuisine: "Italian"}, 
-  {name: "empanadas", cuisine: "Bolivian"},
-  {name: "buffalo wings", cuisine: "American"},
-  {name: "tacos", cuisine: "Mexican"},
-  {name: "quesadilla", cuisine: "Mexican"},
-  {name: "pasta", cuisine: "Italian"},
-  {name: "saltenas", cuisine: "Bolivian"},
-  {name: "sushi", cuisine: "Japanese"},
-  {name: "ramen", cuisine: "Japanese"},
-  {name: "lo mein", cuisine: "Chinese"},
-  {name: "pho", cuisine: "Chinese"},
-]
-//Filter button options
-// Function that condenses all the cuisine filter options with the Set removing duplicates
-const options = ["All", ... new Set(recipes.map((recipe) => recipe.cuisine))]
-//_____End of Mock Data____
-
 const Results: React.FC = () => {
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParams>>();
+  const recipeObject = useSelector((state: any) => state.recipe.all);
+  const recipes = Object.keys(recipeObject).map((key) => {
+    return recipeObject[key];
+  });
+  const allCuisines = Array.from(
+    new Set(recipes.reduce((acc, recipe) => [...acc, ...recipe.cuisines], []))
+  ) as string[];
+
+  const options: string[] = ["All", ...allCuisines];
+
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParams>>();
+
   // Hooks
-  const [selectedFilter, setSelectedFilter] = useState<string>('All')
+  const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>(recipes);
+  const [isModalVisible, setModalVisible] = useState<boolean>(false);
 
   // This function handles the cuisine filter option button selection
   const handleFilterSelect = (filter: string) => {
@@ -50,31 +50,74 @@ const Results: React.FC = () => {
     if (filter === "All") {
       setFilteredRecipes(recipes);
     } else {
-      const filtered = recipes.filter((recipe) => recipe.cuisine === filter);
+      const filtered = recipes.filter((recipe) =>
+        recipe.cuisines.includes(filter)
+      );
       setFilteredRecipes(filtered);
     }
   };
 
   // This function handles the search entries of the search bar
   const handleSearchbarEntry = (text: string) => {
+    const recipeSearched = recipes.filter((recipe) =>
+      recipe.title.toLowerCase().includes(text.toLowerCase())
+    );
 
-    const recipeSearched = recipes.find((recipe) => recipe.name.toLowerCase() == text.toLowerCase());
+    if (recipeSearched) {
+      setFilteredRecipes(recipeSearched);
+    } else {
+      setFilteredRecipes(recipes);
+    }
+  };
 
-    if(recipeSearched) {
-      setFilteredRecipes([recipeSearched]);
-    }
-    else {
-      const filtered = recipes.filter((recipe) => recipe.cuisine === text);
-      setFilteredRecipes(filtered)
-    }
+  // This function handles the visibility of the modal
+  const handleModalVisible = () => {
+    setModalVisible(!isModalVisible);
   }
-
 
   return (
     <View style={styles.container}>
-      <TextField placeholderText="Search Recipe" onSearchEntry={handleSearchbarEntry}/>
-      <FilterButtonGroup options={options} onFilterSelect={handleFilterSelect}/>
-      <RecipeCard recipes={filteredRecipes.map(recipe => recipe.name)} />
+      <View style={styles.topRow}>
+        {/* Search Bar */}
+        <TextField
+          placeholderText="Search Recipe"
+          onSearchEntry={handleSearchbarEntry}
+        />
+        {/* Filters Modal */}
+        <Pressable onPress={() => handleModalVisible()}>
+          <FilterOverlayButton />
+        </Pressable>
+        <Modal
+          transparent={true}
+          visible={isModalVisible}
+        >
+          <View style={styles.modalContainer}>
+            <View style={styles.otherModalContainer}>
+              <View style={styles.modalTopRow}>
+                <Pressable style={styles.modalOptionButtons}>
+                  <Text style={styles.modalTopButtonText}>Clear All</Text>
+                </Pressable>
+                <Pressable style={styles.modalOptionButtons} onPress={() => handleModalVisible()}>
+                  <Text style={styles.modalTopButtonText}>Apply Filters</Text>
+                </Pressable>
+              </View>
+              <ModalFilterCategories />
+              <Button title="Close Modal" onPress={() => handleModalVisible()}></Button>
+            </View>
+          </View>
+        </Modal>
+      </View>
+      {/* Horizontal Sliding Cuisine Filter Options */}
+      <FilterButtonGroup
+        options={options}
+        onFilterSelect={handleFilterSelect}
+      />
+      {/* Recipe Cards */}
+      <RecipeCard
+        recipes={filteredRecipes.map((recipe) => recipe.title)}
+        images={filteredRecipes.map((recipe) => recipe.image)}
+        rating={filteredRecipes.map((recipe) => recipe.aggregateLikes)}
+      />
     </View>
   );
 };
@@ -83,8 +126,44 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+  },
+  topRow: {
+    flexDirection: 'row',
+  },
+  modalContainer: {
+    flex: 1,
+    backgroundColor: "#000000aa",
+  },
+  otherModalContainer: {
+    backgroundColor: "#fff",
+    margin: 40,
+    padding: 40,
+    borderRadius: 20,
+    width: '80%',
+  },
+  modalOptionButtons: {
+    borderRadius: 14,
+    padding: 8,
+    marginHorizontal: 5,
+    marginVertical: 4,
+    backgroundColor: '#72927C',
+    // Shadow styling
+    shadowColor: "#000000",
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.19,
+    shadowRadius: 5.62,
+    elevation: 6,
+  },
+  modalTopRow: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  modalTopButtonText: {
+    fontSize: 12,
+    color: '#FFFCF7',
   },
 });
 

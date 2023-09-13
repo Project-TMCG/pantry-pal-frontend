@@ -7,23 +7,22 @@ import { useSelector, useDispatch } from "react-redux";
 import { addRecipes } from "./../../redux/features/recipe/recipeSlice";
 
 //Import Axios API Call
-import getRecipes from "./../../services/axios"
+import getRecipes from "./../../services/axios";
 
 //Declare and Import Types
 interface Props {}
 
 const Counter: React.FC<Props> = ({}) => {
-  const recentRecipeRetrieved = useSelector((state: any) => state.recipe.lastCall);
+  const recentRecipeRetrieved = useSelector(
+    (state: any) => state.recipe.lastCall
+  );
   const allRecipesRetrieved = useSelector((state: any) => state.recipe.all);
 
   const dispatch = useDispatch();
-  
-  console.log(recentRecipeRetrieved);
-  console.log(allRecipesRetrieved);
 
-  async function onButton(){
-    const newRecipes = await getRecipes()
-    dispatch(addRecipes(newRecipes))
+  async function onButton() {
+    const newRecipes = await getRecipes();
+    dispatch(addRecipes(newRecipes));
   }
 
   return (

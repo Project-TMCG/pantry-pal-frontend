@@ -1,7 +1,7 @@
 //Import Dependencies
 import * as React from "react";
 import { useState, useEffect } from "react";
-
+import ActiceRecipeName from "./src/components/form-components/ActiveRecipeName";
 //Import React Navigation
 import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import {
@@ -26,6 +26,7 @@ import { View } from "react-native";
 import { Dimensions, Pressable, StyleSheet } from "react-native";
 import { Icon, Text } from "react-native-elements";
 import BackButton from "./src/components/form-components/BackButtonComponent";
+import { useSelector } from "react-redux";
 
 //TypeScripts React Navigation Types
 export type RootStackParams = {
@@ -37,6 +38,7 @@ export type RootStackParams = {
   Modal: undefined;
 };
 const { width } = Dimensions.get("window");
+
 //App Component
 export default function App() {
   const RootStack = createNativeStackNavigator<RootStackParams>();
@@ -45,14 +47,20 @@ export default function App() {
     <Provider store={store}>
       <NavigationContainer>
         <RootStack.Navigator initialRouteName="Landing">
-          <RootStack.Screen name="Landing" component={Landing} />
+          <RootStack.Screen 
+          name="Landing" 
+          component={Landing}
+          options={{
+            headerShown: false,
+          }}
+          />
           <RootStack.Screen
             name="Search"
+            component={Search}
             options={{
               headerShown: false,
               headerBackVisible: false,
             }}
-            component={Search}
           />
           <RootStack.Screen
             name="Loading"
@@ -65,10 +73,12 @@ export default function App() {
           <RootStack.Screen
             name="Details"
             options={{
+              headerBackVisible: false,
+              headerTitle: '',
               headerLeft: () => (
                 <View style={styles.header}>
                   <BackButton />
-                  <Text style={styles.headerText}>Vegetarian Falafel</Text>
+                  <ActiceRecipeName />
                 </View>
               ),
             }}
@@ -104,8 +114,5 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     width: width,
-  },
-  headerText: {
-    fontSize: 25,
   },
 });
