@@ -27,6 +27,44 @@ up to 10 named objects (recipes) in the returned object.
         "servings": 6,
         "sourceUrl": "https://www.foodista.com/recipe/BG5RMDJW/vegetarian-falafels",
         "image": "https://spoonacular.com/recipeImages/664658-556x370.jpg",
+        "nutrition": {
+            "Calories": {
+                "amount": 557.16,
+                "unit": "kcal"
+            },
+            "Fat": {
+                "amount": 10.47,
+                "unit": "g"
+            },
+            "Saturated Fat": {
+                "amount": 2.18,
+                "unit": "g"
+            },
+            "Carbohydrates": {
+                "amount": 97.69,
+                "unit": "g"
+            },
+            "Sugar": {
+                "amount": 11.21,
+                "unit": "g"
+            },
+            "Cholesterol": {
+                "amount": 5.31,
+                "unit": "mg"
+            },
+            "Sodium": {
+                "amount": 1209.83,
+                "unit": "mg"
+            },
+            "Protein": {
+                "amount": 21.82,
+                "unit": "g"
+            },
+            "Fiber": {
+                "amount": 14.75,
+                "unit": "g"
+            }
+        },
         "summary": "Vegetarian Falafels requires roughly <b>45 minutes</b> from start to finish. Watching your figure? This lacto ovo vegetarian recipe has <b>552 calories</b>, <b>22g of protein</b>, and <b>10g of fat</b> per serving. This recipe serves 6 and costs $1.9 per serving. 1 person has made this recipe and would make it again. A mixture of lrgs garlic clove, tomatoes, pepper flakes, and a handful of other ingredients are all it takes to make this recipe so delicious. Only a few people really liked this main course. It is brought to you by Foodista. With a spoonacular <b>score of 67%</b>, this dish is solid. If you like this recipe, take a look at these similar recipes: <a href=\"https://spoonacular.com/recipes/vegetarian-falafels-1576695\">Vegetarian Falafels</a>, <a href=\"https://spoonacular.com/recipes/vegetarian-falafels-1424641\">Vegetarian Falafels</a>, and <a href=\"https://spoonacular.com/recipes/yam-falafels-263199\">Yam Falafels</a>.",
         "cuisines": [],
         "dishTypes": [
@@ -61,93 +99,111 @@ up to 10 named objects (recipes) in the returned object.
         "ingredients": {
             "bulgur wheat": {
                 "original": "cup bulgur wheat",
-                "amount": 1,
-                "unit": "cup"
+                "amount": 1.0,
+                "unit": "cup",
+                "image": "bulgur-wheat.jpg"
             },
             "coarsely bread": {
                 "original": "2 cups coarsely crumbled stale whole-wheat bread",
-                "amount": 2,
-                "unit": "cups"
+                "amount": 2.0,
+                "unit": "cups",
+                "image": "white-bread.jpg"
             },
             "garbanzo beans": {
                 "original": "1 can garbanzo beans (16 oz) drained and",
-                "amount": 16,
-                "unit": "oz"
+                "amount": 16.0,
+                "unit": "oz",
+                "image": "chickpeas.png"
             },
             "lemon": {
                 "original": "1 large lemon juiced",
-                "amount": 1,
-                "unit": "large"
+                "amount": 1.0,
+                "unit": "large",
+                "image": "lemon.png"
             },
             "lrgs garlic clove": {
                 "original": "2 lrgs garlic clove finely chopped",
-                "amount": 2,
-                "unit": ""
+                "amount": 2.0,
+                "unit": "",
+                "image": "garlic.jpg"
             },
             "cilantro": {
                 "original": "4 tablespoons fresh cilantro chopped",
-                "amount": 4,
-                "unit": "tablespoons"
+                "amount": 4.0,
+                "unit": "tablespoons",
+                "image": "cilantro.png"
             },
             "pepper flakes": {
                 "original": "teaspoon red pepper flakes crushed",
-                "amount": 1,
-                "unit": "teaspoon"
+                "amount": 1.0,
+                "unit": "teaspoon",
+                "image": "red-pepper-flakes.jpg"
             },
             "ground cumin": {
                 "original": "teaspoon ground cumin",
-                "amount": 1,
-                "unit": "teaspoon"
+                "amount": 1.0,
+                "unit": "teaspoon",
+                "image": "ground-cumin.jpg"
             },
             "pepper": {
                 "original": "teaspoon freshly ground black pepper",
-                "amount": 1,
-                "unit": "teaspoon"
+                "amount": 1.0,
+                "unit": "teaspoon",
+                "image": "pepper.jpg"
             },
             "scallions": {
                 "original": "3 scallions shredded",
-                "amount": 3,
-                "unit": ""
+                "amount": 3.0,
+                "unit": "",
+                "image": "spring-onions.jpg"
             },
             "salt": {
                 "original": "teaspoon salt",
-                "amount": 1,
-                "unit": "teaspoon"
+                "amount": 1.0,
+                "unit": "teaspoon",
+                "image": "salt.jpg"
             },
             "vegetable oil": {
                 "original": "Vegetable oil for frying",
-                "amount": 6,
-                "unit": "servings"
+                "amount": 6.0,
+                "unit": "servings",
+                "image": "vegetable-oil.jpg"
             },
             "rounds pita bread": {
                 "original": "4 rounds pita bread warmed and halved",
-                "amount": 4,
-                "unit": ""
+                "amount": 4.0,
+                "unit": "",
+                "image": "pita-bread.jpg"
             },
             "tomatoes": {
                 "original": "2 tomatoes sliced",
-                "amount": 2,
-                "unit": ""
+                "amount": 2.0,
+                "unit": "",
+                "image": "tomato.png"
             },
             "cucumber": {
                 "original": "1 cucumber julienned",
-                "amount": 1,
-                "unit": ""
+                "amount": 1.0,
+                "unit": "",
+                "image": "cucumber.jpg"
             },
             "bell pepper": {
                 "original": "1 bell pepper thinly sliced",
-                "amount": 1,
-                "unit": ""
+                "amount": 1.0,
+                "unit": "",
+                "image": "bell-pepper-orange.png"
             },
             "lettuce": {
                 "original": "1 cup lettuce loosely packed finely shredded",
-                "amount": 1,
-                "unit": "cup"
+                "amount": 1.0,
+                "unit": "cup",
+                "image": "iceberg-lettuce.jpg"
             },
             "yoghurt sauce": {
                 "original": "cup tahini or yoghurt sauce",
-                "amount": 1,
-                "unit": "cup"
+                "amount": 1.0,
+                "unit": "cup",
+                "image": "plain-yogurt.jpg"
             }
         },
         "instructionSummary": "Makes about thirty 1-inch balls\nIn a bowl, cover the bulgur with cold water and allow to soak for 30 minutes. while the bulgur is soaking, put the bread in another bowl, cover with cold water and soak for 15 minutes. Drain the bread in a colander, squeezing out the excess moisture. Drain the bulgur well through a fine sieve. In the bowl of a food processor fitted with the metal chopping blade, combine the garbanzos, lemon juice, garlic, cilantro, pepper flakes, cumin, black pepper and scallions. Process with an off-on motion until the mixture is finely chopped. Transfer the mixture to a bowl. Stir in the bulgur and bread\nHeat 1 inch of oil in a heavy 12 inch skillet over medium high heat until very hot but not smoking. Add the patties to the pan without crowding and fry for 2-3 minutes, turning once, until golden brown all over. As the patties brown, transfer to paper towels to drain and keep warm while frying the remainder. To serve, tuck 3-4 balls or patties in each pita half. Add several slices of tomato, cucumber, and bell pepper, and a sprinkling of scallions and lettuce. Drizzle with the tahini and 4NOTES : These are Delicious for Dinner with Hummus and Tabouli Salad.\nNOTES : These are Delicious for Dinner with Hummus and Tabouli Salad.\nHealthy and Fairly Low Fat.\nThe red pepper flakes gives this Middle Eastern Favorite a slow burn...a perfect partner for garlic-yogurt sauce or tahini.",
