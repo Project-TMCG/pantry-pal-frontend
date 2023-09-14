@@ -13,15 +13,15 @@ interface savedIndex {
 }
 
 interface optionValue {
-  "Dish Type": string | null;
-  "Equipment": string | null;
-  "Calories": number | null;
-  "Protein (g)": number | null;
-  "Fat (g)": number | null;
-  "Fiber (g)": number | null;
-  "Carbs (g)": number | null;
-  "Cholesterol (mg)": number | null;
-  "Reviews": string | null;
+  "Dish Type": string | undefined;
+  "Equipment": string | undefined;
+  "Calories": string | undefined;
+  "Protein (g)": string | undefined;
+  "Fat (g)": string | undefined;
+  "Fiber (g)": string | undefined;
+  "Carbs (g)": string | undefined;
+  "Cholesterol (mg)": string | undefined;
+  "Reviews": string | undefined;
 }
 
 interface filterData {
@@ -52,15 +52,15 @@ export const filterDataSlice = createSlice({
       "Reviews": undefined,
     } as savedIndex,
     optionValues: {
-      "Dish Type": null,
-      "Equipment": null,
-      "Calories": null,
-      "Protein (g)": null,
-      "Fat (g)": null,
-      "Fiber (g)": null,
-      "Carbs (g)": null,
-      "Cholesterol (mg)": null,
-      "Reviews": null,
+      "Dish Type": undefined,
+      "Equipment": undefined,
+      "Calories": undefined,
+      "Protein (g)": undefined,
+      "Fat (g)": undefined,
+      "Fiber (g)": undefined,
+      "Carbs (g)": undefined,
+      "Cholesterol (mg)": undefined,
+      "Reviews": undefined,
     } as optionValue
   } as filterData,
   reducers: {
@@ -96,6 +96,9 @@ export const filterDataSlice = createSlice({
       state.optionValues["Carbs (g)"] = payload["Carbs (g)"];
       state.optionValues["Cholesterol (mg)"] = payload["Cholesterol (mg)"];
       state.optionValues["Reviews"] = payload["Reviews"];
+
+      console.log("This is what optionValues looks like after an update:")
+      console.log(state.optionValues)
     }
   },
 });

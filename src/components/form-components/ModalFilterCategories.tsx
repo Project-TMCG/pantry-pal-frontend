@@ -88,7 +88,19 @@ const ModalFilterCategories = () => {
   useEffect(() => {
     const newSavedIndex = selectedId;
     dispatch(saveIndex(newSavedIndex));
-    // dispatch(saveValue())
+
+    const newOptionValues = {
+      "Dish Type": selectedId["Dish Type"] != undefined ? filters["Dish Type"][Number(selectedId["Dish Type"])] : undefined,
+      "Equipment": selectedId["Equipment"] != undefined ? filters["Equipment"][Number(selectedId["Equipment"])] : undefined,
+      "Calories": selectedId["Calories"] != undefined ? filters["Calories"][Number(selectedId["Calories"])] : undefined,
+      "Protein (g)": selectedId["Protein (g)"] != undefined ? filters["Protein (g)"][Number(selectedId["Protein (g)"])] : undefined,
+      "Fat (g)": selectedId["Fat (g)"] != undefined ? filters["Fat (g)"][Number(selectedId["Fat (g)"])] : undefined,
+      "Fiber (g)": selectedId["Fiber (g)"] != undefined ? filters["Fiber (g)"][Number(selectedId["Fiber (g)"])] : undefined,
+      "Carbs (g)": selectedId["Carbs (g)"] != undefined ? filters["Dish Type"][Number(selectedId["Dish Type"])] : undefined,
+      "Cholesterol (mg)": selectedId["Cholesterol (mg)"] != undefined ? filters["Cholesterol (mg)"][Number(selectedId["Cholesterol (mg)"])] : undefined,
+      "Reviews": selectedId["Reviews"] != undefined ? filters["Reviews"][Number(selectedId["Reviews"])] : undefined,
+    }
+    dispatch(saveValue(newOptionValues))
   }, [selectedId]);
 
   return (
