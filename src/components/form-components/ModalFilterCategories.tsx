@@ -5,35 +5,35 @@ import RadioGroup, { RadioButtonProps } from "react-native-radio-buttons-group";
 
 //Import Redux Store & Action Dispatch
 import { useSelector, useDispatch } from "react-redux";
-import { setNewData } from "./../../redux/features/filterData/filterDataSlice";
+import { saveIndex, saveValue } from "./../../redux/features/filterData/filterDataSlice";
 
 const ModalFilterCategories = () => {
   // This is an array of the filter categories from the imported filters object
   interface filterType {
-    "Dish Type": string[];
-    Equipment: string[];
-    Calories: string[];
-    "Protein (g)": string[];
-    "Fat (g)": string[];
-    "Fiber (g)": string[];
-    "Carbs (g)": string[];
-    "Cholesterol (mg)": string[];
-    Reviews: string[];
+    "Dish Type": Array<string | null>;
+    "Equipment": Array<string | null>;
+    "Calories": Array<string | null>;
+    "Protein (g)": Array<string | null>;
+    "Fat (g)": Array<string | null>;
+    "Fiber (g)": Array<string | null>;
+    "Carbs (g)": Array<string | null>;
+    "Cholesterol (mg)": Array<string | null>;
+    "Reviews": Array<string | null>;
   }
 
   type filterKeysType = keyof filterType;
   const filterKeys = Object.keys(filters) as filterKeysType[];
 
   interface selectedIdType {
-    "Dish Type": string;
-    Equipment: string;
-    Calories: string;
-    "Protein (g)": string;
-    "Fat (g)": string;
-    "Fiber (g)": string;
-    "Carbs (g)": string;
-    "Cholesterol (mg)": string;
-    Reviews: string;
+    "Dish Type": string | undefined;
+    "Equipment": string | undefined;
+    "Calories": string | undefined;
+    "Protein (g)": string | undefined;
+    "Fat (g)": string | undefined;
+    "Fiber (g)": string | undefined;
+    "Carbs (g)": string | undefined;
+    "Cholesterol (mg)": string | undefined;
+    "Reviews": string | undefined;
   }
 
   type selectedIdKeysType = keyof selectedIdType;
@@ -44,15 +44,15 @@ const ModalFilterCategories = () => {
   const [selectedFilterCat, setSelectedFilterCat] =
     useState<selectedFilterCatType>(null);
   const [selectedId, setSelectedId] = useState<selectedIdType>({
-    "Dish Type": "",
-    Equipment: "",
-    Calories: "",
-    "Protein (g)": "",
-    "Fat (g)": "",
-    "Fiber (g)": "",
-    "Carbs (g)": "",
-    "Cholesterol (mg)": "",
-    Reviews: "",
+    "Dish Type": undefined,
+    "Equipment": undefined,
+    "Calories": undefined,
+    "Protein (g)": undefined,
+    "Fat (g)": undefined,
+    "Fiber (g)": undefined,
+    "Carbs (g)": undefined,
+    "Cholesterol (mg)": undefined,
+    "Reviews": undefined,
   });
 
   // This function handles the selected filter categories
@@ -78,16 +78,17 @@ const ModalFilterCategories = () => {
   }, [selectedFilterCat]);
 
   //Redux
-  const filterData = useSelector((state: any) => state.filterData);
+  const savedIndex = useSelector((state: any) => state.filterData.savedIndex);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    setSelectedId(filterData);
+    setSelectedId(savedIndex);
   }, []);
 
   useEffect(() => {
-    const newFilterData = selectedId;
-    dispatch(setNewData(newFilterData));
+    const newSavedIndex = selectedId;
+    dispatch(saveIndex(newSavedIndex));
+    // dispatch(saveValue())
   }, [selectedId]);
 
   return (

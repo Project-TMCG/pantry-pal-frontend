@@ -1,55 +1,105 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { filters } from "../../../services/filters/filters";
-interface filterData {
-  "Dish Type": string;
-  Equipment: string;
-  Calories: string;
-  "Protein (g)": string;
-  "Fat (g)": string;
-  "Fiber (g)": string;
-  "Carbs (g)": string;
-  "Cholesterol (mg)": string;
-  Reviews: string;
+
+interface savedIndex {
+  "Dish Type": string | undefined;
+  "Equipment": string | undefined;
+  "Calories": string | undefined;
+  "Protein (g)": string | undefined;
+  "Fat (g)": string | undefined;
+  "Fiber (g)": string | undefined;
+  "Carbs (g)": string | undefined;
+  "Cholesterol (mg)": string | undefined;
+  "Reviews": string | undefined;
 }
 
-interface actionPayload {
-  payload: filterData;
+interface optionValue {
+  "Dish Type": string | null;
+  "Equipment": string | null;
+  "Calories": number | null;
+  "Protein (g)": number | null;
+  "Fat (g)": number | null;
+  "Fiber (g)": number | null;
+  "Carbs (g)": number | null;
+  "Cholesterol (mg)": number | null;
+  "Reviews": string | null;
+}
+
+interface filterData {
+  savedIndex: savedIndex,
+  optionValues: optionValue
+}
+
+interface indexPayload {
+  payload: savedIndex;
+}
+
+interface valuePayload {
+  payload: optionValue;
 }
 
 export const filterDataSlice = createSlice({
   name: "filterData",
   initialState: {
-    "Dish Type": "",
-    Equipment: "",
-    Calories: "",
-    "Protein (g)": "",
-    "Fat (g)": "",
-    "Fiber (g)": "",
-    "Carbs (g)": "",
-    "Cholesterol (mg)": "",
-    Reviews: "",
-  },
+    savedIndex:{
+      "Dish Type": undefined,
+      "Equipment": undefined,
+      "Calories": undefined,
+      "Protein (g)": undefined,
+      "Fat (g)": undefined,
+      "Fiber (g)": undefined,
+      "Carbs (g)": undefined,
+      "Cholesterol (mg)": undefined,
+      "Reviews": undefined,
+    } as savedIndex,
+    optionValues: {
+      "Dish Type": null,
+      "Equipment": null,
+      "Calories": null,
+      "Protein (g)": null,
+      "Fat (g)": null,
+      "Fiber (g)": null,
+      "Carbs (g)": null,
+      "Cholesterol (mg)": null,
+      "Reviews": null,
+    } as optionValue
+  } as filterData,
   reducers: {
-    setNewData: (state, action: actionPayload) => {
-      //Get New searchData Object from Payload
-      const payload: filterData = action.payload;
+    saveIndex: (state, action: indexPayload) => {
+      //Get saved indexes on ModalFilterCategories.tsx from payload object
+      const payload: savedIndex = action.payload;
 
       //Add new recipes to all
-      state["Dish Type"] = payload["Dish Type"];
-      state["Equipment"] = payload["Equipment"];
-      state["Calories"] = filters["Calories"][parseInt(payload["Calories"])];
-      state["Protein (g)"] = payload["Protein (g)"];
-      state["Fat (g)"] = payload["Fat (g)"];
-      state["Fiber (g)"] = payload["Fiber (g)"];
-      state["Carbs (g)"] = payload["Carbs (g)"];
-      state["Cholesterol (mg)"] = payload["Cholesterol (mg)"];
-      state["Reviews"] = payload["Reviews"];
+      state.savedIndex["Dish Type"] = payload["Dish Type"];
+      state.savedIndex["Equipment"] = payload["Equipment"];
+      state.savedIndex["Calories"] = payload["Calories"];
+      state.savedIndex["Protein (g)"] = payload["Protein (g)"];
+      state.savedIndex["Fat (g)"] = payload["Fat (g)"];
+      state.savedIndex["Fiber (g)"] = payload["Fiber (g)"];
+      state.savedIndex["Carbs (g)"] = payload["Carbs (g)"];
+      state.savedIndex["Cholesterol (mg)"] = payload["Cholesterol (mg)"];
+      state.savedIndex["Reviews"] = payload["Reviews"];
 
-      console.log(state["Calories"], "redux data");
+      console.log("This is what savedIndex looks like after an update:")
+      console.log(state.savedIndex)
     },
+    saveValue: (state, action: valuePayload) => {
+      //Get the option value that is selected on ModalFilterCategories.tsx from payload object
+      const payload: optionValue = action.payload;
+
+      //Add new recipes to all
+      state.optionValues["Dish Type"] = payload["Dish Type"];
+      state.optionValues["Equipment"] = payload["Equipment"];
+      state.optionValues["Calories"] = payload["Calories"];
+      state.optionValues["Protein (g)"] = payload["Protein (g)"];
+      state.optionValues["Fat (g)"] = payload["Fat (g)"];
+      state.optionValues["Fiber (g)"] = payload["Fiber (g)"];
+      state.optionValues["Carbs (g)"] = payload["Carbs (g)"];
+      state.optionValues["Cholesterol (mg)"] = payload["Cholesterol (mg)"];
+      state.optionValues["Reviews"] = payload["Reviews"];
+    }
   },
 });
 
-export const { setNewData } = filterDataSlice.actions;
+export const { saveIndex, saveValue } = filterDataSlice.actions;
 
 export default filterDataSlice.reducer;
