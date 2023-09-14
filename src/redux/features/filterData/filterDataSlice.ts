@@ -1,33 +1,33 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-
+import { filters } from "../../../services/filters/filters";
 interface filterData {
-  "Dish Type": string,
-  "Equipment": string,
-  "Calories": string,
-  "Protein (g)": string,
-  "Fat (g)": string,
-  "Fiber (g)": string,
-  "Carbs (g)": string,
-  "Cholesterol (mg)": string,
-  "Reviews": string,
+  "Dish Type": string;
+  Equipment: string;
+  Calories: string;
+  "Protein (g)": string;
+  "Fat (g)": string;
+  "Fiber (g)": string;
+  "Carbs (g)": string;
+  "Cholesterol (mg)": string;
+  Reviews: string;
 }
 
 interface actionPayload {
-  payload: filterData
+  payload: filterData;
 }
 
 export const filterDataSlice = createSlice({
   name: "filterData",
   initialState: {
-    "Dish Type": "Test Data",
-    "Equipment": "",
-    "Calories": "",
+    "Dish Type": "",
+    Equipment: "",
+    Calories: "",
     "Protein (g)": "",
     "Fat (g)": "",
     "Fiber (g)": "",
     "Carbs (g)": "",
     "Cholesterol (mg)": "",
-    "Reviews": "",
+    Reviews: "",
   },
   reducers: {
     setNewData: (state, action: actionPayload) => {
@@ -35,15 +35,17 @@ export const filterDataSlice = createSlice({
       const payload: filterData = action.payload;
 
       //Add new recipes to all
-      state["Dish Type"] = payload["Dish Type"]
-      state["Equipment"] = payload["Equipment"]
-      state["Calories"] = payload["Calories"]
-      state["Protein (g)"] = payload["Protein (g)"]
-      state["Fat (g)"] = payload["Fat (g)"]
-      state["Fiber (g)"] = payload["Fiber (g)"]
-      state["Carbs (g)"] = payload["Carbs (g)"]
-      state["Cholesterol (mg)"] = payload["Cholesterol (mg)"]
-      state["Reviews"] = payload["Reviews"]
+      state["Dish Type"] = payload["Dish Type"];
+      state["Equipment"] = payload["Equipment"];
+      state["Calories"] = filters["Calories"][parseInt(payload["Calories"])];
+      state["Protein (g)"] = payload["Protein (g)"];
+      state["Fat (g)"] = payload["Fat (g)"];
+      state["Fiber (g)"] = payload["Fiber (g)"];
+      state["Carbs (g)"] = payload["Carbs (g)"];
+      state["Cholesterol (mg)"] = payload["Cholesterol (mg)"];
+      state["Reviews"] = payload["Reviews"];
+
+      console.log(state["Calories"], "redux data");
     },
   },
 });
