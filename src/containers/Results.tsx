@@ -23,10 +23,12 @@ type Recipe = {
   cuisine: string;
   image: string;
   aggregateLikes: number;
+  nutrition: {};
 };
 
 const Results: React.FC = () => {
   const recipeObject = useSelector((state: any) => state.recipe.all);
+  const filterData = useSelector((state: any) => state.filterData);
   const recipes = Object.keys(recipeObject).map((key) => {
     return recipeObject[key];
   });
@@ -75,6 +77,22 @@ const Results: React.FC = () => {
     setModalVisible(!isModalVisible);
   };
 
+  //This function applies modal filters to the recipes
+
+  const applyModalFilters = () => {
+    let filtered = [];
+    for (let i = 0; i < recipes.length; i++) {
+      let calorieData = parseInt(filterData.Calories.slice(0, 3));
+      if (calorieData > recipes[i].nutrition.Calories.amount) {
+        filtered.push(recipes[i]);
+      }
+
+      setFilteredRecipes(filtered);
+    }
+
+    handleModalVisible();
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.topRow}>
@@ -96,7 +114,7 @@ const Results: React.FC = () => {
                 </Pressable>
                 <Pressable
                   style={styles.modalOptionButtons}
-                  onPress={() => handleModalVisible()}
+                  onPress={() => applyModalFilters()}
                 >
                   <Text style={styles.modalTopButtonText}>Apply Filters</Text>
                 </Pressable>

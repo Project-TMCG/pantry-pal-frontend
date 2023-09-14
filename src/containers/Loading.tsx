@@ -49,8 +49,6 @@ const Loading: React.FC = () => {
       alert("no results found");
       navigation.pop();
     } else {
-      for (const key in recipes) {
-      }
       dispatch(addRecipes(recipes));
       navigation.navigate("Results");
     }
