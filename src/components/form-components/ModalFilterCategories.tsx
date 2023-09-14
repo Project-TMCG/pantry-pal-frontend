@@ -10,30 +10,30 @@ import { setNewData } from "./../../redux/features/filterData/filterDataSlice";
 const ModalFilterCategories = () => {
   // This is an array of the filter categories from the imported filters object
   interface filterType {
-    "Dish Type": string[];
-    Equipment: string[];
-    Calories: string[];
-    "Protein (g)": string[];
-    "Fat (g)": string[];
-    "Fiber (g)": string[];
-    "Carbs (g)": string[];
-    "Cholesterol (mg)": string[];
-    Reviews: string[];
+    "Dish Type": number | null[];
+    "Equipment": number | null[];
+    "Calories": number | null[];
+    "Protein (g)": number | null[];
+    "Fat (g)": number | null[];
+    "Fiber (g)": number | null[];
+    "Carbs (g)": number | null[];
+    "Cholesterol (mg)": number | null[];
+    "Reviews": number | null[];
   }
 
   type filterKeysType = keyof filterType;
   const filterKeys = Object.keys(filters) as filterKeysType[];
 
   interface selectedIdType {
-    "Dish Type": string;
-    Equipment: string;
-    Calories: string;
-    "Protein (g)": string;
-    "Fat (g)": string;
-    "Fiber (g)": string;
-    "Carbs (g)": string;
-    "Cholesterol (mg)": string;
-    Reviews: string;
+    "Dish Type": number | null;
+    "Equipment": number | null;
+    "Calories": number | null;
+    "Protein (g)": number | null;
+    "Fat (g)": number | null;
+    "Fiber (g)": number | null;
+    "Carbs (g)": number | null;
+    "Cholesterol (mg)": number | null;
+    "Reviews": number | null;
   }
 
   type selectedIdKeysType = keyof selectedIdType;
@@ -44,15 +44,15 @@ const ModalFilterCategories = () => {
   const [selectedFilterCat, setSelectedFilterCat] =
     useState<selectedFilterCatType>(null);
   const [selectedId, setSelectedId] = useState<selectedIdType>({
-    "Dish Type": "",
-    Equipment: "",
-    Calories: "",
-    "Protein (g)": "",
-    "Fat (g)": "",
-    "Fiber (g)": "",
-    "Carbs (g)": "",
-    "Cholesterol (mg)": "",
-    Reviews: "",
+    "Dish Type": null,
+    "Equipment": null,
+    "Calories": null,
+    "Protein (g)": null,
+    "Fat (g)": null,
+    "Fiber (g)": null,
+    "Carbs (g)": null,
+    "Cholesterol (mg)": null,
+    "Reviews": null,
   });
 
   // This function handles the selected filter categories
