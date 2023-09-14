@@ -73,7 +73,7 @@ const Results: React.FC = () => {
   // This function handles the visibility of the modal
   const handleModalVisible = () => {
     setModalVisible(!isModalVisible);
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -87,22 +87,25 @@ const Results: React.FC = () => {
         <Pressable onPress={() => handleModalVisible()}>
           <FilterOverlayButton />
         </Pressable>
-        <Modal
-          transparent={true}
-          visible={isModalVisible}
-        >
+        <Modal transparent={true} visible={isModalVisible}>
           <View style={styles.modalContainer}>
             <View style={styles.otherModalContainer}>
               <View style={styles.modalTopRow}>
                 <Pressable style={styles.modalOptionButtons}>
                   <Text style={styles.modalTopButtonText}>Clear All</Text>
                 </Pressable>
-                <Pressable style={styles.modalOptionButtons} onPress={() => handleModalVisible()}>
+                <Pressable
+                  style={styles.modalOptionButtons}
+                  onPress={() => handleModalVisible()}
+                >
                   <Text style={styles.modalTopButtonText}>Apply Filters</Text>
                 </Pressable>
               </View>
               <ModalFilterCategories />
-              <Button title="Close Modal" onPress={() => handleModalVisible()}></Button>
+              <Button
+                title="Close Modal"
+                onPress={() => handleModalVisible()}
+              ></Button>
             </View>
           </View>
         </Modal>
@@ -128,7 +131,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
   },
   topRow: {
-    flexDirection: 'row',
+    flexDirection: "row",
   },
   modalContainer: {
     flex: 1,
@@ -139,14 +142,14 @@ const styles = StyleSheet.create({
     margin: 40,
     padding: 40,
     borderRadius: 20,
-    width: '80%',
+    width: "80%",
   },
   modalOptionButtons: {
     borderRadius: 14,
     padding: 8,
     marginHorizontal: 5,
     marginVertical: 4,
-    backgroundColor: '#72927C',
+    backgroundColor: "#72927C",
     // Shadow styling
     shadowColor: "#000000",
     shadowOffset: {
@@ -163,7 +166,7 @@ const styles = StyleSheet.create({
   },
   modalTopButtonText: {
     fontSize: 12,
-    color: '#FFFCF7',
+    color: "#FFFCF7",
   },
 });
 

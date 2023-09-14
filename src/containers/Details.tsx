@@ -56,14 +56,14 @@ const Details: React.FC = () => {
 
   // This function prevents the decrease servings button from going below zero servings
   const handleDecreaseServings = () => {
-    if(servingSize > 0){
-      dispatch(decreaseServings())
+    if (servingSize > 0) {
+      dispatch(decreaseServings());
     }
-  }
+  };
 
   React.useEffect(() => {
     dispatch(toggleTrue());
-    dispatch;
+    console.log(activeRecipe.nutrition.Calories.amount);
   }, []);
 
   return (
@@ -71,6 +71,9 @@ const Details: React.FC = () => {
       <View style={styles.bioContainer}>
         <View>
           <Text>Total Time: {activeRecipe.readyInMinutes} Min</Text>
+          <Text>
+            Calories: {Math.ceil(activeRecipe.nutrition.Calories.amount)}
+          </Text>
           <Text>{rating}</Text>
         </View>
         <Image

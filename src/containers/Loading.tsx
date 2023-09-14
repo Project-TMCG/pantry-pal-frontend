@@ -39,11 +39,6 @@ const Loading: React.FC = () => {
     }
 
     sumString = sumArr.toString();
-    console.log({
-      includeIngredients: sumString,
-      diet: dietString,
-      number: 10,
-    });
     const recipes = await getRecipes({
       includeIngredients: sumString,
       diet: dietString,
@@ -54,6 +49,8 @@ const Loading: React.FC = () => {
       alert("no results found");
       navigation.pop();
     } else {
+      for (const key in recipes) {
+      }
       dispatch(addRecipes(recipes));
       navigation.navigate("Results");
     }
@@ -66,7 +63,7 @@ const Loading: React.FC = () => {
   return (
     <View style={styles.container}>
       <ActivityIndicator size="large" color="72927C" />
-      <Text>"Hang on tight!"</Text> 
+      <Text>"Hang on tight!"</Text>
       <Text>Whipping up some recipes...</Text>
     </View>
   );
