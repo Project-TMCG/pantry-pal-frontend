@@ -1,15 +1,15 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface savedIndex {
-  "Dish Type": number | null;
-  "Equipment": number | null;
-  "Calories": number | null;
-  "Protein (g)": number | null;
-  "Fat (g)": number | null;
-  "Fiber (g)": number | null;
-  "Carbs (g)": number | null;
-  "Cholesterol (mg)": number | null;
-  "Reviews": number | null;
+  "Dish Type": string | undefined;
+  "Equipment": string | undefined;
+  "Calories": string | undefined;
+  "Protein (g)": string | undefined;
+  "Fat (g)": string | undefined;
+  "Fiber (g)": string | undefined;
+  "Carbs (g)": string | undefined;
+  "Cholesterol (mg)": string | undefined;
+  "Reviews": string | undefined;
 }
 
 interface optionValue {
@@ -41,15 +41,15 @@ export const filterDataSlice = createSlice({
   name: "filterData",
   initialState: {
     savedIndex:{
-      "Dish Type": null,
-      "Equipment": null,
-      "Calories": null,
-      "Protein (g)": null,
-      "Fat (g)": null,
-      "Fiber (g)": null,
-      "Carbs (g)": null,
-      "Cholesterol (mg)": null,
-      "Reviews": null,
+      "Dish Type": undefined,
+      "Equipment": undefined,
+      "Calories": undefined,
+      "Protein (g)": undefined,
+      "Fat (g)": undefined,
+      "Fiber (g)": undefined,
+      "Carbs (g)": undefined,
+      "Cholesterol (mg)": undefined,
+      "Reviews": undefined,
     } as savedIndex,
     optionValues: {
       "Dish Type": null,
@@ -78,6 +78,9 @@ export const filterDataSlice = createSlice({
       state.savedIndex["Carbs (g)"] = payload["Carbs (g)"];
       state.savedIndex["Cholesterol (mg)"] = payload["Cholesterol (mg)"];
       state.savedIndex["Reviews"] = payload["Reviews"];
+
+      console.log("This is what savedIndex looks like after an update:")
+      console.log(state.savedIndex)
     },
     saveValue: (state, action: valuePayload) => {
       //Get the option value that is selected on ModalFilterCategories.tsx from payload object
