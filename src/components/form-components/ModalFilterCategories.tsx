@@ -5,20 +5,23 @@ import RadioGroup, { RadioButtonProps } from "react-native-radio-buttons-group";
 
 //Import Redux Store & Action Dispatch
 import { useSelector, useDispatch } from "react-redux";
-import { saveIndex, saveValue } from "./../../redux/features/filterData/filterDataSlice";
+import {
+  saveIndex,
+  saveValue,
+} from "./../../redux/features/filterData/filterDataSlice";
 
 const ModalFilterCategories = () => {
   // This is an array of the filter categories from the imported filters object
   interface filterType {
     "Dish Type": Array<string | null>;
-    "Equipment": Array<string | null>;
-    "Calories": Array<string | null>;
+    Equipment: Array<string | null>;
+    Calories: Array<string | null>;
     "Protein (g)": Array<string | null>;
     "Fat (g)": Array<string | null>;
     "Fiber (g)": Array<string | null>;
     "Carbs (g)": Array<string | null>;
     "Cholesterol (mg)": Array<string | null>;
-    "Reviews": Array<string | null>;
+    Reviews: Array<string | null>;
   }
 
   type filterKeysType = keyof filterType;
@@ -26,14 +29,14 @@ const ModalFilterCategories = () => {
 
   interface selectedIdType {
     "Dish Type": string | undefined;
-    "Equipment": string | undefined;
-    "Calories": string | undefined;
+    Equipment: string | undefined;
+    Calories: string | undefined;
     "Protein (g)": string | undefined;
     "Fat (g)": string | undefined;
     "Fiber (g)": string | undefined;
     "Carbs (g)": string | undefined;
     "Cholesterol (mg)": string | undefined;
-    "Reviews": string | undefined;
+    Reviews: string | undefined;
   }
 
   type selectedIdKeysType = keyof selectedIdType;
@@ -45,14 +48,14 @@ const ModalFilterCategories = () => {
     useState<selectedFilterCatType>(null);
   const [selectedId, setSelectedId] = useState<selectedIdType>({
     "Dish Type": undefined,
-    "Equipment": undefined,
-    "Calories": undefined,
+    Equipment: undefined,
+    Calories: undefined,
     "Protein (g)": undefined,
     "Fat (g)": undefined,
     "Fiber (g)": undefined,
     "Carbs (g)": undefined,
     "Cholesterol (mg)": undefined,
-    "Reviews": undefined,
+    Reviews: undefined,
   });
 
   // This function handles the selected filter categories
@@ -90,17 +93,44 @@ const ModalFilterCategories = () => {
     dispatch(saveIndex(newSavedIndex));
 
     const newOptionValues = {
-      "Dish Type": selectedId["Dish Type"] != undefined ? filters["Dish Type"][Number(selectedId["Dish Type"])] : undefined,
-      "Equipment": selectedId["Equipment"] != undefined ? filters["Equipment"][Number(selectedId["Equipment"])] : undefined,
-      "Calories": selectedId["Calories"] != undefined ? filters["Calories"][Number(selectedId["Calories"])] : undefined,
-      "Protein (g)": selectedId["Protein (g)"] != undefined ? filters["Protein (g)"][Number(selectedId["Protein (g)"])] : undefined,
-      "Fat (g)": selectedId["Fat (g)"] != undefined ? filters["Fat (g)"][Number(selectedId["Fat (g)"])] : undefined,
-      "Fiber (g)": selectedId["Fiber (g)"] != undefined ? filters["Fiber (g)"][Number(selectedId["Fiber (g)"])] : undefined,
-      "Carbs (g)": selectedId["Carbs (g)"] != undefined ? filters["Dish Type"][Number(selectedId["Dish Type"])] : undefined,
-      "Cholesterol (mg)": selectedId["Cholesterol (mg)"] != undefined ? filters["Cholesterol (mg)"][Number(selectedId["Cholesterol (mg)"])] : undefined,
-      "Reviews": selectedId["Reviews"] != undefined ? filters["Reviews"][Number(selectedId["Reviews"])] : undefined,
-    }
-    dispatch(saveValue(newOptionValues))
+      "Dish Type":
+        selectedId["Dish Type"] != undefined
+          ? filters["Dish Type"][Number(selectedId["Dish Type"])]
+          : undefined,
+      Equipment:
+        selectedId["Equipment"] != undefined
+          ? filters["Equipment"][Number(selectedId["Equipment"])]
+          : undefined,
+      Calories:
+        selectedId["Calories"] != undefined
+          ? filters["Calories"][Number(selectedId["Calories"])]
+          : undefined,
+      "Protein (g)":
+        selectedId["Protein (g)"] != undefined
+          ? filters["Protein (g)"][Number(selectedId["Protein (g)"])]
+          : undefined,
+      "Fat (g)":
+        selectedId["Fat (g)"] != undefined
+          ? filters["Fat (g)"][Number(selectedId["Fat (g)"])]
+          : undefined,
+      "Fiber (g)":
+        selectedId["Fiber (g)"] != undefined
+          ? filters["Fiber (g)"][Number(selectedId["Fiber (g)"])]
+          : undefined,
+      "Carbs (g)":
+        selectedId["Carbs (g)"] != undefined
+          ? filters["Dish Type"][Number(selectedId["Dish Type"])]
+          : undefined,
+      "Cholesterol (mg)":
+        selectedId["Cholesterol (mg)"] != undefined
+          ? filters["Cholesterol (mg)"][Number(selectedId["Cholesterol (mg)"])]
+          : undefined,
+      Reviews:
+        selectedId["Reviews"] != undefined
+          ? filters["Reviews"][Number(selectedId["Reviews"])]
+          : undefined,
+    };
+    dispatch(saveValue(newOptionValues));
   }, [selectedId]);
 
   return (

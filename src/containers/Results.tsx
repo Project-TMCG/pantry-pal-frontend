@@ -15,7 +15,9 @@ import ModalFilterCategories from "../components/form-components/ModalFilterCate
 //Types for React Navigation
 import { RootStackParams } from "../../App";
 import { Button } from "react-native-elements";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { faT } from "@fortawesome/free-solid-svg-icons";
+import { clearAll } from "../redux/features/filterData/filterDataSlice";
 
 //____Mock Data to later be deleted and replaced with API data____
 type Recipe = {
@@ -27,6 +29,8 @@ type Recipe = {
 };
 
 const Results: React.FC = () => {
+  const dispatch = useDispatch();
+  const rating = useSelector((state: any) => state.detail.rating);
   const recipeObject = useSelector((state: any) => state.recipe.all);
   const filterData = useSelector((state: any) => state.filterData);
   const recipes = Object.keys(recipeObject).map((key) => {
@@ -45,6 +49,7 @@ const Results: React.FC = () => {
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>(recipes);
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
+  const [filterTest, passTest] = useState<boolean>(false);
 
   // This function handles the cuisine filter option button selection
   const handleFilterSelect = (filter: string) => {
@@ -80,16 +85,120 @@ const Results: React.FC = () => {
   //This function applies modal filters to the recipes
 
   const applyModalFilters = () => {
-    let filtered = [];
+    let filtered: any[] | ((prevState: Recipe[]) => Recipe[]) = [];
+
+    let calorieSelection = filterData.optionValues.Calories
+      ? parseInt(filterData.optionValues.Calories.slice(0, 3))
+      : 0;
+    let dishTypeSelection = filterData.optionValues["Dish Type"];
+    let proteinSelection = filterData.optionValues["Protein (g)"]
+      ? parseInt(filterData.optionValues["Protein (g)"].slice(0, 2))
+      : 0;
+
+    let fatSelection = filterData.optionValues["Fat (g)"]
+      ? parseInt(filterData.optionValues["Fat (g)"].slice(0, 3))
+      : 0;
+
+    let fiberSelection = filterData.optionValues["Fiber (g)"]
+      ? parseInt(filterData.optionValues["Fiber (g)"].slice(0, 2))
+      : 500;
+
+    let carbSelection = filterData.optionValues["Carbs (g)"]
+      ? parseInt(filterData.optionValues["Carbs (g)"].slice(0, 3))
+      : 0;
+    let cholestSelection = filterData.optionValues["Cholesterol (mg)"]
+      ? parseInt(filterData.optionValues["Cholesterol (mg)"].slice(0, 3))
+      : 0;
+    let reviewSelection = filterData.optionValues.Reviews;
+    let equipmentSelection = filterData.optionValues.Equipment;
+
     for (let i = 0; i < recipes.length; i++) {
-      let calorieData = parseInt(filterData.Calories.slice(0, 3));
-      if (calorieData > recipes[i].nutrition.Calories.amount) {
-        filtered.push(recipes[i]);
+      let passedFilters = false;
+      let equipmentData = recipes[i].instructionSteps;
+      //calorie conditional
+
+      if (calorieSelection > recipes[i].nutrition.Calories.amount) {
+        passedFilters = true;
+      } else if (filterData.optionValues.Calories) {
+        continue;
       }
 
-      setFilteredRecipes(filtered);
+      // Protein Conditional
+      if (proteinSelection > recipes[i].nutrition.Protein.amount) {
+        passedFilters = true;
+      } else if (filterData.optionValues["Protein (g)"]) {
+        continue;
+      }
+
+      // //Fat conditional
+
+      if (fatSelection > recipes[i].nutrition.Fat.amount) {
+        passedFilters = true;
+      } else if (filterData.optionValues["Fat (g)"]) {
+        continue;
+      }
+
+      //Fiber conditional
+
+      if (fiberSelection < recipes[i].nutrition.Fiber.amount) {
+        passedFilters = true;
+      } else if (filterData.optionValues["Fiber (g)"]) {
+        continue;
+      }
+
+      // Carbs conditional
+      if (carbSelection > recipes[i].nutrition.Carbohydrates.amount) {
+        passedFilters = true;
+      } else if (filterData.optionValues["Carbs (g)"]) {
+        continue;
+      }
+
+      // Cholesterol  conditional
+      if (cholestSelection > recipes[i].nutrition.Cholesterol.amount) {
+        passedFilters = true;
+      } else if (filterData.optionValues["Cholesterol (mg)"]) {
+        continue;
+      }
+
+      //rating conditional
+
+      if (reviewSelection === rating) {
+        passedFilters = true;
+      } else if (filterData.optionValues.Reviews) {
+        continue;
+      }
+
+      // dish type conditional
+      if (recipes[i].dishTypes.includes(dishTypeSelection)) {
+        passedFilters = true;
+      } else if (filterData.optionValues["Dish Type"]) {
+        continue;
+      }
+
+      // equipment conditional
+      for (let j = 1; j < Object.keys(equipmentData).length + 1; j++) {
+        if (equipmentData[j].equipment.includes(equipmentSelection)) {
+          passedFilters = true;
+        }
+      }
+
+      if (passedFilters) {
+        //pushes recipe to temp array if all tests pass
+        filtered.push(recipes[i]);
+      } else continue;
     }
 
+    //changes state of shown recipes
+
+    // setTimeout(() => {
+    setFilteredRecipes(filtered);
+    handleModalVisible();
+    // }, 600);
+  };
+
+  const clearAllFilters = () => {
+    setFilteredRecipes(recipes);
+    dispatch(clearAll());
     handleModalVisible();
   };
 
@@ -109,7 +218,10 @@ const Results: React.FC = () => {
           <View style={styles.modalContainer}>
             <View style={styles.otherModalContainer}>
               <View style={styles.modalTopRow}>
-                <Pressable style={styles.modalOptionButtons}>
+                <Pressable
+                  style={styles.modalOptionButtons}
+                  onPress={() => clearAllFilters()}
+                >
                   <Text style={styles.modalTopButtonText}>Clear All</Text>
                 </Pressable>
                 <Pressable
