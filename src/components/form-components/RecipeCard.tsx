@@ -31,7 +31,7 @@ const IMAGE_HEIGHT = CARD_HEIGHT * 0.85;
 type CardsComponentsProps = {
   recipes: string[];
   images: string[];
-  rating: number[];
+  rating: string[];
 };
 
 const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
@@ -44,24 +44,11 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
     useNavigation<NativeStackNavigationProp<RootStackParams>>();
   const recipeObject = useSelector((state: any) => state.recipe.all);
 
-  const stars = rating.map((likes) => {
-    if (likes > 20) {
-      return "★★★★★";
-    } else if (likes > 10 && likes < 20) {
-      return "★★★★";
-    } else if (likes > 5 && likes < 10) {
-      return "★★★";
-    } else if (likes > 0 && likes < 5) {
-      return "★★";
-    } else return "★";
-  });
-
   const selectRecipe = (recipeName: string, stars: string) => {
     const servingAmount = recipeObject[recipeName];
-    console.log(recipeObject[recipeName].nutrition.Protein);
     dispatch(chooseRecipe(recipeName));
     dispatch(setServingSize(servingAmount.servings));
-    dispatch(inputRating(stars));
+
     navigation.navigate("Details");
   };
 
@@ -70,7 +57,7 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         {recipes.map((recipe: string, index: number) => (
           <View key={index} style={styles.card}>
-            <Pressable onPress={() => selectRecipe(recipe, stars[index])}>
+            <Pressable onPress={() => selectRecipe(recipe, rating[index])}>
               <View style={styles.imageShadow}>
                 <Image
                   style={styles.image}
@@ -83,7 +70,7 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
                 {recipe}
               </Text>
               <View style={styles.ratingBox}>
-                <Text>{stars[index]}</Text>
+                <Text>{rating[index]}</Text>
                 <Text>
                   <FontAwesomeIcon
                     icon={faStopwatch}
