@@ -36,10 +36,22 @@ const Results: React.FC = () => {
   const recipes = Object.keys(recipeObject).map((key) => {
     return recipeObject[key];
   });
+
+  const stars = recipes.map((recipe) => {
+    const likes = recipe.aggregateLikes;
+    if (likes > 20) {
+      return "★★★★★";
+    } else if (likes > 10 && likes < 20) {
+      return "★★★★";
+    } else if (likes > 5 && likes < 10) {
+      return "★★★";
+    } else if (likes > 0 && likes < 5) {
+      return "★★";
+    } else return "★";
+  });
   const allCuisines = Array.from(
     new Set(recipes.reduce((acc, recipe) => [...acc, ...recipe.cuisines], []))
   ) as string[];
-
   const options: string[] = ["All", ...allCuisines];
 
   const navigation =
@@ -48,6 +60,7 @@ const Results: React.FC = () => {
   // Hooks
   const [selectedFilter, setSelectedFilter] = useState<string>("All");
   const [filteredRecipes, setFilteredRecipes] = useState<Recipe[]>(recipes);
+  const [starArr, setStars] = useState<string[]>(stars);
   const [isModalVisible, setModalVisible] = useState<boolean>(false);
   const [filterTest, passTest] = useState<boolean>(false);
 
@@ -86,6 +99,7 @@ const Results: React.FC = () => {
 
   const applyModalFilters = () => {
     let filtered: any[] | ((prevState: Recipe[]) => Recipe[]) = [];
+    let newStarsArr = [];
 
     let calorieSelection = filterData.optionValues.Calories
       ? parseInt(filterData.optionValues.Calories.slice(0, 3))
@@ -93,7 +107,7 @@ const Results: React.FC = () => {
     let dishTypeSelection = filterData.optionValues["Dish Type"];
     let proteinSelection = filterData.optionValues["Protein (g)"]
       ? parseInt(filterData.optionValues["Protein (g)"].slice(0, 2))
-      : 0;
+      : 500;
 
     let fatSelection = filterData.optionValues["Fat (g)"]
       ? parseInt(filterData.optionValues["Fat (g)"].slice(0, 3))
@@ -124,7 +138,7 @@ const Results: React.FC = () => {
       }
 
       // Protein Conditional
-      if (proteinSelection > recipes[i].nutrition.Protein.amount) {
+      if (proteinSelection < recipes[i].nutrition.Protein.amount) {
         passedFilters = true;
       } else if (filterData.optionValues["Protein (g)"]) {
         continue;
@@ -162,11 +176,13 @@ const Results: React.FC = () => {
 
       //rating conditional
 
-      if (reviewSelection === rating) {
+      if (reviewSelection === stars[i]) {
         passedFilters = true;
       } else if (filterData.optionValues.Reviews) {
         continue;
       }
+
+      console.log(reviewSelection);
 
       // dish type conditional
       if (recipes[i].dishTypes.includes(dishTypeSelection)) {
@@ -184,6 +200,7 @@ const Results: React.FC = () => {
 
       if (passedFilters) {
         //pushes recipe to temp array if all tests pass
+        newStarsArr.push(stars[i]);
         filtered.push(recipes[i]);
       } else continue;
     }
@@ -192,6 +209,7 @@ const Results: React.FC = () => {
 
     // setTimeout(() => {
     setFilteredRecipes(filtered);
+    setStars(newStarsArr);
     handleModalVisible();
     // }, 600);
   };
@@ -249,7 +267,7 @@ const Results: React.FC = () => {
       <RecipeCard
         recipes={filteredRecipes.map((recipe) => recipe.title)}
         images={filteredRecipes.map((recipe) => recipe.image)}
-        rating={filteredRecipes.map((recipe) => recipe.aggregateLikes)}
+        rating={starArr}
       />
     </View>
   );
