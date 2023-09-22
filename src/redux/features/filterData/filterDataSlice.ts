@@ -2,31 +2,31 @@ import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 interface savedIndex {
   "Dish Type": string | undefined;
-  "Equipment": string | undefined;
-  "Calories": string | undefined;
+  Equipment: string | undefined;
+  Calories: string | undefined;
   "Protein (g)": string | undefined;
   "Fat (g)": string | undefined;
   "Fiber (g)": string | undefined;
   "Carbs (g)": string | undefined;
   "Cholesterol (mg)": string | undefined;
-  "Reviews": string | undefined;
+  Reviews: string | undefined;
 }
 
 interface optionValue {
   "Dish Type": string | undefined;
-  "Equipment": string | undefined;
-  "Calories": string | undefined;
+  Equipment: string | undefined;
+  Calories: string | undefined;
   "Protein (g)": string | undefined;
   "Fat (g)": string | undefined;
   "Fiber (g)": string | undefined;
   "Carbs (g)": string | undefined;
   "Cholesterol (mg)": string | undefined;
-  "Reviews": string | undefined;
+  Reviews: string | undefined;
 }
 
 interface filterData {
-  savedIndex: savedIndex,
-  optionValues: optionValue
+  savedIndex: savedIndex;
+  optionValues: optionValue;
 }
 
 interface indexPayload {
@@ -40,28 +40,28 @@ interface valuePayload {
 export const filterDataSlice = createSlice({
   name: "filterData",
   initialState: {
-    savedIndex:{
+    savedIndex: {
       "Dish Type": undefined,
-      "Equipment": undefined,
-      "Calories": undefined,
+      Equipment: undefined,
+      Calories: undefined,
       "Protein (g)": undefined,
       "Fat (g)": undefined,
       "Fiber (g)": undefined,
       "Carbs (g)": undefined,
       "Cholesterol (mg)": undefined,
-      "Reviews": undefined,
+      Reviews: undefined,
     } as savedIndex,
     optionValues: {
       "Dish Type": undefined,
-      "Equipment": undefined,
-      "Calories": undefined,
+      Equipment: undefined,
+      Calories: undefined,
       "Protein (g)": undefined,
       "Fat (g)": undefined,
       "Fiber (g)": undefined,
       "Carbs (g)": undefined,
       "Cholesterol (mg)": undefined,
-      "Reviews": undefined,
-    } as optionValue
+      Reviews: undefined,
+    } as optionValue,
   } as filterData,
   reducers: {
     saveIndex: (state, action: indexPayload) => {
@@ -79,8 +79,8 @@ export const filterDataSlice = createSlice({
       state.savedIndex["Cholesterol (mg)"] = payload["Cholesterol (mg)"];
       state.savedIndex["Reviews"] = payload["Reviews"];
 
-      console.log("This is what savedIndex looks like after an update:")
-      console.log(state.savedIndex)
+      // console.log("This is what savedIndex looks like after an update:");
+      // console.log(state.savedIndex);
     },
     saveValue: (state, action: valuePayload) => {
       //Get the option value that is selected on ModalFilterCategories.tsx from payload object
@@ -97,12 +97,39 @@ export const filterDataSlice = createSlice({
       state.optionValues["Cholesterol (mg)"] = payload["Cholesterol (mg)"];
       state.optionValues["Reviews"] = payload["Reviews"];
 
-      console.log("This is what optionValues looks like after an update:")
-      console.log(state.optionValues)
-    }
+      // console.log("This is what optionValues looks like after an update:");
+      // console.log(state.optionValues);
+    },
+    clearAll: (state) => {
+      state.optionValues = {
+        "Dish Type": undefined,
+        Equipment: undefined,
+        Calories: undefined,
+        "Protein (g)": undefined,
+        "Fat (g)": undefined,
+        "Fiber (g)": undefined,
+        "Carbs (g)": undefined,
+        "Cholesterol (mg)": undefined,
+        Reviews: undefined,
+      };
+
+      state.savedIndex = {
+        "Dish Type": undefined,
+        Equipment: undefined,
+        Calories: undefined,
+        "Protein (g)": undefined,
+        "Fat (g)": undefined,
+        "Fiber (g)": undefined,
+        "Carbs (g)": undefined,
+        "Cholesterol (mg)": undefined,
+        Reviews: undefined,
+      };
+
+      console.log(state.optionValues);
+    },
   },
 });
 
-export const { saveIndex, saveValue } = filterDataSlice.actions;
+export const { saveIndex, saveValue, clearAll } = filterDataSlice.actions;
 
 export default filterDataSlice.reducer;

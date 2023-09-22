@@ -58,6 +58,7 @@ const RecipeCard: React.FunctionComponent<CardsComponentsProps> = ({
 
   const selectRecipe = (recipeName: string, stars: string) => {
     const servingAmount = recipeObject[recipeName];
+    console.log(recipeObject[recipeName].nutrition.Protein);
     dispatch(chooseRecipe(recipeName));
     dispatch(setServingSize(servingAmount.servings));
     dispatch(inputRating(stars));
