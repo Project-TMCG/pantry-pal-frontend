@@ -39,7 +39,7 @@ const TextField: React.FC<Props> = ({ placeholderText, onSearchEntry }) => {
         value={text}
         clearButtonMode="always"
       />
-      <Icon name={showIcon ? "clear" : ""} onPress={handleClear} />
+      <Icon style={styles.icon} name={showIcon ? "clear" : ""} onPress={handleClear} />
     </View>
   );
 };
@@ -49,7 +49,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
-    width: barWidth,
+    width: barWidth * 0.95,
+  },
+  icon: {
+    marginRight: 5,
   },
   searchBarContainer: {
     flexDirection: "row",
